@@ -1,0 +1,158 @@
+@import '../common/base.css';
+
+:root {
+    /* Primary Variables */
+    --brand-primary: #8e715b;
+    --brand-primary-hover: #bea28c;
+    --brand-midtone: #f1f1f1;
+    --brand-darktone: #969696;
+    --brand-default-bg: #fff;
+    --brand-default-fg: #22231f;
+
+    /* Warning colors */
+    --brand-notice: #f6c358;
+    --brand-warning: #fcb46e;
+    --brand-error: #bf5155;
+
+    /* Connection Indicator top */
+    --comp-workspace-before-bg: var(--brand-primary);
+    --comp-bg-kiwi-workspace--disconnected-after-bg: var(--brand-error);
+
+    /* Container Header */
+    --comp-header-bg: var(--brand-default-bg);
+    --comp-header-name-fg: var(--brand-default-fg);
+    --comp-header-option-active-fg: var(--brand-default-bg);
+    --comp-header-option-active-bg: var(--brand-primary);
+
+    /* StateBrowser */
+    --comp-statebrowser-fg: #fff;
+    --comp-statebrowser-bg: #8e715c;
+    --comp-statebrowser-bg-networkname: #7b6351;
+    --comp-statebrowser-channel-active-bg: #ffffff0d;
+    --comp-statebrowser-channel-active-fg: #fff;
+    --comp-usermenu-open-bg: #7b6351;
+    --comp-statebrowser-network-border: #bda28e;
+
+
+    /* Sidebars ( Right Side ) */
+    --comp-sidebar-bg: #fff;
+    --comp-sidebar-fg: #22231f;
+    --comp-scroller-bg: #f0f0f0;
+    --comp-scroller-fg: #cdcdcd;
+    --comp-aboutbuffer-bg: rgba(0, 0, 0, 0.03);
+    --comp-aboutbuffer-header-bg: #826958;
+
+    /* Misc */
+    --brand-link-normal: var(--brand-primary);
+    --brand-link--hover: var(--brand-primary-hover);
+    --brand-shadow: rgba(0, 0, 0, 0.1);
+    --comp-border: #b2b2b2;
+}
+
+.kiwi-appsettings-close,
+.kiwi-appsettings-block h3,
+.kiwi-networksettings .kiwi-title,
+.u-form input[type='checkbox']:after, .u-form input[type='radio']:after {
+    background-color: #8e715c;
+}
+
+.kiwi-networksettings .kiwi-title {
+    border-top-color: #cab09b;
+}
+
+.kiwi-statebrowser-network.kiwi-statebrowser-network--active .kiwi-statebrowser-network-header {
+    border-left: 3px solid #cab09b;
+}
+
+.u-tabbed-view-tabs .u-tabbed-view-tab:hover,
+.u-tabbed-view-tabs .u-tabbed-view-tab.u-tabbed-view-tab--active {
+    border-bottom-color: #8e715c;
+}
+
+.kiwi-statebrowser-newnetwork a:hover {
+    background: #a28772;
+}
+
+.kiwi-network-name-options {
+    background-color: var(--comp-statebrowser-bg);
+}
+
+.kiwi-statebrowser-channel-leave {
+    background: transparent;
+}
+
+.kiwi-statebrowser-channelfilter a,
+.kiwi-statebrowser-channelfilter a:hover {
+    color: #fff;
+}
+
+.kiwi-statebrowser-usermenu-avatar:hover .kiwi-avatar-background,
+.kiwi-statebrowser-usermenu--open .kiwi-avatar-background {
+    fill: #967c68 !important;
+}
+
+.kiwi-startup-common-section-info {
+    border-left-color: var(--brand-primary);
+}
+
+.kiwi-statebrowser-network-status a {
+    color: #fff;
+}
+
+.kiwi-statebrowser-channel-label {
+    background: #967f70;
+}
+
+/* Away Status Indicator */
+.kiwi-awaystatusindicator,
+.kiwi-avatar-status {
+    background-color: #42b992;
+    fill: #42b992;
+}
+
+.kiwi-awaystatusindicator.kiwi-awaystatusindicator--away,
+.kiwi-avatar-status--away {
+    background-color: var(--brand-warning);
+    fill: var(--brand-warning);
+}
+
+.kiwi-awaystatusindicator.kiwi-awaystatusindicator--offline,
+.kiwi-avatar-status--offline {
+    background-color: var(--brand-error);
+    fill: var(--brand-error);
+}
+
+/* IRC Text Colours */
+.irc-fg-colour-white { color: #fff; }
+.irc-fg-colour-black { color: #000; }
+.irc-fg-colour-blue { color: #00f; }
+.irc-fg-colour-green { color: #009300; }
+.irc-fg-colour-light-red { color: #ff5959; }
+.irc-fg-colour-brown { color: #743a00; }
+.irc-fg-colour-purple { color: #a500ff; }
+.irc-fg-colour-orange { color: #ff8c00; }
+.irc-fg-colour-yellow { color: #ff0; }
+.irc-fg-colour-light-green { color: #6fff6f; }
+.irc-fg-colour-cyan { color: #0cc; }
+.irc-fg-colour-light-cyan { color: #6dffff; }
+.irc-fg-colour-light-blue { color: #59b4ff; }
+.irc-fg-colour-pink { color: #f0f; }
+.irc-fg-colour-grey { color: #a6a6a6; }
+.irc-fg-colour-light-grey { color: #e2e2e2; }
+
+.irc-bg-colour-white { background-color: #fff; }
+.irc-bg-colour-black { background-color: #000; }
+.irc-bg-colour-blue { background-color: #00f; }
+.irc-bg-colour-green { background-color: #009300; }
+.irc-bg-colour-light-red { background-color: #ff5959; }
+.irc-bg-colour-brown { background-color: #743a00; }
+.irc-bg-colour-purple { background-color: #a500ff; }
+.irc-bg-colour-orange { background-color: #ff8c00; }
+.irc-bg-colour-yellow { background-color: #ff0; }
+.irc-bg-colour-light-green { background-color: #6fff6f; }
+.irc-bg-colour-cyan { background-color: #0cc; }
+.irc-bg-colour-light-cyan { background-color: #6dffff; }
+.irc-bg-colour-light-blue { background-color: #59b4ff; }
+.irc-bg-colour-pink { background-color: #f0f; }
+.irc-bg-colour-grey { background-color: #a6a6a6; }
+.irc-bg-colour-light-grey { background-color: #e2e2e2; }

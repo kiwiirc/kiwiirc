@@ -1,0 +1,282 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    padding: 0.7em 0 0.2em 0;
+    margin: 0;
+}
+
+p {
+    margin: 0.5em 0 1em 0;
+}
+
+div {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+ul {
+    padding-left: 1em;
+}
+
+input,
+textarea,
+select {
+    color: inherit;
+    background: inherit;
+    background-color: inherit;
+}
+
+.u-link {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.u-link:hover {
+    text-decoration: underline;
+}
+
+.u-button {
+    display: inline-block;
+    white-space: nowrap;
+    cursor: pointer;
+    padding: 0.4em 0.9em;
+    border-radius: 4px;
+    vertical-align: middle;
+    text-align: center;
+    outline: none;
+    font-weight: 600;
+    font-size: 1em;
+    font-family: inherit;
+}
+
+.u-button-primary {
+    border: none;
+}
+
+.u-form {
+    text-align: left;
+}
+
+.u-form label {
+    display: block;
+    line-height: 20px;
+    margin: 0 0 3px 2px;
+}
+
+.u-form--big label {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.u-form label span {
+    margin-right: 1em;
+    display: inline-block;
+    line-height: 25px;
+    width: auto;
+    font-weight: 500;
+    text-align: left;
+    max-width: none;
+}
+
+.u-form label.u-form-block span {
+    width: auto;
+    display: inline-block;
+}
+
+/* Style all form inputs */
+.u-form input[type='checkbox'],
+.u-form input[type='radio'] {
+    float: left;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    position: relative;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 0;
+    margin-right: 5px;
+    border: 1px solid;
+}
+
+.u-form input[type='radio'] {
+    float: right;
+}
+
+.u-form .u-input,
+.u-form input[type='text'],
+.u-form input[type='password'],
+.u-form input[type='email'],
+.u-form textarea {
+    font-size: 0.9em;
+    line-height: normal;
+    clear: both;
+    padding: 7px 8px;
+    box-sizing: border-box;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-width: none;
+    min-width: 0;
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.u-form .u-input:disabled,
+.u-form input[type='text']:disabled,
+.u-form input[type='password']:disabled,
+.u-form input[type='email']:disabled,
+.u-form textarea {
+    opacity: 0.7;
+}
+
+.u-form--big .u-input,
+.u-form--big input[type='text'],
+.u-form--big input[type='password'],
+.u-form--big input[type='email'],
+.u-form--big textarea {
+    padding: 15px 12px;
+    font-size: 1em;
+}
+
+.u-checkbox-wrapper {
+    position: relative;
+    padding-left: 30px;
+}
+
+.u-checkbox-wrapper input[type='checkbox'],
+.u-checkbox-wrapper input[type='radio'] {
+    position: absolute;
+    margin: 0;
+    top: 2px;
+    left: 0;
+}
+
+.u-checkbox-wrapper label {
+    margin-right: 0;
+}
+
+.u-form .u-submit {
+    margin: 2em auto;
+    display: block;
+}
+
+/* Style Global tables */
+.u-table {
+    width: 100%;
+}
+
+.u-table thead th {
+    padding: 10px;
+    border-bottom: 1px solid;
+}
+
+.u-table tr:first-of-type td {
+    padding-top: 10px;
+}
+
+.u-table th,
+.u-table td {
+    padding: 5px 10px;
+}
+
+.u-table td {
+    height: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.u-table td .reset-icon {
+    font-size: 1.2em;
+}
+
+.u-table td .u-input {
+    height: 40px;
+}
+
+.kiwi-formatting-extras-quote {
+    border: 1px solid #b5b5b5;
+    padding: 0 3px;
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.05);
+    font-family: monospace;
+}
+
+.kiwi-formatting-extras-invisible {
+    font-size: 0;
+}
+
+.kiwi-formatting-extras-block {
+    border-left: 4px solid #b5b5b5;
+    padding: 1em;
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.05);
+    font-family: monospace;
+    white-space: pre-wrap;
+    display: inline-block;
+}
+
+/* Globally style the close icon */
+.kiwi-close-icon {
+    color: #fff;
+    border-radius: 0 0 0 4px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    padding: 0.2em 0.4em;
+    transition: background 0.2s;
+}
+
+.kiwi-typing::after {
+    display: inline-block;
+    animation: dotty steps(1, end) 1s infinite;
+    font-weight: 600;
+    content: '';
+}
+
+@keyframes dotty {
+    0% { content: ''; }
+    25% { content: '.'; }
+    50% { content: '..'; }
+    75% { content: '...'; }
+    100% { content: ''; }
+}
+
+.irc-fg-colour-white { color: #fff; }
+.irc-fg-colour-black { color: #000; }
+.irc-fg-colour-blue { color: #00f; }
+.irc-fg-colour-green { color: #0f0; }
+.irc-fg-colour-light-red { color: #ff5959; }
+.irc-fg-colour-brown { color: #743a00; }
+.irc-fg-colour-purple { color: #a500ff; }
+.irc-fg-colour-orange { color: #ff8c00; }
+.irc-fg-colour-yellow { color: #ff0; }
+.irc-fg-colour-light-green { color: #6fff6f; }
+.irc-fg-colour-cyan { color: #0cc; }
+.irc-fg-colour-light-cyan { color: #6dffff; }
+.irc-fg-colour-light-blue { color: #59b4ff; }
+.irc-fg-colour-pink { color: #f0f; }
+.irc-fg-colour-grey { color: #a6a6a6; }
+.irc-fg-colour-light-grey { color: #e2e2e2; }
+
+.irc-bg-colour-white { background-color: #fff; }
+.irc-bg-colour-black { background-color: #000; }
+.irc-bg-colour-blue { background-color: #00f; }
+.irc-bg-colour-green { background-color: #0f0; }
+.irc-bg-colour-light-red { background-color: #ff5959; }
+.irc-bg-colour-brown { background-color: #743a00; }
+.irc-bg-colour-purple { background-color: #a500ff; }
+.irc-bg-colour-orange { background-color: #ff8c00; }
+.irc-bg-colour-yellow { background-color: #ff0; }
+.irc-bg-colour-light-green { background-color: #6fff6f; }
+.irc-bg-colour-cyan { background-color: #0cc; }
+.irc-bg-colour-light-cyan { background-color: #6dffff; }
+.irc-bg-colour-light-blue { background-color: #59b4ff; }
+.irc-bg-colour-pink { background-color: #f0f; }
+.irc-bg-colour-grey { background-color: #a6a6a6; }
+.irc-bg-colour-light-grey { background-color: #e2e2e2; }

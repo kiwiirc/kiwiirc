@@ -1,0 +1,33 @@
+name: Release workflow
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build-packages:
+    name: Build Packages
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          repository: 'kiwiirc/kiwiirc_packager'
+
+      - name: Install Dependencies
+        run: |
+          chmod +x ubuntu_debian_dependencies.sh
+          ./ubuntu_debian_dependencies.sh
+
+      - name: Build Packages
+        run: |
+          chmod +x build_packages.sh
+          ./build_packages.sh -t ${{ github.event.release.tag_name }}
+
+      - name: Upload Assets
+        uses: AButler/upload-release-assets@v2.0
+        with:
+          files: 'dist/*'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          release-tag: ${{ github.event.release.tag_name }}

@@ -1,0 +1,1257 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Crowdin-SourceKey: msgstr\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: kiwiirc\n"
+"X-Crowdin-Project-ID: 275818\n"
+"X-Crowdin-Language: ca\n"
+"X-Crowdin-File: /[kiwiirc.kiwiirc] master/src/res/locales/app.dev.po\n"
+"X-Crowdin-File-ID: 21\n"
+"Project-Id-Version: kiwiirc\n"
+"Language-Team: Catalan\n"
+"Language: ca_ES\n"
+"PO-Revision-Date: 2025-03-05 14:48\n"
+
+#: Start
+msgid "start_button"
+msgstr "Començar"
+
+#: Welcome to Kiwi IRC!
+msgid "start_greeting"
+msgstr "Benvinguts a Kiwi IRC!"
+
+#: Close
+msgid "close"
+msgstr "Tancar"
+
+#: Connect
+msgid "connect"
+msgstr "Connectar"
+
+#: Connecting...
+msgid "connecting"
+msgstr "Connectant..."
+
+#: Connected
+msgid "connected"
+msgstr "Connectat"
+
+#: Settings
+msgid "settings"
+msgstr "Configuració"
+
+#: Kiwi Settings
+msgid "kiwi_settings"
+msgstr "Configuració del Kiwi"
+
+#: Channels
+msgid "channels"
+msgstr "Canals"
+
+#: Access
+msgid "access"
+msgstr "Accés"
+
+#: Banned Users
+msgid "banned"
+msgstr "Usuaris banejats"
+
+#: Invited Users
+msgid "invited"
+msgstr "Usuaris convidats"
+
+#: Notifications
+msgid "notifications"
+msgstr "Notificacions"
+
+#: Username
+msgid "username"
+msgstr "Nom d'usuari"
+
+#: Password
+msgid "password"
+msgstr "Contrasenya"
+
+#: Server Password
+msgid "server_password"
+msgstr "Contrasenya del servidor"
+
+#: I have a password
+msgid "password_have"
+msgstr "Tinc una contrasenya"
+
+#: Server
+msgid "server"
+msgstr "Servidor"
+
+#: Nick
+msgid "nick"
+msgstr "Alies"
+
+#: Channel
+msgid "channel"
+msgstr "Canal"
+
+#: Channels
+msgid "channels"
+msgstr "Canals"
+
+#: Messages
+msgid "messages"
+msgstr "Missatges"
+
+#: Protocol
+msgid "protocol"
+msgstr "Protocol"
+
+#: Network
+msgid "network"
+msgstr "Xarxa"
+
+#: Networks
+msgid "networks"
+msgstr "Networks"
+
+#: ZNC
+msgid "znc"
+msgstr "ZNC"
+
+#: Logging in...
+msgid "logging_in"
+msgstr "Verificant credencials..."
+
+#: Invalid login
+msgid "invalid_login"
+msgstr "Credencials invàlides"
+
+#: Login failed. Please try again or contact support
+msgid "login_failed"
+msgstr "L'autenticació ha fallat. Si us plau intenta novament o contacta amb el servei de suport"
+
+#: You are now logged in as '{{account}}'
+msgid "logged_in"
+msgstr "Estàs autenticat com a '{{account}}'"
+
+#: You have been logged out
+msgid "logged_out"
+msgstr "S'ha tancat la sessió"
+
+#: Search...
+msgid "do_search"
+msgstr "Buscar..."
+
+#: OK
+msgid "ok"
+msgstr "D'acord"
+
+#: Cancel
+msgid "cancel"
+msgstr "Cancel·lar"
+
+#: Yes
+msgid "yes"
+msgstr "Si"
+
+#: No
+msgid "no"
+msgstr "No"
+
+#: Not found.
+msgid "not_found"
+msgstr "No s'ha trobat."
+
+#: Warning!
+msgid "warning"
+msgstr "Atenció!"
+
+#: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
+msgid "window_unload"
+msgstr "Això tancarà totes les converses de KiwiIRC. Segur que vols tancar aquesta finestra?"
+
+#: Real name
+msgid "whois_realname"
+msgstr "Nom real"
+
+#: Status
+msgid "whois_status"
+msgstr "Estat"
+
+#: Is available
+msgid "whois_status_available"
+msgstr "Està disponible"
+
+#: Send a message
+msgid "send_a_message"
+msgstr "Envia un missatge"
+
+#: More information
+msgid "more_information"
+msgstr "Més informació"
+
+#: Ignore user
+msgid "ignore_user"
+msgstr "Ignorar a un usuari"
+
+#: Channel
+msgid "connection_channel"
+msgstr "Canal"
+
+#: Away
+msgid "away"
+msgstr "Està absent"
+
+#: Toggle Away Status
+msgid "toggle_away"
+msgstr "Alternar l'estat absent"
+
+#: Kick
+msgid "kick"
+msgstr "Kick"
+
+#: Ban
+msgid "ban"
+msgstr "Ban"
+
+#: Preview
+msgid "preview"
+msgstr "Preview"
+
+#: {{count}} week
+msgid "week"
+msgstr "{{count}} setmana"
+
+#: {{count}} weeks
+msgid "week_plural"
+msgstr "{{count}} setmanes"
+
+#: {{count}} day
+msgid "day"
+msgstr "{{count}} dia"
+
+#: {{count}} days
+msgid "day_plural"
+msgstr "{{count}} dies"
+
+#: {{count}} hour
+msgid "hour"
+msgstr "{{count}} hora"
+
+#: {{count}} hours
+msgid "hour_plural"
+msgstr "{{count}} hores"
+
+#: {{count}} minute
+msgid "minute"
+msgstr "{{count}} minut"
+
+#: {{count}} minutes
+msgid "minute_plural"
+msgstr "{{count}} minuts"
+
+#: {{count}} second
+msgid "second"
+msgstr "{{count}} segon"
+
+#: {{count}} seconds
+msgid "second_plural"
+msgstr "{{count}} segons"
+
+#: General
+msgid "settings_general"
+msgstr "General"
+
+#: Language
+msgid "settings_language"
+msgstr "Idioma"
+
+#: Theme
+msgid "settings_theme"
+msgstr "Tema"
+
+#: Refresh Theme
+msgid "refresh_theme"
+msgstr "Refrescar el tema"
+
+#: Theme URL
+msgid "settings_themeurl"
+msgstr "URL del tema"
+
+#: Message Layout
+msgid "settings_messagelayout"
+msgstr "Disseny dels missatges"
+
+#: Use monospace
+msgid "settings_use_monospace"
+msgstr "Fer servir la font Monospace"
+
+#: Use Kiwi as my default IRC client
+msgid "settings_default_handler"
+msgstr "Usar el Kiwi com el meu cliente IRC predeterminat"
+
+#: Traditional IRC layout
+msgid "settings_layout_compact"
+msgstr "Disseny IRC tradicional"
+
+#: Show autocomplete list
+msgid "settings_show_autocomplete"
+msgstr "Mostrar llista d'autocompletar"
+
+#: Chat Messages
+msgid "settings_messages_title"
+msgstr "Missatges"
+
+#: Show timestamps
+msgid "settings_timestamps"
+msgstr "Mostrar l'hora"
+
+#: Use 24-hour timestamps
+msgid "settings_24hour_timestamps"
+msgstr "Fer servir marques de temps de 24 hores"
+
+#: Show emoticons
+msgid "settings_emoticons"
+msgstr "Mostrar emoticones"
+
+#: Block new Private messages
+msgid "settings_block_private"
+msgstr "Bloquejar privats nous"
+
+#: Messages in scrollback
+msgid "settings_scrollback"
+msgstr "Missatges a l'històric"
+
+#: Extra formatting
+msgid "settings_formatting"
+msgstr "Format extra"
+
+#: Colour nicknames in messages
+msgid "settings_nick_colouring"
+msgstr "Colorejar nicks en els missatges"
+
+#: Share when I'm typing a message
+msgid "settings_share_typing"
+msgstr "Comparteix quan estic escribint un missatge"
+
+#: Show inline image previews
+msgid "settings_show_inline_previews"
+msgstr "Mostra les previsualitzacions d'imatges"
+
+#: Include join/part messages as activity
+msgid "settings_show_joinpart"
+msgstr "Incloure missatges d'entrada i sortida com a activitat"
+
+#: Mute sound notifications
+msgid "settings_mute_sound"
+msgstr "Silenciar notificacions"
+
+#: Highlight on words (space separated)
+msgid "settings_highlight"
+msgstr "Destacar paraules (separa-les amb un espai)"
+
+#: Aliases
+msgid "settings_aliases"
+msgstr "Alies"
+
+#: What are Aliases
+msgid "what_are_aliases"
+msgstr "Què són els alies?"
+
+#: Send Message
+msgid "send_message"
+msgstr "Enviar un missatge"
+
+#: Enter Channel Key
+msgid "bufferkey_input"
+msgstr "Escriu la clau del canal:"
+
+#: Rejoin {{channel}}
+msgid "bufferkey_rejoin"
+msgstr "Reentrant al {{channel}}"
+
+#: Notify me when
+msgid "settings_notify"
+msgstr "Notificar quan"
+
+#: All messages
+msgid "settings_notify_all"
+msgstr "Tots els missatges"
+
+#: I am mentioned
+msgid "settings_notify_mentioned"
+msgstr "He estat esmentat"
+
+#: Never
+msgid "settings_notify_never"
+msgstr "Mai"
+
+#: Mute sounds
+msgid "settings_notify_mute"
+msgstr "Deshabilitar el so"
+
+#: Hide unread message count
+msgid "settings_show_message_counts"
+msgstr "Amagar el comptador de missatges no llegits"
+
+#: Operator tools
+msgid "operator_tools"
+msgstr "Eines d'operador"
+
+#: Default ban mask
+msgid "settings_default_ban_mask"
+msgstr "Màscara dels bans per defecte"
+
+#: Default kick reason
+msgid "settings_default_kick_reason"
+msgstr "Motiu d'expulsió per defecte"
+
+#: Advanced Settings
+msgid "settings_advanced_title"
+msgstr "Configuració avançada"
+
+#: Monsters be here, only click this button if you know what you are doing
+msgid "settings_advanced_warning"
+msgstr "Els monstres estan aquí, només fes click en aquest botó si saps el que estàs fent"
+
+#: Enable Advanced Settings
+msgid "settings_advanced_button"
+msgstr "Habilitar Configuració Avançada"
+
+#: Danger Zone: Changing some of these settings may break things!
+msgid "settings_advanced_header"
+msgstr "Zona de perill: modificar algun d'aquests paràmetres pot trencar les coses!"
+
+#: Reset
+msgid "settings_advanced_reset"
+msgstr "Restablir"
+
+#: Filter
+msgid "settings_advanced_filter"
+msgstr "Filtre"
+
+#: Refresh ban list
+msgid "bans_refresh"
+msgstr "Actualitzar la llista de bans"
+
+#: Banned user
+msgid "bans_user"
+msgstr "Usuari banejat"
+
+#: Banned by
+msgid "bans_by"
+msgstr "Banejat per"
+
+#: Refreshing ban list...
+msgid "bans_refreshing"
+msgstr "Refrescant la llista de convidats..."
+
+#: Nobody is banned!
+msgid "bans_nobody"
+msgstr "Ningú està banejat"
+
+#: Add ban
+msgid "bans_add_ban"
+msgstr "Afegir una prohibició"
+
+#: Refresh invite list
+msgid "invites_refresh"
+msgstr "Refrescar la llista de convidats"
+
+#: Invited user
+msgid "invites_user"
+msgstr "Usuari convidat"
+
+#: Invited by
+msgid "invites_by"
+msgstr "Convidat per"
+
+#: Refreshing invite list...
+msgid "invites_refreshing"
+msgstr "Refrescant la llista de convidats..."
+
+#: Nobody is invited!
+msgid "invites_nobody"
+msgstr "No hi ha ningú convidat!"
+
+#: This is a public channel.
+msgid "invite_public_channel"
+msgstr "Aquest és un canal públic."
+
+#: Only invited users can join.
+msgid "invite_private_channel"
+msgstr "Només els usuaris convidats poden entrar."
+
+#: Only allow invited users
+msgid "invite_set_private"
+msgstr "Permet entrar només als usuaris convidats"
+
+#: Allow anybody to join
+msgid "invite_set_public"
+msgstr "Permet entrar a qualsevol"
+
+#: Only registered users can join
+msgid "invite_registered_only"
+msgstr "Només els usuaris registrats poden entrar"
+
+#: Add invite
+msgid "invite_add_invite"
+msgstr "Convidar a un usuari"
+
+#: (Any registered user)
+msgid "invite_any_registered"
+msgstr "(Qualsevol usuari registrat)"
+
+#: Mods Only
+msgid "mods_only"
+msgstr "Només moderadors"
+
+#: Topic
+msgid "channel_topic"
+msgstr "Tòpic"
+
+#: Moderated chat
+msgid "channel_moderated"
+msgstr "Canal moderat"
+
+#: Invite only
+msgid "channel_invite"
+msgstr "Es necessita una invitació per entrar"
+
+#: Hide this channel from lists
+msgid "channel_secret"
+msgstr "Oculta aquest canal de les llistes"
+
+#: Only moderators can change the topic
+msgid "channel_moderated_topic"
+msgstr "Només els moderadors poden canviar el tòpic"
+
+#: Block messages from outside this channel
+msgid "channel_external"
+msgstr "Bloquejar missatges externs"
+
+#: Click the refresh button to update the channel list
+msgid "channel_list_fetch"
+msgstr "Fes click al botó Actualitzar per refrescar el llistat de sales"
+
+#: No channels found, try again later
+msgid "channel_list_nonefound"
+msgstr "No s'han trobat sales, intenta-ho de nou més tard"
+
+#: Welcome to Kiwi IRC! Select a channel on the left.
+msgid "container_welcome"
+msgstr "Benvingut a Kiwi IRC! Selecciona un canal."
+
+#: Show statebrowser
+msgid "container_statebrowser"
+msgstr "Mostrar statebrowser"
+
+#: Hide Topic
+msgid "hide_topic"
+msgstr "Amagar el tòpic"
+
+#: Display Topic
+msgid "display_topic"
+msgstr "Mostrar el tòpic"
+
+#: Channel Settings
+msgid "channel_settings"
+msgstr "Configuració de la sala"
+
+#: Join Channel
+msgid "container_join"
+msgstr "Entrar a un canal"
+
+#: Not Connected
+msgid "container_notconnected"
+msgstr "Desconnectat"
+
+#: Private conversation with {{user}}
+msgid "container_privmsg"
+msgstr "Conversa privada amb {{user}}"
+
+#: Send a message...
+msgid "input_placeholder"
+msgstr "Enviar un missatge..."
+
+#: This message looks like a command but is preceded by spaces.
+msgid "input_not_command"
+msgstr "Aquest missatge sembla una comanda però està precedit per espais."
+
+#: Send as text?
+msgid "input_send_text"
+msgstr "Enviar com a text?"
+
+#: Loading {{url}}...
+msgid "media_loading"
+msgstr "Carregant {{url}}..."
+
+#: Load previous messages
+msgid "messages_load"
+msgstr "Carregar l'anterior"
+
+#: Loading previous messages...
+msgid "messages_loading"
+msgstr "Carregant missatges anteriors..."
+
+#: Unread Messages
+msgid "unread_messages"
+msgstr "Missatges sense llegir"
+
+#: Reply in private
+msgid "reply_in_private"
+msgstr "Contestar en privat"
+
+#: Kick reason
+msgid "kick_reason"
+msgstr "Kick reason"
+
+#: Server details
+msgid "settings_server_details"
+msgstr "Detalls del servidor"
+
+#: Preset Servers
+msgid "preset_servers"
+msgstr "Preset Servers"
+
+#: Custom Server
+msgid "custom_server"
+msgstr "Custom Server"
+
+#: Port
+msgid "settings_port"
+msgstr "Port"
+
+#: Other networks on this ZNC account will be listed in the network list
+msgid "settings_znc_other"
+msgstr "Altres xarxes en aquesta compta ZNC seràn llistades a la llista de xarxes"
+
+#: Your details
+msgid "settings_your_details"
+msgstr "Els teus detalls"
+
+#: Nickname
+msgid "settings_nickname"
+msgstr "Sobrenom"
+
+#: Advanced
+msgid "settings_advanced"
+msgstr "Avançat"
+
+#: Encoding
+msgid "settings_encoding"
+msgstr "Codificació"
+
+#: Show Raw
+msgid "settings_show_raw"
+msgstr "Mostrar l'original"
+
+#: Direct websocket
+msgid "settings_use_websocket"
+msgstr "Websocket directo"
+
+#: Run commands when connected
+msgid "settings_autorun"
+msgstr "Executa comandes al connectar"
+
+#: Danger Zone
+msgid "settings_danger"
+msgstr "Zona de perill"
+
+#: Remove network
+msgid "settings_remove"
+msgstr "Eliminar xarxa"
+
+#: {{count}} person here
+msgid "person"
+msgstr "{{count}} usuari aquí"
+
+#: {{count}} people here
+msgid "person_plural"
+msgstr "{{count}} usuaris aquí"
+
+#: Filter users in channel
+msgid "filter_users"
+msgstr "Filtrar els usuaris de la sala"
+
+#: Reconnect to join {{channel}}
+msgid "reconnect_channel"
+msgstr "Reconnectar per entrar a {{channel}}"
+
+#: Reconnect to {{network}} to start talking
+msgid "reconnect_network"
+msgstr "Reconnectar a {{network}} per a començar a xatejar"
+
+#: Reconnect to continue talking with {{user}}
+msgid "reconnect_query"
+msgstr "Reconnectar per a continuar parlant amb {{user}}"
+
+#: You are not currently connected!
+msgid "not_connected"
+msgstr "No estàs connectat!"
+
+#: Connection settings
+msgid "reconnect_settings"
+msgstr "Configuració de la connexió"
+
+#: We couldn't connect to that server :(
+msgid "network_noconnect"
+msgstr "No hem pogut connectar amb el servidor :("
+
+#: Connect To Network
+msgid "network_connect"
+msgstr "Connectar a la Xarxa"
+
+#: Network Connecting...
+msgid "network_connecting"
+msgstr "Network Connecting..."
+
+#: Disconnect From Network
+msgid "network_disconnect"
+msgstr "Disconnect From Network"
+
+#: Network Name
+msgid "network_name"
+msgstr "Nom de la xarxa"
+
+#: Close options
+msgid "side_close"
+msgstr "Tancar les opcions"
+
+#: Channel options
+msgid "side_options"
+msgstr "Opcions del canal"
+
+#: Your settings
+msgid "side_settings"
+msgstr "La teva configuració"
+
+#: Show when people join
+msgid "side_joins"
+msgstr "Mostrar quan la gent entra al canal"
+
+#: Show when channel topic changes
+msgid "side_topics"
+msgstr "Mostrar els canvis de topic del canal"
+
+#: Show when users change their nicks
+msgid "side_nick_changes"
+msgstr "Mostrar els canvis d'àlies dels usuaris"
+
+#: Show when users change channel modes
+msgid "side_mode_changes"
+msgstr "Mostrar els canvis de modes dels canals"
+
+#: Extra message formatting
+msgid "side_formatting"
+msgstr "Format extra dels missatges"
+
+#: Nick colours in the list"
+msgid "side_colours"
+msgstr "Colorejar nicks a la llista"
+
+#: No buffer set
+msgid "side_buffer"
+msgstr "No hi ha buffer configurat."
+
+#: About
+msgid "about"
+msgstr "Sobre"
+
+#: There is no topic for this channel
+msgid "no_topic_set"
+msgstr "No hi ha cap tòpic per aquest canal"
+
+#: Topic set by {{who}} on {{when}}
+msgid "topic_setby"
+msgstr "Configurat per {{who}} el {{when}}"
+
+#: Created on {{when}}
+msgid "created_on"
+msgstr "Creat el {{when}}"
+
+#: Created at {{when}}
+msgid "created_at"
+msgstr "Creat el {{when}}"
+
+#: Highlights
+msgid "highlights"
+msgstr "Destacats"
+
+#: Nobody has mentioned you yet...
+msgid "nobody_mentioned_you"
+msgstr "Ningú t'ha mencionat encara..."
+
+#: There was an error starting Kiwi IRC :(
+msgid "error_starting"
+msgstr "Hi ha hagut un error iniciant Kiwi IRC :("
+
+#: Make sure you have installed Kiwi IRC correctly and the configuration can be loaded
+msgid "error_installed"
+msgstr "Comprova que has instal·lat el Kiwi IRC correctament i la configuració pot carregar-se."
+
+#: Leave {{name}}
+msgid "state_leave"
+msgstr "Sortir de {{name}}"
+
+#: Your account
+msgid "state_account"
+msgstr "La teva compta"
+
+#: Your settings and networks will be remembered on this computer.
+msgid "state_remembered"
+msgstr "La teva configuració i les xarxes es recordaran en aquest ordinador."
+
+#: Forget me
+msgid "state_forget"
+msgstr "Esborrar la configuració"
+
+#: No networks here yet.
+msgid "state_network"
+msgstr "Encara no has configurat cap xarxa."
+
+#: Add one?
+msgid "state_add"
+msgstr "Vols afegir-ne una?"
+
+#: Available networks
+msgid "state_available"
+msgstr "Xarxes disponibles"
+
+#: Add Network
+msgid "add_network"
+msgstr "Afegir xarxa"
+
+#: New Network
+msgid "new_network"
+msgstr "Nova xarxa"
+
+#: No Network
+msgid "no_network"
+msgstr "Sense xarxa"
+
+#: Configure network
+msgid "state_configure"
+msgstr "Configurar xarxa"
+
+#: Not connected.
+msgid "state_disconnected"
+msgstr "Desconnectat."
+
+#: Join new #channel
+msgid "state_join"
+msgstr "Entrar en un #canal nou"
+
+#: Filter Channels
+msgid "filter_channels"
+msgstr "Filtrar sales"
+
+#: Find More Channels
+msgid "find_more_channels"
+msgstr "Buscar més sales"
+
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Segur que vols sortir del canal?"
+
+#: Really close all messages?
+msgid "prompt_close_queries"
+msgstr "Segur que vols tancar tots els privats?"
+
+#: Really close this chat?
+msgid "prompt_close_query"
+msgstr "Segur que vols tancar aquest privat?"
+
+#: Change nick
+msgid "change_nick"
+msgstr "Canviar el nick"
+
+#: Enter new nickname...
+msgid "enter_new_nick"
+msgstr "Escriu el nou àlies..."
+
+#: This is you!
+msgid "user_you"
+msgstr "Es tracta de vostè!"
+
+#: Account name: {{user}}
+msgid "user_account"
+msgstr "Nom de la compta: {{user}}"
+
+#: Real name: {{realname}}
+msgid "user_realname"
+msgstr "Nom real: {{realname}}"
+
+#: Is a bot
+msgid "user_bot"
+msgstr "És un robot"
+
+#: Is available for help
+msgid "user_help"
+msgstr "Està disponible per a ajudar"
+
+#: Is an operator
+msgid "user_op"
+msgstr "És un operador"
+
+#: Connected to {{server}} {{info}}
+msgid "user_server"
+msgstr "Connectat a {{server}} {{info}}"
+
+#: Securely connected via SSL/TLS
+msgid "user_secure"
+msgstr "Connectat de forma segura amb SSL/TLS"
+
+#: In channels {{channels}}
+msgid "user_channels"
+msgstr "Està també als canals {{channels}}"
+
+#: Access level
+msgid "user_access"
+msgstr "Nivell d'accés"
+
+#: Normal
+msgid "user_normal"
+msgstr "Normal"
+
+#: Kick from the channel
+msgid "user_kick"
+msgstr "Expulsar del canal"
+
+#: Ban from the channel
+msgid "user_ban"
+msgstr "Banejar del canal"
+
+#: Ban and kick from the channel
+msgid "user_kickban"
+msgstr "Kick + Ban del canal"
+
+#: Select a Channel
+msgid "select_channel"
+msgstr "Selecciona un canal"
+
+#: Invite User
+msgid "invite_user"
+msgstr "Convida un usuari"
+
+#: Please specify a channel to join. eg /join #example
+msgid "error_no_channel_join"
+msgstr "Si us plau, especifica la sala a entrar. Per ex. /join #exemple"
+
+#: The nickname '{{nick}}' is already in use!
+msgid "error_nick_in_use"
+msgstr "L'àlies {{nick}} està actualment en ús!"
+
+#: The nickname '{{nick}}' is invalid!
+msgid "error_nick_invalid"
+msgstr "L'àlies {{nick}} és invàlid!"
+
+#: You must enter a new nickname
+msgid "error_empty_nick"
+msgstr "Has d'escriure un nou àlies"
+
+#: Nickname must not start with a number
+msgid "error_no_number"
+msgstr "L'àlies no pot començar amb un número"
+
+#: Unexpected error occurred
+msgid "error_unexpected"
+msgstr "S'ha produït un error inesperat"
+
+#: Unknown domain name or host
+msgid "error_unknown_host"
+msgstr "Nom de domini o amfitrió desconegut"
+
+#: Forbidden to connect
+msgid "error_forbidden"
+msgstr "Connexió prohibida"
+
+#: Took too long to connect
+msgid "error_timeout"
+msgstr "Ha trigat massa en connectar-se"
+
+#: The server refused the connection
+msgid "error_refused"
+msgstr "El servidor ha refusat la connexió"
+
+#: Could not connect securely
+msgid "error_tls"
+msgstr "No s'ha pogut connectar de manera segura"
+
+#: The Kiwi IRC server had an error
+msgid "error_proxy"
+msgstr "El servidor Kiwi IRC ha patit un error"
+
+#: Unknown error
+msgid "error_unknown"
+msgstr "Error desconegut"
+
+#: Bad username or password
+msgid "error_password_mismatch"
+msgstr "Nom d'usuari i contrasenya incorrectes"
+
+#: Connection closed unexpectedly
+msgid "error_closed_unexpected"
+msgstr "La connexió s'ha tancat de forma inesperada"
+
+#: {{nick}} gives ops to {{target}}
+msgid "modes_give_ops"
+msgstr "{{nick}} dóna ops a {{target}}"
+
+#: {{nick}} takes ops from {{target}}
+msgid "modes_take_ops"
+msgstr "{{nick}} treu ops de {{target}}"
+
+#: {{nick}} gives half-ops to {{target}}
+msgid "modes_give_halfops"
+msgstr "{{nick}} dóna half-ops a {{target}}"
+
+#: {{nick}} takes half-ops from {{target}}
+msgid "modes_take_halfops"
+msgstr "{{nick}} treu half-ops a {{target}}"
+
+#: {{nick}} gives voice to {{target}}
+msgid "modes_give_voice"
+msgstr "{{nick}} dóna veu a {{target}}"
+
+#: {{nick}} takes voice from {{target}}
+msgid "modes_take_voice"
+msgstr "{{nick}} li treu veu a {{target}}"
+
+#: {{nick}} gives admin to {{target}}
+msgid "modes_give_admin"
+msgstr "{{nick}} dóna admin a {{target}}"
+
+#: {{nick}} takes admin from {{target}}
+msgid "modes_take_admin"
+msgstr "{{nick}} treu admin a {{target}}"
+
+#: {{nick}} gives owner to {{target}}
+msgid "modes_give_owner"
+msgstr "{{nick}} li dóna estatus de propietari a {{target}}"
+
+#: {{nick}} takes owner from {{target}}
+msgid "modes_take_owner"
+msgstr "{{nick}} li treu l'estatus d'admin a {{target}}"
+
+#: {{nick}} has banned {{target}}
+msgid "modes_gives_ban"
+msgstr "{{nick}} ha banejat a {{target}}"
+
+#: {{nick}} has unbanned {{target}}
+msgid "modes_takes_ban"
+msgstr "{{nick}} ha desbanejat a {{target}}"
+
+#: {{nick}} sets {{mode}} on {{target}}
+msgid "modes_other"
+msgstr "{{nick}} ajusta {{mode}} a {{target}}"
+
+#: Send a message
+msgid "command_msg"
+msgstr "Envia un missatge"
+
+#: Do something physical
+msgid "command_action"
+msgstr "Per a indicar el que estàs fent"
+
+#: Join a channel
+msgid "command_join"
+msgstr "Entrar a una sala"
+
+#: Leave a channel
+msgid "command_part"
+msgstr "Sortir d'una sala"
+
+#: Leave, then re-join a channel
+msgid "command_cycle"
+msgstr "Sortir i reentrar a la sala"
+
+#: Change your nickname
+msgid "command_nick"
+msgstr "Canvia el teu àlies"
+
+#: Start a private conversation with someone
+msgid "command_query"
+msgstr "Inicia una conversa privada amb algú"
+
+#: Invite somebody into the channel
+msgid "command_invite"
+msgstr "Convida a algú a entrar a la sala"
+
+#: Set the topic for this channel
+msgid "command_topic"
+msgstr "Ajusta el tòpic per aquesta sala"
+
+#: Send a notice
+msgid "command_notice"
+msgstr "Envia una nota"
+
+#: Send a raw command to the IRC server
+msgid "command_quote"
+msgstr "Envia una ordre en cru al servidor IRC"
+
+#: Kick somebody from the channel
+msgid "command_kick"
+msgstr "Fes fora a algú de la sala"
+
+#: Clear all messages from this window
+msgid "command_clear"
+msgstr "Esborra tots els missatges d'aquesta finestra"
+
+#: Send a CTCP command to somebody
+msgid "command_ctcp"
+msgstr "Envia una ordre CTCP a algú"
+
+#: Disconnect from the IRC server
+msgid "command_quit"
+msgstr "Desconnecta del servidor IRC"
+
+#: Connect to a new IRC network
+msgid "command_server"
+msgstr "Connecta a una nova xarxa d'IRC"
+
+#: Request information on somebody
+msgid "command_whois"
+msgstr "Sol·licita informació sobre algú"
+
+#: Request information on somebody that disconnected recently
+msgid "command_whowas"
+msgstr "Sol·licita informació sobre algú que s'ha desconnectat recentment"
+
+#: Set yourself as away
+msgid "command_away"
+msgstr "Marca com a absent"
+
+#: Set yourself as active
+msgid "command_back"
+msgstr "Marca com a actiu"
+
+#: Change your connection encoding
+msgid "command_encoding"
+msgstr "Canvia la codificació de la teva connexió"
+
+#: Ignore messages from somebody
+msgid "command_ignore"
+msgstr "Ignora els missatges d'algú"
+
+#: Stop ignoring somebody
+msgid "command_unignore"
+msgstr "Deixa d'ignorar a algú"
+
+#: Roll a Dice
+msgid "command_dice"
+msgstr "Tira un dau"
+
+#: Rolls a {{sides}} sided dice and gets {{number}}
+msgid "dice_roll"
+msgstr "Llença un dau amb {{sides}} costats i obté {{number}}"
+
+#: You were mentioned in {{channel}}
+msgid "notification_mentioned"
+msgstr "T'han mencionat al canal {{channel}}"
+
+#: Where are you connecting today?
+msgid "customserver_where"
+msgstr "Where are you connecting today?"
+
+#: Your IRC client
+msgid "personal_client"
+msgstr "El teu client d'IRC"
+
+#: Add your networks. Join your channels.
+msgid "personal_addjoin"
+msgstr "Afegeix les teves xarxes. Entra als teus canals."
+
+#: They will be here when you come back.
+msgid "personal_return"
+msgstr "Estaran aquí quan tornis."
+
+#: Add a Network
+msgid "personal_add"
+msgstr "Afegeix una xarxa"
+
+#: You are trying to connect to {{network}}
+msgid "personal_connect_to"
+msgstr "Estàs intentant connectar-te a {{network}}"
+
+#: Network has been added to your existing Kiwi window.
+msgid "personal_added_to_existing"
+msgstr "La xarxa s'ha afegit a la teva finestra existent del Kiwi."
+
+#: Add network to existing Kiwi window
+msgid "personal_add_existing_tab"
+msgstr "Afegir la xarxa a la finestra existent del Kiwi"
+
+#: Temporarily connect to this network
+msgid "personal_connect_temporary"
+msgstr "Connectar-se temporalment a aquesta xarxa"
+
+#: Saved networks
+msgid "personal_saved"
+msgstr "Xarxes guardades"
+
+#: Kiwi IRC (next gen) - Rizon preview
+msgid "rizon_title"
+msgstr "Kiwi IRC (nova generació) - Previsualització Rizon"
+
+#: Direct websockets. No Kiwi server or webirc involved.
+msgid "rizon_websockets"
+msgstr "Websocket directe. Sense servidor Kiwi ni webirc."
+
+#: (Thanks to Adam @Rizon for the development websocket server support!)
+msgid "rizon_thanks"
+msgstr "(Gràcies a Adam @Rizon per el desenvolupament del suport del servidor de websockets!)"
+
+#: Give the developer version of Kiwi IRC a try!
+msgid "rizon_dev"
+msgstr "Prova la versió en desenvolupament del Kiwi IRC!"
+
+#: Disconnected
+msgid "disconnected"
+msgstr "Desconnectat"
+
+#: Connected to {{network}}!
+msgid "connected_to"
+msgstr "Connectat a {{network}}!"
+
+#: {{nick}} has joined
+msgid "has_joined"
+msgstr "{{nick}} ha entrat"
+
+#: {{nick}} kicked you from {{channel}}
+msgid "kicked_you_from"
+msgstr "{{nick}} t'ha expulsat de {{channel}}"
+
+#: {{nick}} was kicked from {{channel}} by {{chanop}}
+msgid "was_kicked_from"
+msgstr "{{nick}} ha estat expulsat de {{channel}} per {{chanop}}"
+
+#: {{nick}} has left
+msgid "has_left"
+msgstr "{{nick}} ha sortit"
+
+#: {{nick}} invited you to join {{channel}}
+msgid "invited_you"
+msgstr "{{nick}} t'ha convidat a entrar a {{channel}}"
+
+#: {{nick}} invited {{invited}} to join {{channel}}
+msgid "invited_other"
+msgstr "{{nick}} ha convidat {{invited}} a la sala {{channel}}"
+
+#: You invited {{invited}} to join {{channel}}
+msgid "invited_inviter"
+msgstr "Has convidat {{invited}} a unir-se a {{channel}}"
+
+#: Nickname {{nick}} is already in use. Trying {{newnick}}...
+msgid "nick_in_use_retrying"
+msgstr "L'àlies {{nick} està en ús. Provant {{newnick}}..."
+
+#: {{nick}} is now known as {{newnick}}
+msgid "now_known_as"
+msgstr "{{nick}} és ara {{newnick}}"
+
+#: {{nick}} changed the topic to: {{topic}}
+msgid "changed_topic_to"
+msgstr "{{nick}} ha canviat el tòpic a: {{topic}}"
+
