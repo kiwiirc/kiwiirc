@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2025-03-05 14:48\n"
+"PO-Revision-Date: 2025-03-05 22:12\n"
 
 #: Start
 msgid "start_button"
@@ -705,11 +705,11 @@ msgstr "Σύνδεση στο Δίκτυο"
 
 #: Network Connecting...
 msgid "network_connecting"
-msgstr "Network Connecting..."
+msgstr "Γίνεται σύνδεση στο δίκτυο…"
 
 #: Disconnect From Network
 msgid "network_disconnect"
-msgstr "Disconnect From Network"
+msgstr "Αποσύνδεση από το δίκτυο"
 
 #: Network Name
 msgid "network_name"

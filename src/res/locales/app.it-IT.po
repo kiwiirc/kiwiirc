@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2025-03-05 14:48\n"
+"PO-Revision-Date: 2025-03-18 15:14\n"
 
 #: Start
 msgid "start_button"
@@ -105,7 +105,7 @@ msgstr "Messaggi"
 
 #: Protocol
 msgid "protocol"
-msgstr "Protocol"
+msgstr "Protocollo"
 
 #: Network
 msgid "network"
@@ -113,7 +113,7 @@ msgstr "Rete"
 
 #: Networks
 msgid "networks"
-msgstr "Networks"
+msgstr "Reti"
 
 #: ZNC
 msgid "znc"

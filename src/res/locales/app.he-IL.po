@@ -13,11 +13,11 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hebrew\n"
 "Language: he_IL\n"
-"PO-Revision-Date: 2025-03-05 14:48\n"
+"PO-Revision-Date: 2025-04-16 20:58\n"
 
 #: Start
 msgid "start_button"
-msgstr "Start"
+msgstr "התחל"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
@@ -77,7 +77,7 @@ msgstr "סיסמה"
 
 #: Server Password
 msgid "server_password"
-msgstr "Server Password"
+msgstr "סיסמת שרת"
 
 #: I have a password
 msgid "password_have"
@@ -105,7 +105,7 @@ msgstr "הודעות"
 
 #: Protocol
 msgid "protocol"
-msgstr "Protocol"
+msgstr "פרוטוקול"
 
 #: Network
 msgid "network"
@@ -113,7 +113,7 @@ msgstr "רשת"
 
 #: Networks
 msgid "networks"
-msgstr "Networks"
+msgstr "רשתות"
 
 #: ZNC
 msgid "znc"
@@ -129,7 +129,7 @@ msgstr "כניסה שגויה"
 
 #: Login failed. Please try again or contact support
 msgid "login_failed"
-msgstr "Login failed. Please try again or contact support"
+msgstr "ההזדהות נכשלה. נסה שוב או צור קשר עם התמיכה."
 
 #: You are now logged in as '{{account}}'
 msgid "logged_in"
@@ -209,15 +209,15 @@ msgstr "Toggle Away Status"
 
 #: Kick
 msgid "kick"
-msgstr "Kick"
+msgstr "סילוק"
 
 #: Ban
 msgid "ban"
-msgstr "Ban"
+msgstr "חסימה"
 
 #: Preview
 msgid "preview"
-msgstr "Preview"
+msgstr "תצוגה מקדימה"
 
 #: {{count}} week
 msgid "week"
@@ -281,7 +281,7 @@ msgstr "קישור נושא"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr "Message Layout"
+msgstr "פריסת הודעות"
 
 #: Use monospace
 msgid "settings_use_monospace"
@@ -417,7 +417,7 @@ msgstr "Monsters be here, only click this button if you know what you are doing"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
-msgstr "Enable Advanced Settings"
+msgstr "הצג הגדרות מתקדמות"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
@@ -505,7 +505,7 @@ msgstr "(כל משתמש רשום)"
 
 #: Mods Only
 msgid "mods_only"
-msgstr "Mods Only"
+msgstr "מנהלים בלבד"
 
 #: Topic
 msgid "channel_topic"
@@ -549,11 +549,11 @@ msgstr "הצג דפדפן מצב"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr "Hide Topic"
+msgstr "הסתר כותרת"
 
 #: Display Topic
 msgid "display_topic"
-msgstr "Display Topic"
+msgstr "הצג כותרת"
 
 #: Channel Settings
 msgid "channel_settings"
@@ -577,7 +577,7 @@ msgstr "שלח הודעה"
 
 #: This message looks like a command but is preceded by spaces.
 msgid "input_not_command"
-msgstr "This message looks like a command but is preceded by spaces."
+msgstr "ההודעה נראית כמו פקודה, אבל יש בה רווחים בהתחלה."
 
 #: Send as text?
 msgid "input_send_text"
@@ -605,7 +605,7 @@ msgstr "השב כהודעה פרטית"
 
 #: Kick reason
 msgid "kick_reason"
-msgstr "Kick reason"
+msgstr "סיבת סילוק"
 
 #: Server details
 msgid "settings_server_details"
@@ -701,15 +701,15 @@ msgstr "לא הצלחנו להתחבר לשרת זה :("
 
 #: Connect To Network
 msgid "network_connect"
-msgstr "Connect To Network"
+msgstr "חיבור לרשת"
 
 #: Network Connecting...
 msgid "network_connecting"
-msgstr "Network Connecting..."
+msgstr "מתחבר לרשת..."
 
 #: Disconnect From Network
 msgid "network_disconnect"
-msgstr "Disconnect From Network"
+msgstr "מנותק מהרשת"
 
 #: Network Name
 msgid "network_name"
@@ -741,7 +741,7 @@ msgstr "הצג שינויים של כינויי משתמשים"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
-msgstr "Show when users change channel modes"
+msgstr "הצג שינויים של הגדרות החדר"
 
 #: Extra message formatting
 msgid "side_formatting"
@@ -777,7 +777,7 @@ msgstr "נוצר ב: {{when}}"
 
 #: Highlights
 msgid "highlights"
-msgstr "Highlights"
+msgstr "מובלטים"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
@@ -821,15 +821,15 @@ msgstr "רשתות זמינות"
 
 #: Add Network
 msgid "add_network"
-msgstr "Add Network"
+msgstr "הוסף רשת"
 
 #: New Network
 msgid "new_network"
-msgstr "New Network"
+msgstr "רשת חדשה"
 
 #: No Network
 msgid "no_network"
-msgstr "No Network"
+msgstr "אין רשת"
 
 #: Configure network
 msgid "state_configure"
@@ -857,7 +857,7 @@ msgstr "האם לצאת מהחדר?"
 
 #: Really close all messages?
 msgid "prompt_close_queries"
-msgstr "Really close all messages?"
+msgstr "לסגור את כל ההודעות?"
 
 #: Really close this chat?
 msgid "prompt_close_query"
@@ -937,7 +937,7 @@ msgstr "הזמן משתמש"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
-msgstr "Please specify a channel to join. eg /join #example"
+msgstr "אנא הגדר שם חדר להצטרפות. למשל: /join #example"
 
 #: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
@@ -1069,19 +1069,19 @@ msgstr "Leave, then re-join a channel"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr "Change your nickname"
+msgstr "שינוי כינוי"
 
 #: Start a private conversation with someone
 msgid "command_query"
-msgstr "Start a private conversation with someone"
+msgstr "התחל שיחה פרטית עם מישהו"
 
 #: Invite somebody into the channel
 msgid "command_invite"
-msgstr "Invite somebody into the channel"
+msgstr "הזמן מישהו לחדר"
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr "Set the topic for this channel"
+msgstr "הגדרת כותרת לחדר"
 
 #: Send a notice
 msgid "command_notice"
@@ -1093,11 +1093,11 @@ msgstr "Send a raw command to the IRC server"
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr "Kick somebody from the channel"
+msgstr "סלק מישהו מהחדר"
 
 #: Clear all messages from this window
 msgid "command_clear"
-msgstr "Clear all messages from this window"
+msgstr "ניקוי כל ההודעות בחלון זה"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"
@@ -1109,15 +1109,15 @@ msgstr "Disconnect from the IRC server"
 
 #: Connect to a new IRC network
 msgid "command_server"
-msgstr "Connect to a new IRC network"
+msgstr "התחברות לרשת IRC חדשה"
 
 #: Request information on somebody
 msgid "command_whois"
-msgstr "Request information on somebody"
+msgstr "הצגת מידע על משתמש"
 
 #: Request information on somebody that disconnected recently
 msgid "command_whowas"
-msgstr "Request information on somebody that disconnected recently"
+msgstr "הצגת מידע על משתמש שהתנתק לאחרונה"
 
 #: Set yourself as away
 msgid "command_away"
@@ -1125,23 +1125,23 @@ msgstr "הגדר את עצמך כלא זמין"
 
 #: Set yourself as active
 msgid "command_back"
-msgstr "Set yourself as active"
+msgstr "הגדר את עצמך כזמין"
 
 #: Change your connection encoding
 msgid "command_encoding"
-msgstr "Change your connection encoding"
+msgstr "שינוי הקידוד של החיבור"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
-msgstr "Ignore messages from somebody"
+msgstr "התעלם מהודעות של מישהו"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
-msgstr "Stop ignoring somebody"
+msgstr "ביטול התעלמות מהודעות של מישהו"
 
 #: Roll a Dice
 msgid "command_dice"
-msgstr "Roll a Dice"
+msgstr "זריקת קובייה"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"

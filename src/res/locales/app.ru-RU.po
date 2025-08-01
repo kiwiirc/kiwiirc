@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2025-03-05 14:48\n"
+"PO-Revision-Date: 2025-03-09 23:46\n"
 
 #: Start
 msgid "start_button"
@@ -105,7 +105,7 @@ msgstr "Сообщения"
 
 #: Protocol
 msgid "protocol"
-msgstr "Protocol"
+msgstr "Протокол"
 
 #: Network
 msgid "network"
@@ -113,7 +113,7 @@ msgstr "Сеть"
 
 #: Networks
 msgid "networks"
-msgstr "Networks"
+msgstr "Сети"
 
 #: ZNC
 msgid "znc"
@@ -205,19 +205,19 @@ msgstr "Отошел"
 
 #: Toggle Away Status
 msgid "toggle_away"
-msgstr "Toggle Away Status"
+msgstr "Статус отключения"
 
 #: Kick
 msgid "kick"
-msgstr "Kick"
+msgstr "Выгнать"
 
 #: Ban
 msgid "ban"
-msgstr "Ban"
+msgstr "Заблокировать"
 
 #: Preview
 msgid "preview"
-msgstr "Preview"
+msgstr "Предпросмотр"
 
 #: {{count}} week
 msgid "week"
@@ -605,7 +605,7 @@ msgstr "Приватно ответить"
 
 #: Kick reason
 msgid "kick_reason"
-msgstr "Kick reason"
+msgstr "Причина исключения"
 
 #: Server details
 msgid "settings_server_details"
@@ -613,11 +613,11 @@ msgstr "Детали сервера"
 
 #: Preset Servers
 msgid "preset_servers"
-msgstr "Preset Servers"
+msgstr "Предустановленные серверы"
 
 #: Custom Server
 msgid "custom_server"
-msgstr "Custom Server"
+msgstr "Пользовательский сервер"
 
 #: Port
 msgid "settings_port"
@@ -705,11 +705,11 @@ msgstr "Подключиться к сети"
 
 #: Network Connecting...
 msgid "network_connecting"
-msgstr "Network Connecting..."
+msgstr "Подключение к сети..."
 
 #: Disconnect From Network
 msgid "network_disconnect"
-msgstr "Disconnect From Network"
+msgstr "Отключение от сети"
 
 #: Network Name
 msgid "network_name"
@@ -1153,7 +1153,7 @@ msgstr "Вас упомянули в {{channel}}"
 
 #: Where are you connecting today?
 msgid "customserver_where"
-msgstr "Where are you connecting today?"
+msgstr "Куда сегодня подключимся?"
 
 #: Your IRC client
 msgid "personal_client"
