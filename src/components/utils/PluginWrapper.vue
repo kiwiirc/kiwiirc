@@ -5,8 +5,8 @@
             props: {
                 kiwi: {
                     ...props.pluginProps,
-                }
-            }
+                },
+            },
         }"
         :class="{ [data.staticClass]: data.staticClass }"
     />

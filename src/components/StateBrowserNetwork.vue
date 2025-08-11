@@ -16,13 +16,13 @@
                     <div
                         v-if="serverUnread && showMessageCounts(serverBuffer)"
                         :class="[
-                            serverHighlight ?
-                                'kiwi-statebrowser-channel-label--highlight' :
-                                ''
+                            serverHighlight
+                                ? 'kiwi-statebrowser-channel-label--highlight'
+                                : '',
                         ]"
                         class="kiwi-statebrowser-channel-label"
                     >
-                        {{ serverUnread > 999 ? "999+": serverUnread }}
+                        {{ serverUnread > 999 ? "999+" : serverUnread }}
                     </div>
                 </div>
             </div>
@@ -30,9 +30,9 @@
                 <div
                     v-if="totalNetworkCount > 1"
                     class="kiwi-network-name-option kiwi-network-name-option-collapse"
-                    @click="collapsed=!collapsed"
+                    @click="collapsed = !collapsed"
                 >
-                    <i :class="[collapsed?'fa-plus-square-o':'fa-minus-square-o']" class="fa" />
+                    <i :class="[collapsed ? 'fa-plus-square-o' : 'fa-minus-square-o']" class="fa" />
                 </div>
             </div>
         </div>
@@ -61,9 +61,9 @@
                     <div
                         v-focus
                         :class="[
-                            channel_add_input_has_focus ?
-                                'kiwi-statebrowser-newchannel-inputwrap--focus' :
-                                ''
+                            channel_add_input_has_focus
+                                ? 'kiwi-statebrowser-newchannel-inputwrap--focus'
+                                : '',
                         ]"
                         class="kiwi-statebrowser-newchannel-inputwrap"
                     >
@@ -151,10 +151,10 @@
                         <i
                             class="fa kiwi-statebrowser-channels-toggle"
                             :class="[
-                                (show_channels && type === 'channels') ||
-                                    (show_queries && type === 'queries') ?
-                                        'fa-caret-down' :
-                                        'fa-caret-right'
+                                (show_channels && type === 'channels')
+                                    || (show_queries && type === 'queries')
+                                    ? 'fa-caret-down'
+                                    : 'fa-caret-right',
                             ]"
                         />
                         {{ type === 'channels' ? $t('channels') : $t('messages') }}
@@ -189,34 +189,34 @@
                     <div class="kiwi-statebrowser-buffer-actions">
                         <div class="kiwi-statebrowser-channel-labels">
                             <div
-                                v-if="!show_channels &&
-                                    type === 'channels' &&
-                                    channelActivity.unread > 0"
+                                v-if="!show_channels
+                                    && type === 'channels'
+                                    && channelActivity.unread > 0"
 
                                 :class="[
-                                    channelActivity.highlights ?
-                                        'kiwi-statebrowser-channel-label--highlight' :
-                                        ''
+                                    channelActivity.highlights
+                                        ? 'kiwi-statebrowser-channel-label--highlight'
+                                        : '',
                                 ]"
                                 class="kiwi-statebrowser-channel-label"
                             >
-                                {{ channelActivity.unread > 999 ?
-                                    '999+' : channelActivity.unread }}
+                                {{ channelActivity.unread > 999
+                                    ? '999+' : channelActivity.unread }}
                             </div>
                             <div
-                                v-else-if="!show_queries &&
-                                    type === 'queries' &&
-                                    queryActivity.unread > 0"
+                                v-else-if="!show_queries
+                                    && type === 'queries'
+                                    && queryActivity.unread > 0"
 
                                 :class="[
-                                    queryActivity.highlights ?
-                                        'kiwi-statebrowser-channel-label--highlight' :
-                                        ''
+                                    queryActivity.highlights
+                                        ? 'kiwi-statebrowser-channel-label--highlight'
+                                        : '',
                                 ]"
                                 class="kiwi-statebrowser-channel-label"
                             >
-                                {{ queryActivity.unread > 999 ?
-                                    '999+' : queryActivity.unread }}
+                                {{ queryActivity.unread > 999
+                                    ? '999+' : queryActivity.unread }}
                             </div>
                         </div>
                     </div>
@@ -234,9 +234,9 @@
                 <transition-expand>
                     <div
                         v-if="itemBuffers.length && (
-                            (show_channels && type === 'channels') ||
-                            (show_queries && type === 'queries') ||
-                            type === 'other'
+                            (show_channels && type === 'channels')
+                            || (show_queries && type === 'queries')
+                            || type === 'other'
                         )"
                         class="kiwi-statebrowser-buffers-container"
                     >

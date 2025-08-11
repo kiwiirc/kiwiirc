@@ -4,8 +4,8 @@
             :data-name="buffer.name.toLowerCase()"
             :class="{
                 'kiwi-statebrowser-channel-active': isActiveBuffer(),
-                'kiwi-statebrowser-channel-notjoined': buffer.isChannel() &&
-                    !buffer.joined
+                'kiwi-statebrowser-channel-notjoined': buffer.isChannel()
+                    && !buffer.joined,
             }"
             class="kiwi-statebrowser-channel"
         >
@@ -23,14 +23,14 @@
                     <div
                         v-if="buffer.flags.unread && showMessageCounts(buffer)"
                         :class="[
-                            buffer.flags.highlight ?
-                                'kiwi-statebrowser-channel-label--highlight' :
-                                ''
+                            buffer.flags.highlight
+                                ? 'kiwi-statebrowser-channel-label--highlight'
+                                : '',
                         ]"
                         class="kiwi-statebrowser-channel-label"
                     >
-                        {{ buffer.flags.unread > 999 ?
-                            "999+": buffer.flags.unread }}
+                        {{ buffer.flags.unread > 999
+                            ? "999+" : buffer.flags.unread }}
                     </div>
                 </div>
 
@@ -45,9 +45,9 @@
         <transition-expand>
             <div v-if="showPromptClose" class="kiwi-statebrowser-prompt-close">
                 <span>{{
-                    buffer.isChannel() ?
-                        $t('prompt_leave_channel') :
-                        $t('prompt_close_query')
+                    buffer.isChannel()
+                        ? $t('prompt_leave_channel')
+                        : $t('prompt_close_query')
                 }}</span>
                 <input-confirm
                     :flip-connotation="true"

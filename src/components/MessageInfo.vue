@@ -16,7 +16,7 @@
             </div>
         </div>
         <div
-            :class="{'kiwi-messageinfo-actions--open': requestingInput}"
+            :class="{ 'kiwi-messageinfo-actions--open': requestingInput }"
             class="kiwi-messageinfo-actions"
         >
             <a
@@ -31,8 +31,8 @@
                     v-for="plugin in pluginUiSections"
                     :key="plugin.id"
                     :plugin-props="{
-                        buffer: buffer,
-                        message: message,
+                        buffer,
+                        message,
                     }"
                     v-bind="plugin.props"
                     :buffer="buffer"
@@ -47,7 +47,7 @@
                     class="u-link kiwi-messageinfo-button kiwi-messageinfo-ban-user" @click="onBan"
                 >{{ $t('ban') }}</a>
                 <input-prompt
-                    :label="$t('kick_reason') + ':'" @submit="onKick"
+                    :label="`${$t('kick_reason')}:`" @submit="onKick"
                     @cancel="requestingInput = false"
                 >
                     <a

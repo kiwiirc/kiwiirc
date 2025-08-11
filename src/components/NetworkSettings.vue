@@ -30,7 +30,7 @@
                 />
 
                 <div class="kiwi-networksettings-connection-password">
-                    <template v-if="server_type==='network'">
+                    <template v-if="server_type === 'network'">
                         <input-text
                             v-model="network.connection.nick"
                             :label="$t('settings_nickname')"
@@ -55,7 +55,7 @@
 
                 <div class="kiwi-networksettings-server-types">
                     <div
-                        v-if="server_type==='znc'"
+                        v-if="server_type === 'znc'"
                         class="kiwi-networksettings-server-types-info"
                     >
                         {{ $t('settings_znc_other') }}
@@ -63,19 +63,19 @@
                     <a
                         :class="{
                             'kiwi-networksettings-server-type-active':
-                                server_type==='network'
+                                server_type === 'network',
                         }"
                         class="u-link kiwi-network-type-button"
-                        @click="server_type='network'"
+                        @click="server_type = 'network'"
                     >
                         {{ $t('network') }}
                     </a>
                     <a
                         :class="{
-                            'kiwi-networksettings-server-type-active': server_type==='znc'
+                            'kiwi-networksettings-server-type-active': server_type === 'znc',
                         }"
                         class="u-link kiwi-network-type-button"
-                        @click="server_type='znc'"
+                        @click="server_type = 'znc'"
                     >
                         {{ $t('znc') }}
                     </a>
@@ -83,11 +83,11 @@
 
                 <h4
                     class="kiwi-show-advanced-title"
-                    @click="show_advanced=!show_advanced"
+                    @click="show_advanced = !show_advanced"
                 >
                     {{ $t('settings_advanced') }}
                     <i
-                        :class="['fa-caret-'+(show_advanced?'up':'down')]"
+                        :class="[`fa-caret-${show_advanced ? 'up' : 'down'}`]"
                         class="fa"
                         aria-hidden="true"
                     />

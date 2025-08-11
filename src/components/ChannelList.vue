@@ -1,5 +1,5 @@
 <template>
-    <div :class="{'kiwi-channellist-padding-top': !list.length}" class="kiwi-channellist">
+    <div :class="{ 'kiwi-channellist-padding-top': !list.length }" class="kiwi-channellist">
         <div class="kiwi-channellist-content-container">
             <div class="kiwi-channellist-nav">
                 <form class="u-form u-form--big kiwi-channellist-search" @submit.prevent>

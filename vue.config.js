@@ -14,7 +14,7 @@ module.exports = {
     publicPath: '',
     assetsDir: 'static/',
     runtimeCompiler: true,
-    transpileDependencies: ['irc-framework', 'ip-regex', 'isomorphic-textencoder'],
+    transpileDependencies: ['irc-framework', 'isomorphic-textencoder'],
     productionSourceMap: makeSourceMap,
     css: {
         sourceMap: makeSourceMap,
@@ -32,7 +32,7 @@ module.exports = {
             symlinks: false,
         },
         performance: {
-            maxEntrypointSize: 1677722, // 1.6MiB
+            maxEntrypointSize: 1783539, // 1.7MiB
             maxAssetSize: 1048576, // 1MiB
         },
         optimization: {

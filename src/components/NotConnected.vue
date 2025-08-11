@@ -13,7 +13,7 @@
                         @click="reconnect"
                     >
                         <i class="fa fa-arrow-circle-o-right" aria-hidden="true" />
-                        {{ $t('reconnect_channel', {channel: buffer.name}) }}
+                        {{ $t('reconnect_channel', { channel: buffer.name }) }}
                     </span>
                 </template>
                 <template v-else-if="isServer()">
@@ -23,7 +23,7 @@
                         @click="reconnect"
                     >
                         <i class="fa fa-arrow-circle-o-right" aria-hidden="true" />
-                        {{ $t('reconnect_network', {network: buffer.getNetwork().name}) }}
+                        {{ $t('reconnect_network', { network: buffer.getNetwork().name }) }}
                     </span>
                 </template>
                 <template v-else-if="isQuery()">
@@ -33,7 +33,7 @@
                         @click="reconnect"
                     >
                         <i class="fa fa-arrow-circle-o-right" aria-hidden="true" />
-                        {{ $t('reconnect_query', {user: buffer.name}) }}
+                        {{ $t('reconnect_query', { user: buffer.name }) }}
                     </span>
                 </template>
 

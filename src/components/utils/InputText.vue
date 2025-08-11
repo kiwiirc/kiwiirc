@@ -3,13 +3,13 @@
         <label v-if="label" :for="inputId">{{ label }}</label>
 
         <div class="u-input-text-inputs" style="display: flex;">
-            <template v-if="type==='password'">
+            <template v-if="type === 'password'">
                 <input
                     :id="inputId"
                     v-model="currentValue"
                     :disabled="disabled"
                     :type="plainTextEnabled && !isEdgeBrowser() ? 'text' : 'password'"
-                    :class="{'u-form-input-plaintext' : !isEdgeBrowser() && showPlainText}"
+                    :class="{ 'u-form-input-plaintext': !isEdgeBrowser() && showPlainText }"
                     autocomplete="off"
                     autocorrect="off"
                     autocapitalize="off"
@@ -21,7 +21,7 @@
 
                 <i
                     v-if="showPlainText && !isEdgeBrowser()"
-                    :class="{'u-input-text-plaintext--active': plainTextEnabled}"
+                    :class="{ 'u-input-text-plaintext--active': plainTextEnabled }"
                     class="u-input-text-plaintext fa fa-eye"
                     aria-hidden="true"
                     @click="plainTextEnabled = !plainTextEnabled"
@@ -29,7 +29,7 @@
             </template>
 
             <input
-                v-else-if="type==='number'"
+                v-else-if="type === 'number'"
                 :id="inputId"
                 v-model.number="currentValue"
                 :disabled="disabled"
@@ -39,7 +39,7 @@
                 @paste="$emit('paste', $event)"
             >
             <textarea
-                v-else-if="type==='textarea'"
+                v-else-if="type === 'textarea'"
                 :id="inputId"
                 v-model="currentValue"
                 :disabled="disabled"

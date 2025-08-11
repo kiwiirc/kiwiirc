@@ -45,7 +45,7 @@
                                 </select>
                             </label>
                             <label
-                                v-if="theme.toLowerCase()==='custom'"
+                                v-if="theme.toLowerCase() === 'custom'"
                                 class="kiwi-appsettings-setting-theme-custom"
                             >
                                 <span>{{ $t('settings_themeurl') }} </span>

@@ -2,7 +2,7 @@
 
 /** @module */
 import _ from 'lodash';
-import * as ipRegex from 'ip-regex';
+import ipRegex from 'ip-regex';
 import i18next from 'i18next';
 import * as murmurhash3 from 'murmurhash3js';
 

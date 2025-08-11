@@ -12,10 +12,10 @@
         <div class="kiwi-controlinput-selfuser">
             <transition name="kiwi-selfuser-trans">
                 <self-user
-                    v-if="networkState==='connected'
+                    v-if="networkState === 'connected'
                         && selfuser_open === true"
                     :network="network"
-                    @close="selfuser_open=false"
+                    @close="selfuser_open = false"
                 />
             </transition>
         </div>
@@ -98,8 +98,8 @@
                 <div
                     v-if="!shouldShowToolsInline"
                     class="kiwi-controlinput-tools-expand kiwi-controlinput-button"
-                    :class="{'kiwi-controlinput-tools-expand--closed': !showPlugins}"
-                    @click="showPlugins=!showPlugins"
+                    :class="{ 'kiwi-controlinput-tools-expand--closed': !showPlugins }"
+                    @click="showPlugins = !showPlugins"
                 >
                     <i class="fa fa-bars" aria-hidden="true" />
                 </div>
@@ -127,7 +127,7 @@
                             v-for="plugin in pluginUiElements"
                             :key="plugin.id"
                             :plugin-props="{
-                                buffer: buffer,
+                                buffer,
                                 controlinput: self,
                             }"
                             v-bind="plugin.props"

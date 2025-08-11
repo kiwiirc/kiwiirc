@@ -3,7 +3,7 @@
         <tabbed-view ref="tabs">
             <tabbed-tab :header="$t('settings')" :focus="true" name="settings">
                 <div
-                    :class="{'kiwi-sidebar-settings-disabled': !areWeAnOp}"
+                    :class="{ 'kiwi-sidebar-settings-disabled': !areWeAnOp }"
                     class="kiwi-sidebar-settings"
                 >
                     <h3>
@@ -59,24 +59,24 @@
                 <div class="kiwi-sidebar-settings">
                     <a
                         :class="{
-                            'kiwi-sidebar-accesstab--active': accessTab === 'banlist'
+                            'kiwi-sidebar-accesstab--active': accessTab === 'banlist',
                         }"
                         class="u-link kiwi-sidebar-accesstab"
-                        @click="accessTab='banlist'"
+                        @click="accessTab = 'banlist'"
                     >
                         {{ $t('banned') }}
                     </a>
                     <a
                         :class="{
-                            'kiwi-sidebar-accesstab--active': accessTab === 'invitelist'
+                            'kiwi-sidebar-accesstab--active': accessTab === 'invitelist',
                         }"
                         class="u-link kiwi-sidebar-accesstab"
-                        @click="accessTab='invitelist'"
+                        @click="accessTab = 'invitelist'"
                     >
                         {{ $t('invited') }}
                     </a>
-                    <channel-banlist v-if="accessTab==='banlist'" :buffer="buffer" />
-                    <channel-invitelist v-if="accessTab==='invitelist'" :buffer="buffer" />
+                    <channel-banlist v-if="accessTab === 'banlist'" :buffer="buffer" />
+                    <channel-invitelist v-if="accessTab === 'invitelist'" :buffer="buffer" />
                 </div>
             </tabbed-tab>
             <tabbed-tab :header="$t('notifications')" name="notifications">

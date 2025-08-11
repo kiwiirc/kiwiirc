@@ -6,7 +6,7 @@
             <div class="kiwi-bufferkey-buttons">
                 <span class="kiwi-bufferkey-button" @click="joinChannel">
                     <i class="fa fa-arrow-circle-o-right" aria-hidden="true" />
-                    {{ $t('bufferkey_rejoin', {channel: buffer.name}) }}
+                    {{ $t('bufferkey_rejoin', { channel: buffer.name }) }}
                 </span>
             </div>
         </form>

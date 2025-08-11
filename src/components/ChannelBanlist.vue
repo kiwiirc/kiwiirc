@@ -15,7 +15,7 @@
 
         <a
             class="kiwi-banlist-refresh"
-            :class="{'u-link': !is_refreshing && !clickUpdateTimeout }"
+            :class="{ 'u-link': !is_refreshing && !clickUpdateTimeout }"
             @click="clickUpdateBanlist"
         >
             {{ $t('bans_refresh') }}
@@ -23,7 +23,7 @@
 
         <div
             v-if="banList.length > 0"
-            :class="{'kiwi-sidebar-settings-access-restricted': !areWeAnOp}"
+            :class="{ 'kiwi-sidebar-settings-access-restricted': !areWeAnOp }"
             class="kiwi-sidebar-settings-access-table"
         >
             <div class="kiwi-sidebar-settings-access-table-header">{{ $t('bans_user') }}</div>
@@ -33,33 +33,33 @@
 
             <template v-for="ban in sortedBanList">
                 <div
-                    :key="'mask' + ban.banned"
+                    :key="`mask${ban.banned}`"
                     class="kiwi-sidebar-settings-access-mask"
                 >
                     {{ displayMask(ban.banned) }}
                 </div>
                 <div
-                    :key="'who' + ban.banned"
+                    :key="`who${ban.banned}`"
                     class="kiwi-sidebar-settings-access-who"
                 >
                     {{ ban.banned_by }}
                 </div>
                 <div
-                    :key="'when' + ban.banned"
+                    :key="`when${ban.banned}`"
                     class="kiwi-sidebar-settings-access-when"
                     :title="(new Date(ban.banned_at * 1000)).toLocaleString({
-                        year: 'numeric', month: '2-digit', day: '2-digit'
+                        year: 'numeric', month: '2-digit', day: '2-digit',
                     })"
                 >
                     {{
                         (new Date(ban.banned_at * 1000)).toLocaleDateString({
-                            year: "numeric", month: "2-digit", day: "2-digit"
+                            year: "numeric", month: "2-digit", day: "2-digit",
                         })
                     }}
                 </div>
                 <div
                     v-if="areWeAnOp"
-                    :key="'actions' + ban.banned"
+                    :key="`actions${ban.banned}`"
                     class="kiwi-sidebar-settings-access-actions"
                 >
                     <i class="fa fa-trash" aria-hidden="true" @click="removeBan(ban.banned)" />

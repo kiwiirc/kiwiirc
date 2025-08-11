@@ -1,12 +1,12 @@
 <template>
     <div
-        :key="'messagelist-' + buffer.name"
+        :key="`messagelist-${buffer.name}`"
         ref="scroller"
         v-resizeobserver="onListResize"
         class="kiwi-messagelist"
         :class="{
             'kiwi-messagelist--smoothscroll': smooth_scroll,
-            'kiwi-messagelist--showtyping': buffer.setting('share_typing')
+            'kiwi-messagelist--showtyping': buffer.setting('share_typing'),
         }"
         @click.self="onListClick"
     >
@@ -29,7 +29,7 @@
                 <template v-for="day in filteredMessagesGroupedDay">
                     <div
                         v-if="filteredMessagesGroupedDay.length > 1 && day.messages.length > 0"
-                        :key="'msgdatemarker' + day.dayNum"
+                        :key="`msgdatemarker${day.dayNum}`"
                         class="kiwi-messagelist-seperator"
                     >
                         <span>{{ (new Date(day.messages[0].time)).toDateString() }}</span>
@@ -38,19 +38,19 @@
                         <template v-for="message in day.messages">
                             <div
                                 v-if="shouldShowUnreadMarker(message)"
-                                :key="'msgunreadmarker' + message.id"
+                                :key="`msgunreadmarker${message.id}`"
                                 class="kiwi-messagelist-seperator"
                             >
                                 <span>{{ $t('unread_messages') }}</span>
                             </div>
 
                             <div
-                                :key="'msg' + message.id"
+                                :key="`msg${message.id}`"
                                 :class="[
                                     'kiwi-messagelist-item',
-                                    selectedMessages[message.id] ?
-                                        'kiwi-messagelist-item--selected' :
-                                        ''
+                                    selectedMessages[message.id]
+                                        ? 'kiwi-messagelist-item--selected'
+                                        : '',
                                 ]"
                             >
                                 <!-- message.template is checked first for a custom component,
@@ -58,10 +58,10 @@
                                     custom component to apply only to the body area
                                 -->
                                 <div
-                                    v-if="message.render() &&
-                                        message.template &&
-                                        message.template.$el &&
-                                        isTemplateVue(message.template)"
+                                    v-if="message.render()
+                                        && message.template
+                                        && message.template.$el
+                                        && isTemplateVue(message.template)"
                                     v-rawElement="message.template.$el"
                                 />
                                 <component

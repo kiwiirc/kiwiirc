@@ -1,13 +1,13 @@
 <template>
-    <div :style="{display: block ? 'block' : 'inline-block'}" class="u-input-prompt">
-        <div v-if="state==='pre'" @click="prompt"><slot /></div>
+    <div :style="{ display: block ? 'block' : 'inline-block' }" class="u-input-prompt">
+        <div v-if="state === 'pre'" @click="prompt"><slot /></div>
 
-        <form v-if="state==='prompt'" class="u-form" @submit.prevent="complete">
+        <form v-if="state === 'prompt'" class="u-form" @submit.prevent="complete">
             <span class="u-input-prompt-label">{{ label }}</span>
             <div class="u-input-prompt-inputs">
                 <input v-model="value" class="u-input" @keyup.esc="cancel">
                 <a class="u-button u-button-primary" @click="complete">
-                    <span :class="{'u-input-prompt-hidden': waiting}">{{ $t('ok') }}</span>
+                    <span :class="{ 'u-input-prompt-hidden': waiting }">{{ $t('ok') }}</span>
                     <div v-if="waiting" class="u-input-prompt-waiting">
                         <i class="fa fa-spin fa-spinner" aria-hidden="true" />
                     </div>

@@ -47,7 +47,7 @@
             </button> <br>
 
             <a
-                v-if="networks.length>0"
+                v-if="networks.length > 0"
                 class="u-link kiwi-personal-existing-networks"
                 @click.stop="toggleStateBrowser"
             >

@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const i18nextConv = require('i18next-conv');
 
 class ConvertLocalesPlugin {
     apply(compiler) {
@@ -29,6 +28,8 @@ class ConvertLocalesPlugin {
 }
 
 async function convertLocales(fileDependencies, callback) {
+    const i18nextConv = await import('i18next-conv');
+
     fileDependencies.clear();
     const sourceDir = path.resolve('src/res/locales/');
     const outputDir = path.resolve('static/locales/');

@@ -16,15 +16,15 @@
             </div>
             <div v-else class="kiwi-settings-advanced-table">
                 <template v-for="setting in filteredSettings">
-                    <div :key="'label-' + setting.key" class="kiwi-settings-advanced-key">
+                    <div :key="`label-${setting.key}`" class="kiwi-settings-advanced-key">
                         <label
-                            :for="'setting-' + setting.key"
+                            :for="`setting-${setting.key}`"
                         >{{ setting.key }}</label>
                     </div>
-                    <div :key="'reset-' + setting.key" class="kiwi-settings-advanced-reset">
+                    <div :key="`reset-${setting.key}`" class="kiwi-settings-advanced-reset">
                         <a
                             class="u-link"
-                            :class="{'kiwi-settings-advanced--modified': setting.modified}"
+                            :class="{ 'kiwi-settings-advanced--modified': setting.modified }"
                             @click="resetValue($event, setting.key)"
                         >
                             <span class="kiwi-settings-advanced-reset-text">
@@ -33,17 +33,17 @@
                             <i class="fa fa-undo" />
                         </a>
                     </div>
-                    <div :key="'value-' + setting.key" class="kiwi-settings-advanced-value">
+                    <div :key="`value-${setting.key}`" class="kiwi-settings-advanced-value">
                         <input
                             v-if="setting.type === 'boolean'"
-                            :id="'setting-' + setting.key"
+                            :id="`setting-${setting.key}`"
                             :checked="setting.val"
                             type="checkbox"
                             @change="updateSetting($event, setting.key)"
                         >
                         <input
                             v-else-if="setting.type === 'number'"
-                            :id="'setting-' + setting.key"
+                            :id="`setting-${setting.key}`"
                             :value="setting.val"
                             class="u-input"
                             type="number"
@@ -53,7 +53,7 @@
                         >
                         <input
                             v-else
-                            :id="'setting-' + setting.key"
+                            :id="`setting-${setting.key}`"
                             :value="setting.val"
                             class="u-input"
                             @keydown.13="$event.target.blur()"

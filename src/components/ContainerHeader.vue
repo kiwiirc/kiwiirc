@@ -20,7 +20,7 @@
             >
                 <div
                     :class="{
-                        'kiwi-header-option--active': sidebarSection === 'settings'
+                        'kiwi-header-option--active': sidebarSection === 'settings',
                     }"
                     class="kiwi-header-option kiwi-header-option-settings"
                 >
@@ -34,12 +34,12 @@
                 <div
                     :class="{
                         'kiwi-header-option--active': sidebarSection === 'nicklist'
-                            || sidebarSection === 'user'
+                            || sidebarSection === 'user',
                     }"
                     class="kiwi-header-option kiwi-header-option-nicklist"
                 >
                     <a
-                        :title="$t('person', {count: Object.keys(buffer.users).length})"
+                        :title="$t('person', { count: Object.keys(buffer.users).length })"
                         @click="sidebarState.toggleNicklist()"
                     >
                         <i class="fa fa-users" aria-hidden="true" />
@@ -48,7 +48,7 @@
                 </div>
                 <div
                     :class="{
-                        'kiwi-header-option--active': sidebarSection === 'about'
+                        'kiwi-header-option--active': sidebarSection === 'about',
                     }"
                     class="kiwi-header-option kiwi-header-option-about"
                 >
@@ -61,7 +61,7 @@
                     v-for="plugin in pluginUiChannelElements"
                     :key="plugin.id"
                     :plugin-props="{
-                        buffer: buffer,
+                        buffer,
                         containerheader: self,
                     }"
                     v-bind="plugin.props"
@@ -123,7 +123,7 @@
                 <div
                     v-if="userOnline"
                     :class="{
-                        'kiwi-header-option--active': sidebarSection === 'user'
+                        'kiwi-header-option--active': sidebarSection === 'user',
                     }"
                     class="kiwi-header-option kiwi-header-option-user"
                 >
@@ -136,7 +136,7 @@
                     v-for="plugin in pluginUiQueryElements"
                     :key="plugin.id"
                     :plugin-props="{
-                        buffer: buffer,
+                        buffer,
                         containerheader: self,
                     }"
                     v-bind="plugin.props"

@@ -11,9 +11,9 @@
             <div class="kiwi-container-toggledraw-statebrowser" @click.stop="toggleStateBrowser">
                 <div
                     :class="[
-                        unreadMessages.highlight ?
-                            'kiwi-container-toggledraw-statebrowser-messagecount--highlight' :
-                            '',
+                        unreadMessages.highlight
+                            ? 'kiwi-container-toggledraw-statebrowser-messagecount--highlight'
+                            : '',
                     ]"
                     class="kiwi-container-toggledraw-statebrowser-messagecount"
                 >
