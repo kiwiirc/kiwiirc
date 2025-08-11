@@ -14,7 +14,7 @@
         </button> <br>
 
         <a
-            v-if="networks.length>0"
+            v-if="networks.length > 0"
             class="u-link kiwi-personal-existing-networks"
             @click.stop="toggleStateBrowser"
         >
@@ -22,7 +22,7 @@
         </a>
 
         <div
-            :class="{'kiwi-aboutnew-content--open': about_open}"
+            :class="{ 'kiwi-aboutnew-content--open': about_open }"
             class="kiwi-aboutnew-content"
             v-html="aboutContent"
         />
@@ -30,13 +30,13 @@
             <div class="kiwi-aboutnew-sep" />
             <a
                 class="u-link"
-                @click="about_open=!about_open"
+                @click="about_open = !about_open"
             >
                 Link to your network / channel
             </a>
 
             <div class="kiwi-aboutnew-help">
-                <a @click="about_open=!about_open">
+                <a @click="about_open = !about_open">
                     <i class="fa fa-question-circle" aria-hidden="true" />
                 </a>
             </div>

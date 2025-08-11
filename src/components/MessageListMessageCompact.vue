@@ -1,38 +1,38 @@
 <template functional>
     <div
         :class="[
-            props.m().isRepeat() ?
-                'kiwi-messagelist-message--authorrepeat' :
-                'kiwi-messagelist-message--authorfirst',
-            'kiwi-messagelist-message-' + props.message.type,
-            props.message.type_extra ?
-                'kiwi-messagelist-message-' + props.message.type + '-' + props.message.type_extra :
-                '',
-            props.ml.isMessageHighlight(props.message) ?
-                'kiwi-messagelist-message--highlight' :
-                '',
-            props.ml.isHoveringOverMessage(props.message) ?
-                'kiwi-messagelist-message--hover' :
-                '',
-            props.ml.buffer.last_read && props.message.time > props.ml.buffer.last_read ?
-                'kiwi-messagelist-message--unread' :
-                '',
-            props.message.nick.toLowerCase() === props.ml.ourNick.toLowerCase() ?
-                'kiwi-messagelist-message--own' :
-                '',
-            props.ml.message_info_open === props.message ?
-                'kiwi-messagelist-message--info-open' :
-                '',
-            props.ml.message_info_open && props.ml.message_info_open !== props.message ?
-                'kiwi-messagelist-message--blur' :
-                '',
-            (props.message.user && props.m().userMode(props.message.user)) ?
-                'kiwi-messagelist-message--user-mode-'+props.m().userMode(props.message.user) :
-                '',
+            props.m().isRepeat()
+                ? 'kiwi-messagelist-message--authorrepeat'
+                : 'kiwi-messagelist-message--authorfirst',
+            `kiwi-messagelist-message-${props.message.type}`,
+            props.message.type_extra
+                ? `kiwi-messagelist-message-${props.message.type}-${props.message.type_extra}`
+                : '',
+            props.ml.isMessageHighlight(props.message)
+                ? 'kiwi-messagelist-message--highlight'
+                : '',
+            props.ml.isHoveringOverMessage(props.message)
+                ? 'kiwi-messagelist-message--hover'
+                : '',
+            props.ml.buffer.last_read && props.message.time > props.ml.buffer.last_read
+                ? 'kiwi-messagelist-message--unread'
+                : '',
+            props.message.nick.toLowerCase() === props.ml.ourNick.toLowerCase()
+                ? 'kiwi-messagelist-message--own'
+                : '',
+            props.ml.message_info_open === props.message
+                ? 'kiwi-messagelist-message--info-open'
+                : '',
+            props.ml.message_info_open && props.ml.message_info_open !== props.message
+                ? 'kiwi-messagelist-message--blur'
+                : '',
+            (props.message.user && props.m().userMode(props.message.user))
+                ? `kiwi-messagelist-message--user-mode-${props.m().userMode(props.message.user)}`
+                : '',
             data.staticClass,
         ]"
         :data-message-id="props.message.id"
-        :data-nick="(props.message.nick||'').toLowerCase()"
+        :data-nick="(props.message.nick || '').toLowerCase()"
         class="kiwi-messagelist-message kiwi-messagelist-message--compact"
         @click="props.ml.onMessageClick($event, props.message, true)"
         @dblclick="props.ml.onMessageDblClick($event, props.message)"
@@ -45,16 +45,16 @@
             {{ props.ml.formatTime(props.message.time) }}
         </div>
         <a
-            :style="{ 'color': props.ml.userColour(props.message.user) }"
+            :style="{ color: props.ml.userColour(props.message.user) }"
             :class="[
                 'kiwi-messagelist-nick',
-                (props.message.user && props.m().userMode(props.message.user)) ?
-                    'kiwi-messagelist-nick--mode-'+props.m().userMode(props.message.user) :
-                    ''
+                (props.message.user && props.m().userMode(props.message.user))
+                    ? `kiwi-messagelist-nick--mode-${props.m().userMode(props.message.user)}`
+                    : '',
             ]"
-            :data-nick="(props.message.nick||'').toLowerCase()"
-            @mouseover="props.ml.hover_nick=props.message.nick.toLowerCase();"
-            @mouseout="props.ml.hover_nick='';"
+            :data-nick="(props.message.nick || '').toLowerCase()"
+            @mouseover="props.ml.hover_nick = props.message.nick.toLowerCase();"
+            @mouseout="props.ml.hover_nick = '';"
         >
             <component
                 :is="injections.components.AwayStatusIndicator"
@@ -68,9 +68,9 @@
             {{ props.message.nick }}
         </a>
         <div
-            v-if="props.message.bodyTemplate &&
-                props.message.bodyTemplate.$el &&
-                props.ml.isTemplateVue(props.message.bodyTemplate)"
+            v-if="props.message.bodyTemplate
+                && props.message.bodyTemplate.$el
+                && props.ml.isTemplateVue(props.message.bodyTemplate)"
             v-rawElement="props.message.bodyTemplate.$el"
             class="kiwi-messagelist-body"
         />
@@ -88,7 +88,7 @@
 
         <component
             :is="injections.components.MessageInfo"
-            v-if="props.ml.message_info_open===props.message"
+            v-if="props.ml.message_info_open === props.message"
             :message="props.message"
             :buffer="props.ml.buffer"
             @close="props.ml.toggleMessageInfo()"

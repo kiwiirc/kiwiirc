@@ -27,7 +27,7 @@
                     v-focus="!isIframe && (!nick || !show_password_box)"
                     :label="$t('nick')"
                     type="text"
-                    :class="{'kiwi-welcome-invalid-nick': !isNickValid}"
+                    :class="{ 'kiwi-welcome-invalid-nick': !isNickValid }"
                 />
 
                 <div v-if="showPass && toggablePass" class="kiwi-welcome-simple-input-container">

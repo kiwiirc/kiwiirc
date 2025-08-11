@@ -1,15 +1,15 @@
 <template>
     <div
-        :class="[is_usermenu_open?'kiwi-statebrowser-usermenu--open':'']"
+        :class="[is_usermenu_open ? 'kiwi-statebrowser-usermenu--open' : '']"
         class="kiwi-statebrowser-usermenu"
     >
         <div
-            :class="[isConnected ?
-                'kiwi-statebrowser-usermenu-avatar--connected' :
-                'kiwi-statebrowser-usermenu-avatar--disconnected'
+            :class="[isConnected
+                ? 'kiwi-statebrowser-usermenu-avatar--connected'
+                : 'kiwi-statebrowser-usermenu-avatar--disconnected',
             ]"
             class="kiwi-statebrowser-usermenu-avatar"
-            @click="is_usermenu_open=!is_usermenu_open"
+            @click="is_usermenu_open = !is_usermenu_open"
         >
             <UserAvatar
                 :user="getUser"
@@ -22,7 +22,7 @@
         <div v-if="is_usermenu_open" class="kiwi-statebrowser-usermenu-body">
             <p> {{ $t('state_remembered') }} </p>
             <a class="u-link" @click="clickForget">{{ $t('state_forget') }}</a>
-            <div class="kiwi-statebrowser-usermenu-close" @click="is_usermenu_open=false">
+            <div class="kiwi-statebrowser-usermenu-close" @click="is_usermenu_open = false">
                 <i class="fa fa-times" aria-hidden="true" />
             </div>
         </div>

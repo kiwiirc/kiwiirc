@@ -3,7 +3,7 @@
         <form class="u-form">
             <a
                 class="u-link kiwi-settings-aliases-showhelp"
-                @click="show_help=!show_help"
+                @click="show_help = !show_help"
             >
                 {{ $t('what_are_aliases') }}
             </a>

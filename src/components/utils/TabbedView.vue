@@ -6,7 +6,7 @@
                 :key="c.name || c.header"
                 :class="{
                     'u-tabbed-view-tab': true,
-                    'u-tabbed-view-tab--active': c.active
+                    'u-tabbed-view-tab--active': c.active,
                 }"
                 @click="setActive(c)"
             >{{ c.header }}</a>

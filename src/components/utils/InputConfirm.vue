@@ -1,13 +1,13 @@
 <template>
     <div class="u-input-confirm">
-        <div v-if="state==='pre'" @click="prompt"><slot /></div>
+        <div v-if="state === 'pre'" @click="prompt"><slot /></div>
 
-        <template v-if="state==='prompt'">
+        <template v-if="state === 'prompt'">
             <span class="u-input-confirm-label">{{ label }}</span>
-            <a :class="['u-button-'+connoteCss.yes]" class="u-button" @click="complete(true)">
+            <a :class="[`u-button-${connoteCss.yes}`]" class="u-button" @click="complete(true)">
                 {{ $t('yes') }}
             </a>
-            <a :class="['u-button-'+connoteCss.no]" class="u-button" @click="complete(false)">
+            <a :class="[`u-button-${connoteCss.no}`]" class="u-button" @click="complete(false)">
                 {{ $t('no') }}
             </a>
         </template>

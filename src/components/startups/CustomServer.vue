@@ -27,7 +27,7 @@
                     :enable-custom="startupOptions.enableCustom ?? true"
                     :show-path="true"
                     :connection="connection"
-                    @selected="presetSelected=$event"
+                    @selected="presetSelected = $event"
                 />
 
                 <tabbed-view
@@ -41,7 +41,7 @@
                             v-model="nick"
                             :label="$t('nick')"
                             class="kiwi-customserver-nick"
-                            :class="{'kiwi-customserver-nick--invalid': !isNickValid}"
+                            :class="{ 'kiwi-customserver-nick--invalid': !isNickValid }"
                         />
 
                         <label class="kiwi-customserver-have-password">

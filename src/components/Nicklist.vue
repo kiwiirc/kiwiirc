@@ -9,9 +9,9 @@
         <div class="kiwi-nicklist-filter" @click="toggleUserFilter">
             <div class="kiwi-nicklist-usercount">
                 {{
-                    userFilterVisible ?
-                        sortedUsers.length :
-                        $t('person', {count: sortedUsers.length})
+                    userFilterVisible
+                        ? sortedUsers.length
+                        : $t('person', { count: sortedUsers.length })
                 }}
             </div>
             <input

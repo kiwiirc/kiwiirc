@@ -1,6 +1,6 @@
 <template>
     <div
-        :class="['kiwi-sidebar-section-' + section]"
+        :class="[`kiwi-sidebar-section-${section}`]"
         class="kiwi-sidebar kiwi-theme-bg"
     >
         <span v-if="!sidebarState.isOpen" class="kiwi-sidebar-options">

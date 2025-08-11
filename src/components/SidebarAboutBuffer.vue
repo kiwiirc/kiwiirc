@@ -3,7 +3,7 @@
         <h3>{{ b.name }}</h3>
 
         <div
-            :class="{'kiwi-aboutbuffer-section--closed': closedSections.about}"
+            :class="{ 'kiwi-aboutbuffer-section--closed': closedSections.about }"
             class="kiwi-aboutbuffer-section"
         >
             <h4 @click="toggleSection('about')">
@@ -20,7 +20,7 @@
                         {{
                             $t('topic_setby', {
                                 who: b.topic_by,
-                                when: new Intl.DateTimeFormat().format(b.topic_when)
+                                when: new Intl.DateTimeFormat().format(b.topic_when),
                             })
                         }}
                     </p>
@@ -29,14 +29,14 @@
 
                 <p class="kiwi-aboutbuffer-usercount">
                     <a class="u-link " @click="sidebarState.showNicklist()">
-                        {{ $t('person', {count: Object.keys(b.users || {}).length}) }}
+                        {{ $t('person', { count: Object.keys(b.users || {}).length }) }}
                     </a>
                 </p>
             </div>
         </div>
 
         <div
-            :class="{'kiwi-aboutbuffer-section--closed': closedSections.highlights}"
+            :class="{ 'kiwi-aboutbuffer-section--closed': closedSections.highlights }"
             class="kiwi-aboutbuffer-section"
         >
             <h4 @click="toggleSection('highlights')">
@@ -50,7 +50,7 @@
                         class="kiwi-aboutbuffer-highlight"
                         @click="buffer.scrollToMessage(msg.id)"
                     >
-                        {{ msg.nick ? msg.nick + ': ' : '' }}<span v-html="msg.html" />
+                        {{ msg.nick ? `${msg.nick}: ` : '' }}<span v-html="msg.html" />
                     </li>
                 </ul>
                 <p v-else>{{ $t('nobody_mentioned_you') }}</p>
@@ -59,7 +59,7 @@
 
         <div
             v-if="areWeAnOp"
-            :class="{'kiwi-aboutbuffer-section--closed': closedSections.invite}"
+            :class="{ 'kiwi-aboutbuffer-section--closed': closedSections.invite }"
             class="kiwi-aboutbuffer-section"
         >
             <h4 @click="toggleSection('invite')">
@@ -92,7 +92,7 @@
         <div
             v-for="plugin in pluginUiSections"
             :key="plugin.id"
-            :class="{'kiwi-aboutbuffer-section--closed': closedSections[plugin.id]}"
+            :class="{ 'kiwi-aboutbuffer-section--closed': closedSections[plugin.id] }"
             class="kiwi-aboutbuffer-section"
         >
             <h4 @click="toggleSection(plugin.id)">
@@ -101,7 +101,7 @@
             <component
                 :is="plugin.component"
                 :plugin-props="{
-                    buffer: buffer,
+                    buffer,
                     aboutbuffer: self,
                 }"
                 v-bind="plugin.props"

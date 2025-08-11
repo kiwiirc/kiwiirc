@@ -14,7 +14,7 @@
             <div class="kiwi-userbox-userinfo">
                 <span
                     class="kiwi-userbox-nick"
-                    :style="{ 'color': user.getColour() }"
+                    :style="{ color: user.getColour() }"
                 >{{ user.nick }}</span>
                 <span v-if="userMode" class="kiwi-userbox-modestring">+{{ userMode }}</span>
                 <span class="kiwi-userbox-usermask">{{ user.username }}@{{ user.host }}</span>
@@ -27,7 +27,7 @@
                 v-for="plugin in pluginUiInfoElements"
                 :key="plugin.id"
                 :plugin-props="{
-                    user: user,
+                    user,
                     userbox: self,
                 }"
                 v-bind="plugin.props"
@@ -58,7 +58,7 @@
                     v-for="plugin in pluginUiButtonElements"
                     :key="plugin.id"
                     :plugin-props="{
-                        user: user,
+                        user,
                         userbox: self,
                     }"
                     v-bind="plugin.props"
@@ -79,7 +79,7 @@
 
         <div
             v-if="whoisRequested"
-            :class="[whoisLoading?'kiwi-userbox-whois--loading':'']"
+            :class="[whoisLoading ? 'kiwi-userbox-whois--loading' : '']"
             class="kiwi-userbox-whois"
         >
             <template v-if="whoisLoading">
@@ -91,7 +91,7 @@
                     v-for="plugin in pluginUiWhoisElements"
                     :key="plugin.id"
                     :plugin-props="{
-                        user: user,
+                        user,
                         userbox: self,
                     }"
                     v-bind="plugin.props"
@@ -103,16 +103,16 @@
             </template>
             <template v-else>
                 <span class="kiwi-userbox-whois-line">
-                    {{ user.away ?
-                        $t('whois_status') + ': ' + user.away :
-                        $t('whois_status_available')
+                    {{ user.away
+                        ? `${$t('whois_status')}: ${user.away}`
+                        : $t('whois_status_available')
                     }}
                 </span>
                 <span v-if="user.account" class="kiwi-userbox-whois-line">
-                    {{ $t('user_account', {user: user.account}) }}
+                    {{ $t('user_account', { user: user.account }) }}
                 </span>
                 <span class="kiwi-userbox-whois-line">
-                    {{ $t('user_realname', {realname: user.realname}) }}
+                    {{ $t('user_realname', { realname: user.realname }) }}
                 </span>
                 <span v-if="user.whois.bot" class="kiwi-userbox-whois-line">
                     {{ $t('user_bot') }}
@@ -126,7 +126,7 @@
                 <span v-if="user.whois.server" class="kiwi-userbox-whois-line">
                     {{ $t('user_server', {
                         server: user.whois.server,
-                        info: (user.whois.server_info ? `(${user.whois.server_info})` : '')
+                        info: (user.whois.server_info ? `(${user.whois.server_info})` : ''),
                     }) }}
                 </span>
                 <span v-if="user.whois.secure" class="kiwi-userbox-whois-line">
@@ -136,7 +136,7 @@
                     v-if="user.whois.channels"
                     class="kiwi-userbox-whois-line"
                     @click="onChannelsClick($event)"
-                    v-html="$t('user_channels', {channels: userChannels})"
+                    v-html="$t('user_channels', { channels: userChannels })"
                 />
             </template>
         </div>
@@ -198,7 +198,7 @@
                 <option value="">{{ $t('select_channel') }}</option>
                 <option
                     v-for="chan in invitableBuffers"
-                    :key="'inviteChan-' + chan"
+                    :key="`inviteChan-${chan}`"
                     :value="chan"
                 >{{ chan }}</option>
             </select>

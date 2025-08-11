@@ -44,7 +44,7 @@
 
         <a
             class="kiwi-invitelist-refresh"
-            :class="{'u-link': !is_refreshing && !clickUpdateTimeout }"
+            :class="{ 'u-link': !is_refreshing && !clickUpdateTimeout }"
             @click="clickUpdateInvitelist"
         >
             {{ $t('invites_refresh') }}
@@ -52,7 +52,7 @@
 
         <div
             v-if="inviteList.length > 0"
-            :class="{'kiwi-sidebar-settings-access-restricted': !areWeAnOp}"
+            :class="{ 'kiwi-sidebar-settings-access-restricted': !areWeAnOp }"
             class="kiwi-sidebar-settings-access-table"
         >
             <div class="kiwi-sidebar-settings-access-table-header">{{ $t('invites_user') }}</div>
@@ -62,33 +62,33 @@
 
             <template v-for="invite in sortedInviteList">
                 <div
-                    :key="'mask' + invite.invited"
+                    :key="`mask${invite.invited}`"
                     class="kiwi-sidebar-settings-access-mask"
                 >
                     {{ displayMask(invite.invited) }}
                 </div>
                 <div
-                    :key="'who' + invite.invited"
+                    :key="`who${invite.invited}`"
                     class="kiwi-sidebar-settings-access-who"
                 >
                     {{ invite.invited_by }}
                 </div>
                 <div
-                    :key="'when' + invite.invited"
+                    :key="`when${invite.invited}`"
                     class="kiwi-sidebar-settings-access-when"
                     :title="(new Date(invite.invited_at * 1000)).toLocaleString({
-                        year: 'numeric', month: '2-digit', day: '2-digit'
+                        year: 'numeric', month: '2-digit', day: '2-digit',
                     })"
                 >
                     {{
                         (new Date(invite.invited_at * 1000)).toLocaleDateString({
-                            year: "numeric", month: "2-digit", day: "2-digit"
+                            year: "numeric", month: "2-digit", day: "2-digit",
                         })
                     }}
                 </div>
                 <div
                     v-if="areWeAnOp"
-                    :key="'actions' + invite.invited"
+                    :key="`actions${invite.invited}`"
                     class="kiwi-sidebar-settings-access-actions"
                 >
                     <i

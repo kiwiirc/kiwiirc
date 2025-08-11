@@ -1,8 +1,8 @@
 /** @module */
 
 import Vue from 'vue';
-import getState from '@/libs/state';
 import ipRegex from 'ip-regex';
+import getState from '@/libs/state';
 import * as IrcdDiffs from '@/helpers/IrcdDiffs';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import { def } from './common';
