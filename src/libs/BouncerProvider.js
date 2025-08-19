@@ -167,7 +167,9 @@ export default class BouncerProvider {
                 n.networkId === existingNet.connection.bncnetid
             ));
 
-            if (!existingNet.is_bnc && !isNetworkInBncList) {
+            // if bncnetid is missing then its a newly added network and does not need removing
+            const bncnetid = existingNet.connection.bncnetid;
+            if (!existingNet.is_bnc && bncnetid && !isNetworkInBncList) {
                 log.debug(`Network '${existingNet.name}' (${existingNet.id}) was not in the BNC, removing locally`);
                 this.state.removeNetwork(existingNet.id);
             }
@@ -322,12 +324,14 @@ export default class BouncerProvider {
 
     // Compare the current networks with our previously saved snapshot of
     // networks. Save any changes to the bouncer
-    saveState() {
-        let controller = this.getController();
-        if (!controller) {
-            log.debug('No controller available to save networks');
-            return;
-        }
+    async saveState() {
+        const changes = [
+            // {
+            //     type: add/save,
+            //     network: network,
+            //     tags: tags,
+            // }
+        ];
 
         this.state.networks.forEach((network) => {
             // don't save an empty controller to the network.
@@ -383,27 +387,64 @@ export default class BouncerProvider {
             // A newly added network would not have a snapshot name (bncnetid) property set yet.
             // Only save the network if we've entered connection info.
             if (!snapshot.bncnetid && tags.host && tags.port && tags.nick) {
-                log(`Saving new network ${network.name} to the BNC`);
-                // ?? network.connection.bncname = network.name;
-                controller.ircClient.bnc.addNetwork(
-                    network.name,
-                    tags.host,
-                    tags.port,
-                    tags.tls,
-                    tags.nick,
-                    tags.user,
-                    tags.password,
-                ).then((networkInfo) => {
-                    network.connection.bncnetid = networkInfo.networkId;
-                    network.name = networkInfo.network;
+                changes.push({
+                    type: 'add',
+                    tags: tags,
+                    network: network,
                 });
             } else if (snapshot.bncnetid && Object.keys(tags).length > 0) {
-                log(`Updating network ${network.name} on the BNC`);
-                controller.ircClient.bnc.saveNetwork(bncnetid, tags);
+                changes.push({
+                    type: 'save',
+                    tags: tags,
+                    network: network,
+                });
             }
         });
 
-        this.snapshotCurrentNetworks();
+        if (!changes.length) {
+            // nothing to do
+            return null;
+        }
+
+        let controller = await this.waitForController();
+        if (!controller) {
+            log.debug('No controller available to save networks');
+            return null;
+        }
+
+        const events = [];
+        for (let i = 0; i < changes.length; i++) {
+            const item = changes[i];
+            if (item.type === 'add') {
+                log(`Saving new network ${item.network.name} to the BNC`);
+                // ?? network.connection.bncname = network.name;
+                const event = controller.ircClient.bnc.addNetwork(
+                    item.network.name,
+                    item.tags.host,
+                    item.tags.port,
+                    item.tags.tls,
+                    item.tags.nick,
+                    item.tags.user,
+                    item.tags.password,
+                ).then((networkInfo) => {
+                    item.network.connection.bncnetid = networkInfo.networkId;
+                    item.network.name = networkInfo.network;
+                });
+                events.push(event);
+            } else if (item.type === 'save') {
+                log(`Updating network ${item.network.name} on the BNC`);
+                const bncnetid = item.network.connection.bncnetid;
+                const event = controller.ircClient.bnc.saveNetwork(bncnetid, item.tags);
+                events.push(event);
+            }
+        }
+
+        return Promise.all(events).then((results) => {
+            this.snapshotCurrentNetworks();
+            const eventObj = { events: results };
+            this.state.$emit('bouncer.synced', eventObj);
+            return results;
+        });
     }
 
     monitorNetworkChanges() {
@@ -426,28 +467,43 @@ export default class BouncerProvider {
         // Ie. Quickly creating a network and hitting connect before it's had time to
         //     save itself to the bouncer
         state.$on('network.connecting', (event) => {
+            if (!this.bnc.enabled || !this.rewriteConnections) {
+                return;
+            }
+
             // Redirect the connection towards the bouncer with the network specific password
             let network = event.network;
-            if (this.bnc.enabled && this.rewriteConnections) {
-                let netname = network.name;
+            let netname = network.name;
 
-                let ircClient = network.ircClient;
-                ircClient.options.host = this.bnc.server;
-                ircClient.options.port = this.bnc.port;
-                ircClient.options.tls = this.bnc.tls;
-
-                // Only re-write the server password for non-bnc controller networks
-                if (this.bnc.password && !event.network.is_bnc) {
-                    let password = `${this.bnc.username}/${netname}:${this.bnc.password}`;
-                    ircClient.options.password = password;
-                }
-
-                // The SASL auth already happens on the BNC, we only use it for UI purposes in kiwi
-                ircClient.options.account = {};
-
-                network.connection.direct = this.bnc.direct;
-                ircClient.options.path = this.bnc.path;
+            if (this.bnc.password && !network.is_bnc && !network.connection.bncnetid) {
+                // Network has not been synced yet
+                state.$once('bouncer.synced', () => {
+                    // getNetwork to ensure it still exists in the state
+                    const net = this.state.getNetwork(network.id);
+                    if (net && net.state === 'disconnected') {
+                        net.connect();
+                    }
+                });
+                event.handled = true;
+                return;
             }
+
+            let ircClient = network.ircClient;
+            ircClient.options.host = this.bnc.server;
+            ircClient.options.port = this.bnc.port;
+            ircClient.options.tls = this.bnc.tls;
+
+            // Only re-write the server password for non-bnc controller networks
+            if (this.bnc.password && !event.network.is_bnc) {
+                let password = `${this.bnc.username}/${netname}:${this.bnc.password}`;
+                ircClient.options.password = password;
+            }
+
+            // The SASL auth already happens on the BNC, we only use it for UI purposes in kiwi
+            ircClient.options.account = {};
+
+            network.connection.direct = this.bnc.direct;
+            ircClient.options.path = this.bnc.path;
         });
         state.$on('network.connecting', (event) => {
             let controller = this.getController();
@@ -547,5 +603,31 @@ export default class BouncerProvider {
         username = username.split('/')[0];
 
         return [username, password];
+    }
+
+    waitForController() {
+        return new Promise((resolve, reject) => {
+            const controller = this.getController();
+            if (controller) {
+                resolve(controller);
+                return;
+            }
+            const net = this.state.networks.find(
+                (n) => n.is_bnc && !n.connection.bncnetid && n.hidden
+            );
+            if (!net) {
+                reject();
+                return;
+            }
+            if (net.state !== 'connected') {
+                net.ircClient.once('motd', () => {
+                    this.controller = net;
+                    resolve(net);
+                });
+                net.ircClient.connect();
+                return;
+            }
+            resolve(net);
+        });
     }
 }
