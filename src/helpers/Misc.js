@@ -10,6 +10,16 @@ import * as TextFormatting from '@/helpers/TextFormatting';
 import { urlRegex } from './TextFormatting';
 
 const strftimeUTC = strftime.timezone('+0');
+const styleStripRegexp = new RegExp(
+    // Decimal Colours
+    /\x03[0-9]{0,2}(,[0-9]{1,2}|\u200B)?|/.source +
+    // Hex Colours
+    /\x04[0-9a-fA-F]{6}(,[0-9a-fA-F]{6}|\u200B)?|/.source +
+    // Styles
+    /[\x02\x1d\x1f\x1e\x11\x16\x0f]/.source,
+    'g'
+);
+
 /**
  * Extract an array of buffers from a string, parsing multiple buffer names and channel keys
  * "#chan,#chan2" => 2 channels without a key
@@ -46,7 +56,7 @@ export function extractURL(str) {
 }
 
 export function stripStyles(str) {
-    return str.replace(/(\x03[0-9]{0,2})?([\x02\x16\x1d\x1f]+)?/g, '');
+    return str.replace(styleStripRegexp, '');
 }
 
 /**
