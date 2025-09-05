@@ -44,11 +44,15 @@ describe('Misc.js', () => {
     });
 
     const styleStripTests = [
-        ['\x034Single \x034,3SingleBG', 'Single SingleBG'],
-        ['\x0304Foreground \x0304,03Background', 'Foreground Background'],
-        ['\x04f0f0f0Foreground \x04f0f0f0,0f0f0fBackground', 'Foreground Background'],
+        ['\x034Single \x034,3SingleBG\x03', 'Single SingleBG'],
+        ['\x0304Foreground\x03 \x0304,03Background', 'Foreground Background'],
+        ['\x03,03Bad\x03', ',03Bad'],
+        ['\x04f0f0f0Foreground\x04 \x04f0f0f0,0f0f0fBackground', 'Foreground Background'],
         ['\x04F0F0F0Foreground \x04F0F0F0,0F0F0FBackground', 'Foreground Background'],
+        ['\x04,f0f0f0Bad\x04', ',f0f0f0Bad'],
+        ['\x03\u200B04,14Foreground', '04,14Foreground'],
         ['\x0304\u200B,14Foreground', ',14Foreground'],
+        ['\x04\u200Bf0f0f0,123456Foreground', 'f0f0f0,123456Foreground'],
         ['\x04f0f0f0\u200B,123456Foreground', ',123456Foreground'],
         ['\x0304,Comma', ',Comma'],
         ['\x02Bold \x1dItalic \x1fUnderline \x1eStrikethrough \x11Monospace \x16Reverse \x0fReset', 'Bold Italic Underline Strikethrough Monospace Reverse Reset'],

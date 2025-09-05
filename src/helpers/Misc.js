@@ -12,9 +12,9 @@ import { urlRegex } from './TextFormatting';
 const strftimeUTC = strftime.timezone('+0');
 const styleStripRegexp = new RegExp(
     // Decimal Colours
-    /\x03[0-9]{0,2}(,[0-9]{1,2}|\u200B)?|/.source +
+    /(\x03(\u200B|[0-9]{1,2})(\u200B|,[0-9]{1,2})?|\x03)|/.source +
     // Hex Colours
-    /\x04[0-9a-fA-F]{6}(,[0-9a-fA-F]{6}|\u200B)?|/.source +
+    /(\x04(\u200B|[0-9a-fA-F]{6})(\u200B|,[0-9a-fA-F]{6})?|\x04)|/.source +
     // Styles
     /[\x02\x1d\x1f\x1e\x11\x16\x0f]/.source,
     'g'
