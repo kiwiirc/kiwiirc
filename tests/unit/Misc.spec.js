@@ -45,4 +45,171 @@ describe('Misc.js', () => {
         expect(server.toUri()).toEqual(uri);
         expect(server).toMatchObject(obj);
     });
+
+    const dedotTests = [
+        {
+            name: 'keeps flat objects unchanged',
+            input: { test1: 'test1' },
+            expected: { test1: 'test1' },
+        },
+        {
+            name: 'dedots a single nested key',
+            input: {
+                test1: {
+                    'test2.test3': 'test3',
+                },
+            },
+            expected: {
+                test1: {
+                    test2: {
+                        test3: 'test3',
+                    },
+                },
+            },
+        },
+        {
+            name: 'dedots multiple dotted keys at the same level',
+            input: {
+                'a.b': 1,
+                'a.c': 2,
+            },
+            expected: {
+                a: {
+                    b: 1,
+                    c: 2,
+                },
+            },
+        },
+        {
+            name: 'preserves non-dotted siblings',
+            input: {
+                'a': 1,
+                'b.c': 2,
+            },
+            expected: {
+                a: 1,
+                b: {
+                    c: 2,
+                },
+            },
+        },
+        {
+            name: 'merges into existing nested objects',
+            input: {
+                'a': {
+                    b: {
+                        c: 1,
+                    },
+                },
+                'a.b.d': 2,
+            },
+            expected: {
+                a: {
+                    b: {
+                        c: 1,
+                        d: 2,
+                    },
+                },
+            },
+        },
+        {
+            name: 'does not overwrite existing values when expanding keys',
+            input: {
+                'a': {
+                    b: 1,
+                },
+                'a.b.c': 2,
+            },
+            expected: {
+                a: {
+                    b: {
+                        c: 2,
+                    },
+                },
+            },
+        },
+        {
+            name: 'ignores empty path segments',
+            input: {
+                'a..b': 1,
+            },
+            expected: {
+                a: {
+                    b: 1,
+                },
+            },
+        },
+        {
+            name: 'handles leading and trailing dots',
+            input: {
+                '.a.b.': 1,
+            },
+            expected: {
+                a: {
+                    b: 1,
+                },
+            },
+        },
+        {
+            name: 'does not dedot inside arrays',
+            input: {
+                a: [
+                    { 'b.c': 1 },
+                ],
+            },
+            expected: {
+                a: [
+                    { 'b.c': 1 },
+                ],
+            },
+        },
+        {
+            name: 'preserves null and undefined values',
+            input: {
+                'a.b': null,
+                'c': undefined,
+            },
+            expected: {
+                a: {
+                    b: null,
+                },
+                c: undefined,
+            },
+        },
+        {
+            name: 'treats numeric path segments as object keys',
+            input: {
+                'a.0.b': 'value',
+            },
+            expected: {
+                a: {
+                    0: {
+                        b: 'value',
+                    },
+                },
+            },
+        },
+        {
+            name: 'is safe when run multiple times',
+            input: {
+                a: {
+                    b: {
+                        c: 1,
+                    },
+                },
+            },
+            expected: {
+                a: {
+                    b: {
+                        c: 1,
+                    },
+                },
+            },
+        },
+    ];
+
+    test.each(dedotTests)('dedotObject: $name', ({ input, expected }) => {
+        Misc.dedotObject(input);
+        expect(input).toMatchObject(expected);
+    });
 });

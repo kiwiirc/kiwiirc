@@ -337,19 +337,23 @@ export function connectionToUri(conn) {
  * Scan though an object and extend any dot notated keys
  * @param {Object} confObj Source object to traverse
  */
-export function dedotObject(confObj, _place) {
-    let place = _place || [];
-    let regex = /\w\.\w/;
+export function dedotObject(confObj) {
+    if (_.isArray(confObj)) {
+        return;
+    }
 
     _.each(confObj, (val, key) => {
-        let ourPlace = place.concat([key]);
-        if (typeof val === 'object') {
-            dedotObject(confObj[key], ourPlace);
-            return;
+        if (typeof key === 'string' && key.includes('.')) {
+            const path = key.split('.').filter(Boolean);
+            if (path.length > 1) {
+                delete confObj[key];
+                _.set(confObj, path, val);
+                return;
+            }
         }
-        if (regex.test(key)) {
-            delete confObj[key];
-            _.set(confObj, ourPlace.join('.'), val);
+
+        if (_.isPlainObject(val)) {
+            dedotObject(val);
         }
     });
 }
