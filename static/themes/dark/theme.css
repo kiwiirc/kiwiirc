@@ -46,6 +46,11 @@
     --kiwi-nickcolour-lightness: 40;
 }
 
+.kiwi-wrap select option {
+    background-color: var(--brand-default-bg);
+    color: var(--brand-default-fg);
+}
+
 .kiwi-header {
     border-bottom-color: #000;
 }
