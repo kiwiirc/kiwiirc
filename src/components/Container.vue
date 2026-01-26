@@ -6,6 +6,8 @@
             'kiwi-container--sidebar-open': sidebarState.isOpen,
             'kiwi-container--no-sidebar': buffer && buffer.isSpecial,
         }" class="kiwi-container"
+        @touchstart="onTouchStart"
+        @touchend="onTouchEnd"
     >
         <template v-if="buffer">
             <div class="kiwi-container-toggledraw-statebrowser" @click.stop="toggleStateBrowser">
@@ -83,6 +85,7 @@ export default {
     props: ['network', 'buffer', 'sidebarState'],
     data: function data() {
         return {
+            touchStartPos: null,
         };
     },
     computed: {
@@ -178,6 +181,39 @@ export default {
             if (this.buffer.isChannel()) {
                 this.$state.$emit('sidebar.toggle');
             }
+        },
+        onTouchStart(event) {
+            this.touchStartPos = {
+                x: event.changedTouches[0].clientX,
+                y: event.changedTouches[0].clientY,
+            };
+        },
+        onTouchEnd(event) {
+            if (!this.touchStartPos) {
+                return;
+            }
+
+            let touchEndPos = {
+                x: event.changedTouches[0].clientX,
+                y: event.changedTouches[0].clientY,
+            };
+
+            let xDiff = touchEndPos.x - this.touchStartPos.x;
+            let yDiff = touchEndPos.y - this.touchStartPos.y;
+
+            if (Math.abs(xDiff) > Math.abs(yDiff) && Math.abs(xDiff) > 70) {
+                if (xDiff < 0) {
+                    // Swipe left
+                    if (this.touchStartPos.x >= window.innerWidth - 40) {
+                        this.sidebarState.showNicklist();
+                    }
+                } else {
+                    // Swipe right
+                    this.sidebarState.close();
+                }
+            }
+
+            this.touchStartPos = null;
         },
     },
 };
