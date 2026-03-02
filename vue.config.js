@@ -38,10 +38,11 @@ module.exports = {
         optimization: {
             splitChunks: {
                 cacheGroups: {
-                    // replace the vendors test so it does not chunk css files
-                    vendors: {
-                        name: 'vendor',
-                        test: (m) => /[\\/]node_modules[\\/]/.test(m.context) && m.constructor.name !== 'CssModule',
+                    defaultVendors: {
+                        name: 'chunk-vendors',
+                        chunks: 'all',
+                        enforce: true,
+                        test: (m) => /[\\/]node_modules[\\/]/.test(m.resource ?? m.context ?? '') && m.constructor.name !== 'CssModule',
                     },
                 },
             },
