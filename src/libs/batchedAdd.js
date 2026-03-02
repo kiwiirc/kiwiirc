@@ -70,5 +70,14 @@ export default function batchedAdd(singleFn, batchedFn, numInsertsSec = 3) {
         return queue;
     };
 
+    batchFn.flush = function flushQueue() {
+        if (!queue.length) {
+            return;
+        }
+        let q = queue;
+        queue = [];
+        batchedFn(q);
+    };
+
     return batchFn;
 }
