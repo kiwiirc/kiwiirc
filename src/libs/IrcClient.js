@@ -171,7 +171,7 @@ function clientMiddleware(state, network) {
             network.state = 'disconnected';
 
             if (err) {
-                network.state_error = (typeof err === 'string') ? err : 'err_unknown';
+                network.state_error = (err && err.message) || err || 'err_unknown';
             }
 
             let currentUser = network.currentUser();
