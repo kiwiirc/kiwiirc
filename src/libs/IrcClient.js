@@ -171,7 +171,25 @@ function clientMiddleware(state, network) {
             network.state = 'disconnected';
 
             if (err) {
-                network.state_error = (err && err.message) || err || 'err_unknown';
+                if (typeof err === 'string') {
+                    network.state_error = err;
+                } else if (err.code) {
+                    const nodeErrMap = {
+                        ECONNREFUSED: 'err_refused',
+                        ENOTFOUND: 'err_unknown_host',
+                        EAI_AGAIN: 'err_unknown_host',
+                        ETIMEDOUT: 'err_timeout',
+                        ECONNABORTED: 'err_timeout',
+                        EHOSTUNREACH: 'err_timeout',
+                    };
+                    if (err.code.startsWith('ERR_TLS') || err.code.startsWith('CERT_') || err.code.startsWith('UNABLE_TO_')) {
+                        network.state_error = 'err_tls';
+                    } else {
+                        network.state_error = nodeErrMap[err.code] || 'err_unknown';
+                    }
+                } else {
+                    network.state_error = 'err_unknown';
+                }
             }
 
             let currentUser = network.currentUser();
