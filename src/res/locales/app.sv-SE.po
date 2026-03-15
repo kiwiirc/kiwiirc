@@ -13,11 +13,11 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Swedish\n"
 "Language: sv_SE\n"
-"PO-Revision-Date: 2025-03-05 14:49\n"
+"PO-Revision-Date: 2026-03-15 15:23\n"
 
 #: Start
 msgid "start_button"
-msgstr "Start"
+msgstr "Starta"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
@@ -45,7 +45,7 @@ msgstr "Inställningar"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr "Kiwi Settings"
+msgstr "Inställningar för Kiwi"
 
 #: Channels
 msgid "channels"
@@ -53,19 +53,19 @@ msgstr "Kanaler"
 
 #: Access
 msgid "access"
-msgstr "Access"
+msgstr "Åtkomst"
 
 #: Banned Users
 msgid "banned"
-msgstr "Banned Users"
+msgstr "Bannlysta användare"
 
 #: Invited Users
 msgid "invited"
-msgstr "Invited Users"
+msgstr "Inbjudna användare"
 
 #: Notifications
 msgid "notifications"
-msgstr "Notifications"
+msgstr "Aviseringar"
 
 #: Username
 msgid "username"
@@ -77,7 +77,7 @@ msgstr "Lösenord"
 
 #: Server Password
 msgid "server_password"
-msgstr "Server Password"
+msgstr "Lösenord för servern"
 
 #: I have a password
 msgid "password_have"
@@ -89,7 +89,7 @@ msgstr "Server"
 
 #: Nick
 msgid "nick"
-msgstr "Nick"
+msgstr "Smeknamn"
 
 #: Channel
 msgid "channel"
@@ -97,7 +97,7 @@ msgstr "Kanal"
 
 #: Channels
 msgid "channels"
-msgstr "Channels"
+msgstr "Kanaler"
 
 #: Messages
 msgid "messages"
@@ -109,7 +109,7 @@ msgstr "Protocol"
 
 #: Network
 msgid "network"
-msgstr "Network"
+msgstr "Nätverk"
 
 #: Networks
 msgid "networks"
@@ -125,7 +125,7 @@ msgstr "Loggar in..."
 
 #: Invalid login
 msgid "invalid_login"
-msgstr "Invalid login"
+msgstr "Ogiltig inloggning"
 
 #: Login failed. Please try again or contact support
 msgid "login_failed"
@@ -161,7 +161,7 @@ msgstr "Nej"
 
 #: Not found.
 msgid "not_found"
-msgstr "Not found."
+msgstr "Hittades inte."
 
 #: Warning!
 msgid "warning"
@@ -169,11 +169,11 @@ msgstr "Varning!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "This will close all Kiwi IRC conversations. Are you sure you want to close this window?"
+msgstr "Det här kommer att stänga alla Kiwi IRC-konversationer. Är du säker på att du vill stänga det här fönstret?"
 
 #: Real name
 msgid "whois_realname"
-msgstr "Real name"
+msgstr "Riktigt namn"
 
 #: Status
 msgid "whois_status"
@@ -197,7 +197,7 @@ msgstr "Ignorera användare"
 
 #: Channel
 msgid "connection_channel"
-msgstr "Channel"
+msgstr "Kanal"
 
 #: Away
 msgid "away"
