@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Swedish\n"
 "Language: sv_SE\n"
-"PO-Revision-Date: 2026-03-15 20:12\n"
+"PO-Revision-Date: 2026-03-15 21:11\n"
 
 #: Start
 msgid "start_button"
@@ -549,7 +549,7 @@ msgstr "Show statebrowser"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr "Hide Topic"
+msgstr "Dölj ämne"
 
 #: Display Topic
 msgid "display_topic"
@@ -921,7 +921,7 @@ msgstr "Sparka ut från kanalen"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr "Ban from the channel"
+msgstr "Bannlys från kanalen"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
@@ -965,7 +965,7 @@ msgstr "Unknown domain name or host"
 
 #: Forbidden to connect
 msgid "error_forbidden"
-msgstr "Forbidden to connect"
+msgstr "Förbjuds att ansluta"
 
 #: Took too long to connect
 msgid "error_timeout"
@@ -1069,7 +1069,7 @@ msgstr "Leave, then re-join a channel"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr "Change your nickname"
+msgstr "Ändra ditt smeknamn"
 
 #: Start a private conversation with someone
 msgid "command_query"
@@ -1121,7 +1121,7 @@ msgstr "Request information on somebody that disconnected recently"
 
 #: Set yourself as away
 msgid "command_away"
-msgstr "Set yourself as away"
+msgstr "Ställ in dig själv som borta"
 
 #: Set yourself as active
 msgid "command_back"
