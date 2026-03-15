@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Swedish\n"
 "Language: sv_SE\n"
-"PO-Revision-Date: 2026-03-15 16:38\n"
+"PO-Revision-Date: 2026-03-15 18:34\n"
 
 #: Start
 msgid "start_button"
@@ -281,7 +281,7 @@ msgstr "Webbadress för tema"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr "Message Layout"
+msgstr "Meddelandelayout"
 
 #: Use monospace
 msgid "settings_use_monospace"
@@ -301,7 +301,7 @@ msgstr "Show autocomplete list"
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr "Chat Messages"
+msgstr "Chattmeddelanden"
 
 #: Show timestamps
 msgid "settings_timestamps"
@@ -313,7 +313,7 @@ msgstr "Use 24-hour timestamps"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr "Show emoticons"
+msgstr "Visa symboler för ansiktsuttryck"
 
 #: Block new Private messages
 msgid "settings_block_private"
@@ -357,23 +357,23 @@ msgstr "Aliaser"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "What are aliases?"
+msgstr "Vad är alias?"
 
 #: Send Message
 msgid "send_message"
-msgstr "Send Message"
+msgstr "Skicka meddelande"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr "Enter Channel Key"
+msgstr "Fyll i nyckeln för kanalen"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr "Rejoin {{channel}}"
+msgstr "Gå in i {{channel}} igen"
 
 #: Notify me when
 msgid "settings_notify"
-msgstr "Notify me when"
+msgstr "Avisera mig när"
 
 #: All messages
 msgid "settings_notify_all"
@@ -381,7 +381,7 @@ msgstr "Alla meddelanden"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr "I am mentioned"
+msgstr "Jag omnämns"
 
 #: Never
 msgid "settings_notify_never"
@@ -389,7 +389,7 @@ msgstr "Aldrig"
 
 #: Mute sounds
 msgid "settings_notify_mute"
-msgstr "Mute sounds"
+msgstr "Stäng av ljud"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
@@ -405,11 +405,11 @@ msgstr "Default ban mask"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
-msgstr "Default kick reason"
+msgstr "Standardorsak till utsparkning"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
-msgstr "Advanced Settings"
+msgstr "Avancerade inställningar"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
@@ -437,7 +437,7 @@ msgstr "Refresh ban list"
 
 #: Banned user
 msgid "bans_user"
-msgstr "Banned user"
+msgstr "Bannlyste användaren"
 
 #: Banned by
 msgid "bans_by"
@@ -449,7 +449,7 @@ msgstr "Refreshing ban list..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr "Nobody is banned!"
+msgstr "Ingen är bannlyst!"
 
 #: Add ban
 msgid "bans_add_ban"
@@ -457,11 +457,11 @@ msgstr "Lägg till bannlysning"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr "Refresh invite list"
+msgstr "Uppdatera inbjudningslista"
 
 #: Invited user
 msgid "invites_user"
-msgstr "Invited user"
+msgstr "Bjöd in användaren"
 
 #: Invited by
 msgid "invites_by"
@@ -473,7 +473,7 @@ msgstr "Refreshing invite list..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr "Nobody is invited!"
+msgstr "Ingen är inbjuden!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
@@ -513,11 +513,11 @@ msgstr "Ämne"
 
 #: Moderated chat
 msgid "channel_moderated"
-msgstr "Moderated chat"
+msgstr "Modererad chatt"
 
 #: Invite only
 msgid "channel_invite"
-msgstr "Invite only"
+msgstr "Endast inbjudan"
 
 #: Hide this channel from lists
 msgid "channel_secret"
@@ -561,7 +561,7 @@ msgstr "Channel Settings"
 
 #: Join Channel
 msgid "container_join"
-msgstr "Join Channel"
+msgstr "Gå in i kanal"
 
 #: Not Connected
 msgid "container_notconnected"
@@ -573,7 +573,7 @@ msgstr "Private conversation with {{user}}"
 
 #: Send a message...
 msgid "input_placeholder"
-msgstr "Send a message..."
+msgstr "Skicka ett meddelande..."
 
 #: This message looks like a command but is preceded by spaces.
 msgid "input_not_command"
@@ -581,11 +581,11 @@ msgstr "This message looks like a command but is preceded by spaces."
 
 #: Send as text?
 msgid "input_send_text"
-msgstr "Send as text?"
+msgstr "Skicka som text?"
 
 #: Loading {{url}}...
 msgid "media_loading"
-msgstr "Loading {{url}}..."
+msgstr "Laddar {{url}}..."
 
 #: Load previous messages
 msgid "messages_load"
@@ -605,11 +605,11 @@ msgstr "Reply in private"
 
 #: Kick reason
 msgid "kick_reason"
-msgstr "Kick reason"
+msgstr "Orsak för utsparkning"
 
 #: Server details
 msgid "settings_server_details"
-msgstr "Server details"
+msgstr "Serverns detaljer"
 
 #: Preset Servers
 msgid "preset_servers"
@@ -617,7 +617,7 @@ msgstr "Preset Servers"
 
 #: Custom Server
 msgid "custom_server"
-msgstr "Custom Server"
+msgstr "Anpassad server"
 
 #: Port
 msgid "settings_port"
@@ -629,7 +629,7 @@ msgstr "Other networks on this ZNC account will be listed in the network list"
 
 #: Your details
 msgid "settings_your_details"
-msgstr "Your details"
+msgstr "Dina detaljer"
 
 #: Nickname
 msgid "settings_nickname"
@@ -657,11 +657,11 @@ msgstr "Run commands when connected"
 
 #: Danger Zone
 msgid "settings_danger"
-msgstr "Danger Zone"
+msgstr "Farozon"
 
 #: Remove network
 msgid "settings_remove"
-msgstr "Remove network"
+msgstr "Ta bort nätverk"
 
 #: {{count}} person here
 msgid "person"
@@ -693,7 +693,7 @@ msgstr "You are not currently connected!"
 
 #: Connection settings
 msgid "reconnect_settings"
-msgstr "Connection settings"
+msgstr "Inställningar för anslutningen"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
@@ -701,7 +701,7 @@ msgstr "We couldn't connect to that server :("
 
 #: Connect To Network
 msgid "network_connect"
-msgstr "Connect To Network"
+msgstr "Anslut till nätverk"
 
 #: Network Connecting...
 msgid "network_connecting"
@@ -713,7 +713,7 @@ msgstr "Disconnect From Network"
 
 #: Network Name
 msgid "network_name"
-msgstr "Network Name"
+msgstr "Nätverkets namn"
 
 #: Close options
 msgid "side_close"
@@ -753,7 +753,7 @@ msgstr "Nick colours in the list"
 
 #: No buffer set
 msgid "side_buffer"
-msgstr "No buffer set"
+msgstr "Ingen buffring är inställd"
 
 #: About
 msgid "about"
@@ -773,7 +773,7 @@ msgstr "Created on {{when}}"
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr "Created at {{when}}"
+msgstr "Skapades {{when}}"
 
 #: Highlights
 msgid "highlights"
@@ -817,15 +817,15 @@ msgstr "Lägg till en?"
 
 #: Available networks
 msgid "state_available"
-msgstr "Available networks"
+msgstr "Tillgängliga nätverk"
 
 #: Add Network
 msgid "add_network"
-msgstr "Add Network"
+msgstr "Lägg till nätverk"
 
 #: New Network
 msgid "new_network"
-msgstr "New Network"
+msgstr "Nytt nätverk"
 
 #: No Network
 msgid "no_network"
@@ -833,15 +833,15 @@ msgstr "Inget nätverk"
 
 #: Configure network
 msgid "state_configure"
-msgstr "Configure network"
+msgstr "Konfigurera nätverket"
 
 #: Not connected.
 msgid "state_disconnected"
-msgstr "Not connected."
+msgstr "Inte ansluten."
 
 #: Join new #channel
 msgid "state_join"
-msgstr "Join new #channel"
+msgstr "Gå in i en ny #kanal"
 
 #: Filter Channels
 msgid "filter_channels"
@@ -849,7 +849,7 @@ msgstr "Filter channels"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Find More Channels"
+msgstr "Hitta fler kanaler"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
@@ -865,7 +865,7 @@ msgstr "Really close this chat?"
 
 #: Change nick
 msgid "change_nick"
-msgstr "Change nick"
+msgstr "Ändra smeknamn"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
@@ -873,7 +873,7 @@ msgstr "Enter new nickname..."
 
 #: This is you!
 msgid "user_you"
-msgstr "This is you!"
+msgstr "Det här är du!"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -909,7 +909,7 @@ msgstr "In channels {{channels}}"
 
 #: Access level
 msgid "user_access"
-msgstr "Access level"
+msgstr "Åtkomstnivå"
 
 #: Normal
 msgid "user_normal"
@@ -933,7 +933,7 @@ msgstr "Select a Channel"
 
 #: Invite User
 msgid "invite_user"
-msgstr "Invite User"
+msgstr "Bjud in användare"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
@@ -985,7 +985,7 @@ msgstr "The Kiwi IRC server had an error"
 
 #: Unknown error
 msgid "error_unknown"
-msgstr "Unknown error"
+msgstr "Okänt fel"
 
 #: Bad username or password
 msgid "error_password_mismatch"
@@ -1057,7 +1057,7 @@ msgstr "Do something physical"
 
 #: Join a channel
 msgid "command_join"
-msgstr "Join a channel"
+msgstr "Gå in i en kanal"
 
 #: Leave a channel
 msgid "command_part"
@@ -1141,7 +1141,7 @@ msgstr "Stop ignoring somebody"
 
 #: Roll a Dice
 msgid "command_dice"
-msgstr "Roll a Dice"
+msgstr "Kasta en tärning"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
@@ -1189,7 +1189,7 @@ msgstr "Temporarily connect to this network"
 
 #: Saved networks
 msgid "personal_saved"
-msgstr "Saved networks"
+msgstr "Sparade nätverk"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
@@ -1209,7 +1209,7 @@ msgstr "Give the developer version of Kiwi IRC a try!"
 
 #: Disconnected
 msgid "disconnected"
-msgstr "Disconnected"
+msgstr "Frånkopplad"
 
 #: Connected to {{network}}!
 msgid "connected_to"
