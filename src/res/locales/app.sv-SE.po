@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Swedish\n"
 "Language: sv_SE\n"
-"PO-Revision-Date: 2026-03-15 15:23\n"
+"PO-Revision-Date: 2026-03-15 16:38\n"
 
 #: Start
 msgid "start_button"
@@ -105,7 +105,7 @@ msgstr "Meddelanden"
 
 #: Protocol
 msgid "protocol"
-msgstr "Protocol"
+msgstr "Protokoll"
 
 #: Network
 msgid "network"
@@ -113,7 +113,7 @@ msgstr "Nätverk"
 
 #: Networks
 msgid "networks"
-msgstr "Networks"
+msgstr "Nätverk"
 
 #: ZNC
 msgid "znc"
@@ -181,15 +181,15 @@ msgstr "Status"
 
 #: Is available
 msgid "whois_status_available"
-msgstr "Is available"
+msgstr "Är tillgänglig"
 
 #: Send a message
 msgid "send_a_message"
-msgstr "Send a message"
+msgstr "Skicka ett meddelande"
 
 #: More information
 msgid "more_information"
-msgstr "More information"
+msgstr "Mer information"
 
 #: Ignore user
 msgid "ignore_user"
@@ -201,7 +201,7 @@ msgstr "Kanal"
 
 #: Away
 msgid "away"
-msgstr "Away"
+msgstr "Borta"
 
 #: Toggle Away Status
 msgid "toggle_away"
@@ -209,15 +209,15 @@ msgstr "Toggle Away Status"
 
 #: Kick
 msgid "kick"
-msgstr "Kick"
+msgstr "Sparka ut"
 
 #: Ban
 msgid "ban"
-msgstr "Ban"
+msgstr "Bannlys"
 
 #: Preview
 msgid "preview"
-msgstr "Preview"
+msgstr "Förhandsgranska"
 
 #: {{count}} week
 msgid "week"
@@ -273,11 +273,11 @@ msgstr "Tema"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr "Refresh Theme"
+msgstr "Uppdatera tema"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr "Theme URL"
+msgstr "Webbadress för tema"
 
 #: Message Layout
 msgid "settings_messagelayout"
@@ -353,7 +353,7 @@ msgstr "Highlight on words (space separated)"
 
 #: Aliases
 msgid "settings_aliases"
-msgstr "Aliases"
+msgstr "Aliaser"
 
 #: What are Aliases
 msgid "what_are_aliases"
@@ -441,7 +441,7 @@ msgstr "Banned user"
 
 #: Banned by
 msgid "bans_by"
-msgstr "Banned by"
+msgstr "Bannlystes av"
 
 #: Refreshing ban list...
 msgid "bans_refreshing"
@@ -453,7 +453,7 @@ msgstr "Nobody is banned!"
 
 #: Add ban
 msgid "bans_add_ban"
-msgstr "Add ban"
+msgstr "Lägg till bannlysning"
 
 #: Refresh invite list
 msgid "invites_refresh"
@@ -465,7 +465,7 @@ msgstr "Invited user"
 
 #: Invited by
 msgid "invites_by"
-msgstr "Invited by"
+msgstr "Bjöds in av"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
@@ -497,7 +497,7 @@ msgstr "Only registered users can join"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr "Add invite"
+msgstr "Lägg till inbjudan"
 
 #: (Any registered user)
 msgid "invite_any_registered"
@@ -505,11 +505,11 @@ msgstr "(Any registered user)"
 
 #: Mods Only
 msgid "mods_only"
-msgstr "Mods Only"
+msgstr "Endast mod:ar"
 
 #: Topic
 msgid "channel_topic"
-msgstr "Topic"
+msgstr "Ämne"
 
 #: Moderated chat
 msgid "channel_moderated"
@@ -553,7 +553,7 @@ msgstr "Hide Topic"
 
 #: Display Topic
 msgid "display_topic"
-msgstr "Display Topic"
+msgstr "Visa ämne"
 
 #: Channel Settings
 msgid "channel_settings"
@@ -565,7 +565,7 @@ msgstr "Join Channel"
 
 #: Not Connected
 msgid "container_notconnected"
-msgstr "Not Connected"
+msgstr "Ej ansluten"
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
@@ -637,11 +637,11 @@ msgstr "Smeknamn"
 
 #: Advanced
 msgid "settings_advanced"
-msgstr "Advanced"
+msgstr "Avancerat"
 
 #: Encoding
 msgid "settings_encoding"
-msgstr "Encoding"
+msgstr "Kodning"
 
 #: Show Raw
 msgid "settings_show_raw"
@@ -725,7 +725,7 @@ msgstr "Channel options"
 
 #: Your settings
 msgid "side_settings"
-msgstr "Your settings"
+msgstr "Dina inställningar"
 
 #: Show when people join
 msgid "side_joins"
@@ -757,7 +757,7 @@ msgstr "No buffer set"
 
 #: About
 msgid "about"
-msgstr "About"
+msgstr "Om"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
@@ -777,7 +777,7 @@ msgstr "Created at {{when}}"
 
 #: Highlights
 msgid "highlights"
-msgstr "Highlights"
+msgstr "Höjdpunkter"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
@@ -805,7 +805,7 @@ msgstr "Your settings and networks will be remembered on this computer."
 
 #: Forget me
 msgid "state_forget"
-msgstr "Forget me"
+msgstr "Glöm mig"
 
 #: No networks here yet.
 msgid "state_network"
@@ -813,7 +813,7 @@ msgstr "No networks here yet."
 
 #: Add one?
 msgid "state_add"
-msgstr "Add one?"
+msgstr "Lägg till en?"
 
 #: Available networks
 msgid "state_available"
@@ -829,7 +829,7 @@ msgstr "New Network"
 
 #: No Network
 msgid "no_network"
-msgstr "No Network"
+msgstr "Inget nätverk"
 
 #: Configure network
 msgid "state_configure"
@@ -885,7 +885,7 @@ msgstr "Real name: {{realname}}"
 
 #: Is a bot
 msgid "user_bot"
-msgstr "Is a bot"
+msgstr "Är en bot"
 
 #: Is available for help
 msgid "user_help"
@@ -1049,7 +1049,7 @@ msgstr "{{nick}} sets {{mode}} on {{target}}"
 
 #: Send a message
 msgid "command_msg"
-msgstr "Send a message"
+msgstr "Skicka ett meddelande"
 
 #: Do something physical
 msgid "command_action"
@@ -1085,7 +1085,7 @@ msgstr "Set the topic for this channel"
 
 #: Send a notice
 msgid "command_notice"
-msgstr "Send a notice"
+msgstr "Skicka en notis"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
@@ -1169,7 +1169,7 @@ msgstr "They will be here when you come back."
 
 #: Add a Network
 msgid "personal_add"
-msgstr "Add a Network"
+msgstr "Lägg till ett nätverk"
 
 #: You are trying to connect to {{network}}
 msgid "personal_connect_to"
