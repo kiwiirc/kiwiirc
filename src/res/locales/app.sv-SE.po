@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Swedish\n"
 "Language: sv_SE\n"
-"PO-Revision-Date: 2026-03-15 21:11\n"
+"PO-Revision-Date: 2026-03-15 22:13\n"
 
 #: Start
 msgid "start_button"
@@ -261,7 +261,7 @@ msgstr "{{count}} sekunder"
 
 #: General
 msgid "settings_general"
-msgstr "General"
+msgstr "Generellt"
 
 #: Language
 msgid "settings_language"
@@ -289,7 +289,7 @@ msgstr "Use monospace"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr "Use Kiwi as my default IRC client"
+msgstr "Använd Kiwi som standard-klient för IRC"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
@@ -317,7 +317,7 @@ msgstr "Visa symboler för ansiktsuttryck"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr "Block new private messages"
+msgstr "Blockera nya privata meddelanden"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
@@ -413,7 +413,7 @@ msgstr "Avancerade inställningar"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
-msgstr "Monsters be here, only click this button if you know what you are doing"
+msgstr "Det finns monster här, klicka endast på den här knappen om du vet vad du gör"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
@@ -421,7 +421,7 @@ msgstr "Aktivera avancerade inställningar"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr "Danger Zone: Changing some of these settings may break things!"
+msgstr "Farozon: Att ändra några utav de här inställningarna kan göra att saker går sönder!"
 
 #: Reset
 msgid "settings_advanced_reset"
