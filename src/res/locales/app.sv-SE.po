@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Swedish\n"
 "Language: sv_SE\n"
-"PO-Revision-Date: 2026-03-15 18:34\n"
+"PO-Revision-Date: 2026-03-15 20:12\n"
 
 #: Start
 msgid "start_button"
@@ -137,7 +137,7 @@ msgstr "You are now logged in as '{{account}}'"
 
 #: You have been logged out
 msgid "logged_out"
-msgstr "You have been logged out"
+msgstr "Du har blivit utloggad"
 
 #: Search...
 msgid "do_search"
@@ -293,11 +293,11 @@ msgstr "Use Kiwi as my default IRC client"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr "Traditional IRC layout"
+msgstr "Traditionell IRC-layout"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr "Show autocomplete list"
+msgstr "Visa listan för automatisk komplettering"
 
 #: Chat Messages
 msgid "settings_messages_title"
@@ -305,11 +305,11 @@ msgstr "Chattmeddelanden"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr "Show timestamps"
+msgstr "Visa tidsstämplar"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr "Use 24-hour timestamps"
+msgstr "Använd tidsstämplar för 24 timmar"
 
 #: Show emoticons
 msgid "settings_emoticons"
@@ -325,7 +325,7 @@ msgstr "Messages in scrollback"
 
 #: Extra formatting
 msgid "settings_formatting"
-msgstr "Extra formatting"
+msgstr "Ytterligare formatering"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
@@ -333,7 +333,7 @@ msgstr "Colour nicknames in messages"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
-msgstr "Share when I'm typing a message"
+msgstr "Dela när jag skriver ett meddelande"
 
 #: Show inline image previews
 msgid "settings_show_inline_previews"
@@ -345,7 +345,7 @@ msgstr "Include join/part messages as activity"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
-msgstr "Mute sound notifications"
+msgstr "Tysta ner ljudaviseringar"
 
 #: Highlight on words (space separated)
 msgid "settings_highlight"
@@ -417,7 +417,7 @@ msgstr "Monsters be here, only click this button if you know what you are doing"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
-msgstr "Enable Advanced Settings"
+msgstr "Aktivera avancerade inställningar"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
@@ -433,7 +433,7 @@ msgstr "Filter"
 
 #: Refresh ban list
 msgid "bans_refresh"
-msgstr "Refresh ban list"
+msgstr "Uppdatera bannlysningslistan"
 
 #: Banned user
 msgid "bans_user"
@@ -445,7 +445,7 @@ msgstr "Bannlystes av"
 
 #: Refreshing ban list...
 msgid "bans_refreshing"
-msgstr "Refreshing ban list..."
+msgstr "Uppdatera bannlysningslistan..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -485,15 +485,15 @@ msgstr "Only invited users can join."
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr "Only allow invited users"
+msgstr "Tillåt endast inbjudna användare"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr "Allow anybody to join"
+msgstr "Tillåt vem som helst att gå med"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr "Only registered users can join"
+msgstr "Endast registrerade användare kan gå med"
 
 #: Add invite
 msgid "invite_add_invite"
@@ -501,7 +501,7 @@ msgstr "Lägg till inbjudan"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr "(Any registered user)"
+msgstr "(Alla registrerade användare)"
 
 #: Mods Only
 msgid "mods_only"
@@ -557,7 +557,7 @@ msgstr "Visa ämne"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr "Channel Settings"
+msgstr "Inställningar för kanalen"
 
 #: Join Channel
 msgid "container_join"
@@ -589,7 +589,7 @@ msgstr "Laddar {{url}}..."
 
 #: Load previous messages
 msgid "messages_load"
-msgstr "Load previous messages"
+msgstr "Ladda föregående meddelanden"
 
 #: Loading previous messages...
 msgid "messages_loading"
@@ -601,7 +601,7 @@ msgstr "Olästa meddelanden"
 
 #: Reply in private
 msgid "reply_in_private"
-msgstr "Reply in private"
+msgstr "Svara privat"
 
 #: Kick reason
 msgid "kick_reason"
@@ -665,15 +665,15 @@ msgstr "Ta bort nätverk"
 
 #: {{count}} person here
 msgid "person"
-msgstr "{{count}} person here"
+msgstr "{{count}} personer här"
 
 #: {{count}} people here
 msgid "person_plural"
-msgstr "{{count}} people here"
+msgstr "{{count}} personer här"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filter users in channel"
+msgstr "Filtrera användare i kanal"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -689,7 +689,7 @@ msgstr "Reconnect to continue talking with {{user}}"
 
 #: You are not currently connected!
 msgid "not_connected"
-msgstr "You are not currently connected!"
+msgstr "Du är för närvarande inte ansluten!"
 
 #: Connection settings
 msgid "reconnect_settings"
@@ -705,11 +705,11 @@ msgstr "Anslut till nätverk"
 
 #: Network Connecting...
 msgid "network_connecting"
-msgstr "Network Connecting..."
+msgstr "Nätverket ansluter..."
 
 #: Disconnect From Network
 msgid "network_disconnect"
-msgstr "Disconnect From Network"
+msgstr "Koppla ner från nätverk"
 
 #: Network Name
 msgid "network_name"
@@ -729,11 +729,11 @@ msgstr "Dina inställningar"
 
 #: Show when people join
 msgid "side_joins"
-msgstr "Show when people join"
+msgstr "Visa när personer kommer in"
 
 #: Show when channel topic changes
 msgid "side_topics"
-msgstr "Show when channel topic changes"
+msgstr "Visa när kanalens ämne ändrades"
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
@@ -745,7 +745,7 @@ msgstr "Show when users change channel modes"
 
 #: Extra message formatting
 msgid "side_formatting"
-msgstr "Extra message formatting"
+msgstr "Ytterligare meddelandeformattering"
 
 #: Nick colours in the list"
 msgid "side_colours"
@@ -769,7 +769,7 @@ msgstr "Set by {{who}} on {{when}}"
 
 #: Created on {{when}}
 msgid "created_on"
-msgstr "Created on {{when}}"
+msgstr "Skapades {{when}}"
 
 #: Created at {{when}}
 msgid "created_at"
@@ -781,7 +781,7 @@ msgstr "Höjdpunkter"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr "Nobody has mentioned you yet..."
+msgstr "Ingen har nämnt dig än..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
@@ -809,7 +809,7 @@ msgstr "Glöm mig"
 
 #: No networks here yet.
 msgid "state_network"
-msgstr "No networks here yet."
+msgstr "Inga nätverk här ännu."
 
 #: Add one?
 msgid "state_add"
@@ -845,7 +845,7 @@ msgstr "Gå in i en ny #kanal"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr "Filter channels"
+msgstr "Filtrera kanaler"
 
 #: Find More Channels
 msgid "find_more_channels"
@@ -869,7 +869,7 @@ msgstr "Ändra smeknamn"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr "Enter new nickname..."
+msgstr "Fyll i ett nytt smeknamn..."
 
 #: This is you!
 msgid "user_you"
@@ -877,11 +877,11 @@ msgstr "Det här är du!"
 
 #: Account name: {{user}}
 msgid "user_account"
-msgstr "Account name: {{user}}"
+msgstr "Namn på kontot: {{user}}"
 
 #: Real name: {{realname}}
 msgid "user_realname"
-msgstr "Real name: {{realname}}"
+msgstr "Riktigt namn: {{realname}}"
 
 #: Is a bot
 msgid "user_bot"
@@ -889,7 +889,7 @@ msgstr "Är en bot"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Is available for help"
+msgstr "Är tillgänglig för hjälp"
 
 #: Is an operator
 msgid "user_op"
@@ -897,7 +897,7 @@ msgstr "Is an operator"
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
-msgstr "Connected to {{server}} {{info}}"
+msgstr "Ansluten till {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
@@ -905,7 +905,7 @@ msgstr "Securely connected via SSL/TLS"
 
 #: In channels {{channels}}
 msgid "user_channels"
-msgstr "In channels {{channels}}"
+msgstr "I kanalerna {{channels}}"
 
 #: Access level
 msgid "user_access"
@@ -917,7 +917,7 @@ msgstr "Normal"
 
 #: Kick from the channel
 msgid "user_kick"
-msgstr "Kick from the channel"
+msgstr "Sparka ut från kanalen"
 
 #: Ban from the channel
 msgid "user_ban"
@@ -929,7 +929,7 @@ msgstr "Ban and kick from the channel"
 
 #: Select a Channel
 msgid "select_channel"
-msgstr "Select a Channel"
+msgstr "Välj en kanal"
 
 #: Invite User
 msgid "invite_user"
@@ -969,7 +969,7 @@ msgstr "Forbidden to connect"
 
 #: Took too long to connect
 msgid "error_timeout"
-msgstr "Took too long to connect"
+msgstr "Tog för länge att ansluta"
 
 #: The server refused the connection
 msgid "error_refused"
@@ -989,11 +989,11 @@ msgstr "Okänt fel"
 
 #: Bad username or password
 msgid "error_password_mismatch"
-msgstr "Bad username or password"
+msgstr "Dåligt användarnamn eller lösenord"
 
 #: Connection closed unexpectedly
 msgid "error_closed_unexpected"
-msgstr "Connection closed unexpectedly"
+msgstr "Anslutningen stängdes oväntat ner"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -1037,7 +1037,7 @@ msgstr "{{nick}} takes owner from {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
-msgstr "{{nick}} has banned {{target}}"
+msgstr "{{nick}} har bannlyst {{target}}"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
@@ -1053,7 +1053,7 @@ msgstr "Skicka ett meddelande"
 
 #: Do something physical
 msgid "command_action"
-msgstr "Do something physical"
+msgstr "Gör något fysiskt"
 
 #: Join a channel
 msgid "command_join"
@@ -1061,7 +1061,7 @@ msgstr "Gå in i en kanal"
 
 #: Leave a channel
 msgid "command_part"
-msgstr "Leave a channel"
+msgstr "Lämna en kanal"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
@@ -1077,11 +1077,11 @@ msgstr "Start a private conversation with someone"
 
 #: Invite somebody into the channel
 msgid "command_invite"
-msgstr "Invite somebody into the channel"
+msgstr "Bjud in någon till kanalen"
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr "Set the topic for this channel"
+msgstr "Ställ in ämnet för den här kanalen"
 
 #: Send a notice
 msgid "command_notice"
@@ -1093,7 +1093,7 @@ msgstr "Send a raw command to the IRC server"
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr "Kick somebody from the channel"
+msgstr "Sparka ut någon från kanalen"
 
 #: Clear all messages from this window
 msgid "command_clear"
@@ -1101,11 +1101,11 @@ msgstr "Clear all messages from this window"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"
-msgstr "Send a CTCP command to somebody"
+msgstr "Skicka ett CTCP-kommando till någon"
 
 #: Disconnect from the IRC server
 msgid "command_quit"
-msgstr "Disconnect from the IRC server"
+msgstr "Koppla ner från IRC-servern"
 
 #: Connect to a new IRC network
 msgid "command_server"
@@ -1113,7 +1113,7 @@ msgstr "Connect to a new IRC network"
 
 #: Request information on somebody
 msgid "command_whois"
-msgstr "Request information on somebody"
+msgstr "Efterfråga information om någon"
 
 #: Request information on somebody that disconnected recently
 msgid "command_whowas"
@@ -1125,11 +1125,11 @@ msgstr "Set yourself as away"
 
 #: Set yourself as active
 msgid "command_back"
-msgstr "Set yourself as active"
+msgstr "Ställ in dig själv som aktiv"
 
 #: Change your connection encoding
 msgid "command_encoding"
-msgstr "Change your connection encoding"
+msgstr "Ändra kodningen för anslutningen"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
@@ -1137,7 +1137,7 @@ msgstr "Ignore messages from somebody"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
-msgstr "Stop ignoring somebody"
+msgstr "Sluta ignorera någon"
 
 #: Roll a Dice
 msgid "command_dice"
@@ -1153,11 +1153,11 @@ msgstr "You were mentioned in {{channel}}"
 
 #: Where are you connecting today?
 msgid "customserver_where"
-msgstr "Where are you connecting today?"
+msgstr "Var ansluter du dig idag?"
 
 #: Your IRC client
 msgid "personal_client"
-msgstr "Your IRC Client."
+msgstr "Din IRC-klient."
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
@@ -1217,7 +1217,7 @@ msgstr "Ansluten till {{network}}!"
 
 #: {{nick}} has joined
 msgid "has_joined"
-msgstr "{{nick}} has joined"
+msgstr "{{nick}} gick med"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
