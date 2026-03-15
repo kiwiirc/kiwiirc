@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Swedish\n"
 "Language: sv_SE\n"
-"PO-Revision-Date: 2026-03-15 22:13\n"
+"PO-Revision-Date: 2026-03-15 23:12\n"
 
 #: Start
 msgid "start_button"
@@ -477,11 +477,11 @@ msgstr "Ingen är inbjuden!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr "This is a public channel."
+msgstr "Det här är en publik kanal."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr "Only invited users can join."
+msgstr "Endast inbjudna användare kan gå med."
 
 #: Only allow invited users
 msgid "invite_set_private"
