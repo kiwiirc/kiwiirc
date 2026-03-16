@@ -1,0 +1,45 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: e2e Tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        repository: kiwiirc/webircgateway
+        path: ./webircgateway-root
+    - uses: actions/checkout@v2
+      with:
+        repository: Green125/kiwiirc
+        path: ./kiwiirc-root
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: sudo apt-get update
+    - run: sudo apt-get install golang-go git libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb # install libraries necessary to run Cypress tests (see https://docs.cypress.io/guides/continuous-integration/introduction#Dependencies), as well as golang for the Web IRC Gateway
+    - run: cd webircgateway-root && go build # build Web IRC Gateway
+    - run: cp kiwiirc-root/tests/e2e/webiirc-config/config.conf webircgateway-root/config.conf # copy over Web IRC Gateway config
+    - run: sed -i 's/https:\/\/localdev.clients.kiwiirc.com/http:\/\/localhost:8080/' kiwiirc-root/static/config.json # change over Kiwi IRC config so that app can be run locally
+    - run: cd webircgateway-root && ./webircgateway --config=config.conf & # run Web IRC Gateway
+    - run: cd kiwiirc-root && npm i && npm run dev & # run Kiwi IRC
+    - run: ./kiwiirc-root/tests/e2e/wait-for-kiwi.sh # wait for Kiwi IRC to be up and running (returning HTTP status code 200)
+    - run: cd kiwiirc-root/tests/e2e && npm ci # install packages for 2e2 tests
+    - run: cd kiwiirc-root/tests/e2e && npm run test-single --spec cypress/integration/userOne.js &  # run the first  functional test
+    - run: cd kiwiirc-root/tests/e2e && npm run test-single --spec cypress/integration/userTwo.js # run the second functional test
