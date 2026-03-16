@@ -293,8 +293,9 @@ export default {
         settingDefaultKickReason: bindSetting('buffers.default_kick_reason'),
         settingBufferInlineLinkPreviews: {
             get() {
-                return this.$state.setting('buffers.inline_link_auto_previews')
-                    || this.$state.setting('buffers.inline_link_auto_previews_query');
+                // Display checkbox state based on channel preview setting
+                // Setting it will update both channel and query settings
+                return this.$state.setting('buffers.inline_link_auto_previews');
             },
             set(newVal) {
                 this.$state.setting('buffers.inline_link_auto_previews', newVal);
