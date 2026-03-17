@@ -18,14 +18,30 @@ export default function chathistoryMiddleware() {
     };
 
     function theMiddleware(command, event, client, next) {
-        if (command.toLowerCase() === 'batch end chathistory' && client.chathistory) {
-            let target = event.params[0];
-            client.chathistory.batchCallbacks.resolve(target, event);
+        if (command === 'batch end' && client.chathistory) {
+            if (event.type === 'chathistory') {
+                let target = event.params[0];
+                client.chathistory.batchCallbacks.resolve(target, event);
+            } else if (event.type === 'draft/chathistory-targets') {
+                if (client.chathistory.pendingTargets) {
+                    let resolve = client.chathistory.pendingTargets;
+                    client.chathistory.pendingTargets = null;
+                    resolve(event);
+                }
+            }
         }
 
         // This is sent as 'unknown command', its been structured this way so hopefully it
         // will still work if a fail handler is ever created in irc-fw
         if (event?.command?.toLowerCase() === 'fail' && event.params[0].toLowerCase() === 'chathistory') {
+            // If this FAIL is for a TARGETS request, resolve the pending targets promise
+            if (client.chathistory.pendingTargets && event.params[2]?.toUpperCase() === 'TARGETS') {
+                let resolve = client.chathistory.pendingTargets;
+                client.chathistory.pendingTargets = null;
+                resolve(null);
+                return;
+            }
+
             client.chathistory.batchCallbacks.resolve(event.params[3]);
 
             if (event.params[1].toLowerCase() === 'invalid_target') {
@@ -40,6 +56,9 @@ export default function chathistoryMiddleware() {
 
 function addFunctionsToClient(client) {
     const history = client.chathistory = {};
+
+    // Resolve function for a pending CHATHISTORY TARGETS request, or null if none is in flight.
+    history.pendingTargets = null;
 
     history.batchCallbacks = {
         callbacks: Object.create(null),
@@ -138,6 +157,46 @@ function addFunctionsToClient(client) {
         const toRef = messageReference(toDateOrTime);
         history.batchCallbacks.add(resolve, target, 'BETWEEN', fromRef, toRef, 50);
     });
+
+    /**
+     * Send CHATHISTORY TARGETS to discover conversations (DMs or channels) that had
+     * activity between now and afterTimestamp (an ISO 8601 string). Returns a promise
+     * that resolves to an array of { name, latestMessage } objects, or [] on error.
+     */
+    history.targets = (afterTimestamp) => {
+        if (!history.isSupported()) {
+            return Promise.resolve([]);
+        }
+
+        return new Promise((resolve) => {
+            let timeoutId;
+
+            history.pendingTargets = (event) => {
+                clearTimeout(timeoutId);
+                history.pendingTargets = null;
+                if (!event) {
+                    resolve([]);
+                    return;
+                }
+                let targets = (event.commands || [])
+                    .filter((msg) => msg.command === 'CHATHISTORY' && msg.params[0] === 'TARGETS')
+                    .map((msg) => ({ name: msg.params[1], latestMessage: msg.params[2] }));
+                resolve(targets);
+            };
+
+            let now = 'timestamp=' + Misc.dateIso(new Date());
+            client.raw('CHATHISTORY', 'TARGETS', now, 'timestamp=' + afterTimestamp, '1000');
+
+            // Resolve with an empty array if the server does not respond within 10 seconds
+            timeoutId = setTimeout(() => {
+                if (history.pendingTargets) {
+                    log.warn('chathistory targets request timed out');
+                    history.pendingTargets = null;
+                    resolve([]);
+                }
+            }, 10000);
+        });
+    };
 
     function messageReference(inp) {
         if (typeof inp === 'object') {
