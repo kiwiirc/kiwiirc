@@ -4,9 +4,12 @@ import _ from 'lodash';
 import strftime from 'strftime';
 import Irc from 'irc-framework';
 import * as TextFormatting from '@/helpers/TextFormatting';
+import Logger from '@/libs/Logger';
 import typingMiddleware from './TypingMiddleware';
 import chathistoryMiddleware from './ChathistoryMiddleware';
 import * as ServerConnection from './ServerConnection';
+
+const log = Logger.namespace('IrcClient');
 
 export function create(state, network) {
     let networkid = network.id;
@@ -903,6 +906,10 @@ function clientMiddleware(state, network) {
                 message: messageBody,
                 type: 'motd',
             });
+
+            fetchMissedTargets(state, network, client).catch((err) => {
+                log.error('fetchMissedTargets error', err);
+            });
         }
 
         if (command === 'nick in use') {
@@ -1612,4 +1619,63 @@ function clientMiddleware(state, network) {
 
 function rand(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+/**
+ * After connecting, request CHATHISTORY TARGETS to discover DM conversations that received
+ * messages while the client was disconnected. Creates a new buffer and fetches history for
+ * any DM target that does not already have a buffer open.
+ */
+async function fetchMissedTargets(state, network, client) {
+    if (!client.chathistory.isSupported()) {
+        return;
+    }
+
+    // TODO: auto_request_history is the wrong gate for this feature — a user who has set
+    // 'channels' has no way to have expressed a preference about DM conversations they don't
+    // know exist yet. TARGETS should probably always run and always fetch, regardless of this
+    // setting.
+    let autoRequestHistory = state.setting('buffers.auto_request_history');
+    if (!['all', 'queries'].includes(autoRequestHistory)) {
+        return;
+    }
+
+    // Find the latest server_time across all known buffers to use as the lower-bound watermark.
+    // A small fuzz interval is subtracted to guard against clock skew at the boundary.
+    const FUZZ_MS = 10 * 1000;
+    let latestServerTime = 0;
+    network.buffers.forEach((buffer) => {
+        let msg = buffer.getLatestMessage();
+        if (msg && msg.server_time > latestServerTime) {
+            latestServerTime = msg.server_time;
+        }
+    });
+
+    if (!latestServerTime) {
+        // No prior messages to reference; nothing to catch up on
+        return;
+    }
+
+    let watermarkIso = new Date(latestServerTime - FUZZ_MS).toISOString();
+    let targets = await client.chathistory.targets(watermarkIso);
+
+    if (!targets || targets.length === 0) {
+        return;
+    }
+
+    targets.forEach((target) => {
+        // Channels handle their own backlog via the JOIN → userlist flow
+        if (network.isChannelName(target.name)) {
+            return;
+        }
+
+        // Existing DM buffers get history via their own motd handler in BufferState
+        if (state.getBufferByName(network.id, target.name)) {
+            return;
+        }
+
+        // Create a buffer for this newly discovered DM conversation and fetch its history
+        let buffer = state.getOrAddBufferByName(network.id, target.name);
+        buffer.requestLatestScrollback();
+    });
 }
