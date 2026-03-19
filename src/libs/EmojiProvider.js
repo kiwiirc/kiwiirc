@@ -4,7 +4,7 @@ import { escape } from 'lodash';
 import getState from '@/libs/state';
 
 export function matchEmoji(word) {
-    const emojis = this.getEmojis(word);
+    const emojis = getEmojis(word);
     if (!emojis.length) {
         return false;
     }
