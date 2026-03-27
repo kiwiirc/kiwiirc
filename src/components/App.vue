@@ -108,6 +108,7 @@ export default {
             mediaviewerComponentProps: {},
             mediaviewerIframe: false,
             sidebarState: new SidebarState(),
+            touchStartPos: null,
         };
     },
     computed: {
@@ -137,6 +138,7 @@ export default {
         this.listen(window, 'focus', (event) => this.onFocus(event));
         this.listen(window, 'blur', (event) => this.onBlur(event));
         this.listen(window, 'touchstart', (event) => this.onTouchStart(event));
+        this.listen(window, 'touchend', (event) => this.onTouchEnd(event));
     },
     mounted() {
         this.trackWindowDimensions();
@@ -302,6 +304,39 @@ export default {
         onTouchStart(event) {
             // Parts of the UI adjust themselves if we're known to be using a touchscreen
             this.$state.ui.is_touch = true;
+            this.touchStartPos = {
+                x: event.changedTouches[0].clientX,
+                y: event.changedTouches[0].clientY,
+            };
+        },
+        onTouchEnd(event) {
+            if (!this.touchStartPos) {
+                return;
+            }
+
+            let touchEndPos = {
+                x: event.changedTouches[0].clientX,
+                y: event.changedTouches[0].clientY,
+            };
+
+            let xDiff = touchEndPos.x - this.touchStartPos.x;
+            let yDiff = touchEndPos.y - this.touchStartPos.y;
+
+            // Check if the swipe was horizontal and long enough
+            if (Math.abs(xDiff) > Math.abs(yDiff) && Math.abs(xDiff) > 70) {
+                // Swipe right
+                if (xDiff > 0) {
+                    // Only open if start was near the left edge
+                    if (this.touchStartPos.x < 40) {
+                        this.stateBrowserDrawOpen = true;
+                    }
+                } else {
+                    // Swipe left - close
+                    this.stateBrowserDrawOpen = false;
+                }
+            }
+
+            this.touchStartPos = null;
         },
         onBlur(event) {
             this.$state.ui.app_has_focus = false;
