@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2025-03-05 14:49\n"
+"PO-Revision-Date: 2026-04-05 15:22\n"
 
 #: Start
 msgid "start_button"
@@ -105,7 +105,7 @@ msgstr "Mensagens"
 
 #: Protocol
 msgid "protocol"
-msgstr "Protocol"
+msgstr "Protocolo"
 
 #: Network
 msgid "network"
@@ -113,7 +113,7 @@ msgstr "Rede"
 
 #: Networks
 msgid "networks"
-msgstr "Networks"
+msgstr "Canais"
 
 #: ZNC
 msgid "znc"
@@ -129,15 +129,15 @@ msgstr "Login inválido"
 
 #: Login failed. Please try again or contact support
 msgid "login_failed"
-msgstr "Login failed. Please try again or contact support"
+msgstr "Falha ao iniciar a sessão. Por favor, tente novamente ou contate o suporte"
 
 #: You are now logged in as '{{account}}'
 msgid "logged_in"
-msgstr "You are now logged in as '{{account}}'"
+msgstr "Você está logado agora como '{{account}}'"
 
 #: You have been logged out
 msgid "logged_out"
-msgstr "You have been logged out"
+msgstr "Você foi desconectado"
 
 #: Search...
 msgid "do_search"
@@ -209,15 +209,15 @@ msgstr "Toggle Away Status"
 
 #: Kick
 msgid "kick"
-msgstr "Kick"
+msgstr "Kickar"
 
 #: Ban
 msgid "ban"
-msgstr "Ban"
+msgstr "Banir"
 
 #: Preview
 msgid "preview"
-msgstr "Preview"
+msgstr "Visualizar"
 
 #: {{count}} week
 msgid "week"
@@ -433,7 +433,7 @@ msgstr "Filtro"
 
 #: Refresh ban list
 msgid "bans_refresh"
-msgstr "Refresh ban list"
+msgstr "Atualizar a lista de banimento"
 
 #: Banned user
 msgid "bans_user"
@@ -445,7 +445,7 @@ msgstr "Banido por"
 
 #: Refreshing ban list...
 msgid "bans_refreshing"
-msgstr "Refreshing ban list..."
+msgstr "Atualizando a lista de banimento..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -769,7 +769,7 @@ msgstr "Set by {{who}} on {{when}}"
 
 #: Created on {{when}}
 msgid "created_on"
-msgstr "Created on {{when}}"
+msgstr "Criado em {{when}}"
 
 #: Created at {{when}}
 msgid "created_at"
@@ -857,11 +857,11 @@ msgstr "Realmente sair do canal?"
 
 #: Really close all messages?
 msgid "prompt_close_queries"
-msgstr "Really close all messages?"
+msgstr "Quer realmente fechar todas as mensagens?"
 
 #: Really close this chat?
 msgid "prompt_close_query"
-msgstr "Really close this chat?"
+msgstr "Quer realmente fechar essa conversa?"
 
 #: Change nick
 msgid "change_nick"
@@ -941,11 +941,11 @@ msgstr "Por favor especifique um canal pra entrar, ex: /join #exemplo"
 
 #: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "The nickname '{{nick}}' is already in use!"
+msgstr "O apelido '{{nick}}' já está em uso!"
 
 #: The nickname '{{nick}}' is invalid!
 msgid "error_nick_invalid"
-msgstr "The nickname '{{nick}}' is invalid!"
+msgstr "O apelido '{{nick}}' é invalido!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -957,7 +957,7 @@ msgstr "O apelido não pode começar com um número"
 
 #: Unexpected error occurred
 msgid "error_unexpected"
-msgstr "Unexpected error occurred"
+msgstr "Um erro inesperado ocorreu"
 
 #: Unknown domain name or host
 msgid "error_unknown_host"
@@ -985,15 +985,15 @@ msgstr "The Kiwi IRC server had an error"
 
 #: Unknown error
 msgid "error_unknown"
-msgstr "Unknown error"
+msgstr "Erro desconhecido"
 
 #: Bad username or password
 msgid "error_password_mismatch"
-msgstr "Bad username or password"
+msgstr "Nome de usuário ou senha errados"
 
 #: Connection closed unexpectedly
 msgid "error_closed_unexpected"
-msgstr "Connection closed unexpectedly"
+msgstr "A conexão fechou inesperadamente"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -1149,7 +1149,7 @@ msgstr "Rola um dado de {{sides}} lados e obtém {{number}}"
 
 #: You were mentioned in {{channel}}
 msgid "notification_mentioned"
-msgstr "You were mentioned in {{channel}}"
+msgstr "Você foi mencionado(a) em {{channel}}"
 
 #: Where are you connecting today?
 msgid "customserver_where"
