@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2025-03-05 14:48\n"
+"PO-Revision-Date: 2026-03-06 18:08\n"
 
 #: Start
 msgid "start_button"
@@ -113,7 +113,7 @@ msgstr "Netwerk"
 
 #: Networks
 msgid "networks"
-msgstr "Networks"
+msgstr "Netwerken"
 
 #: ZNC
 msgid "znc"
@@ -209,15 +209,15 @@ msgstr "Status Afwezig in-/uitschakelen"
 
 #: Kick
 msgid "kick"
-msgstr "Kick"
+msgstr "Verwijder"
 
 #: Ban
 msgid "ban"
-msgstr "Ban"
+msgstr "Verbanning"
 
 #: Preview
 msgid "preview"
-msgstr "Preview"
+msgstr "Voorbeeld"
 
 #: {{count}} week
 msgid "week"
@@ -605,7 +605,7 @@ msgstr "Privé beantwoorden"
 
 #: Kick reason
 msgid "kick_reason"
-msgstr "Kick reason"
+msgstr "Reden voor verwijderen"
 
 #: Server details
 msgid "settings_server_details"
@@ -613,11 +613,11 @@ msgstr "Serverdetails"
 
 #: Preset Servers
 msgid "preset_servers"
-msgstr "Preset Servers"
+msgstr "Vooraf Ingestelde Servers"
 
 #: Custom Server
 msgid "custom_server"
-msgstr "Custom Server"
+msgstr "Aangepaste Server"
 
 #: Port
 msgid "settings_port"
@@ -705,11 +705,11 @@ msgstr "Verbinden met netwerk"
 
 #: Network Connecting...
 msgid "network_connecting"
-msgstr "Network Connecting..."
+msgstr "Verbinden met netwerk…"
 
 #: Disconnect From Network
 msgid "network_disconnect"
-msgstr "Disconnect From Network"
+msgstr "Verbinding met netwerk verbreken"
 
 #: Network Name
 msgid "network_name"
@@ -1153,7 +1153,7 @@ msgstr "Je bent genoemd in {{channel}}"
 
 #: Where are you connecting today?
 msgid "customserver_where"
-msgstr "Where are you connecting today?"
+msgstr "Waar maak je vandaag verbinding mee?"
 
 #: Your IRC client
 msgid "personal_client"
