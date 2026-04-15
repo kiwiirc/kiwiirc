@@ -50,6 +50,7 @@ export default class UserState {
             idle: '',
             logon: '',
             registered_nick: '',
+            country_code: '',
             secure: '',
             special: '',
         }, true);
