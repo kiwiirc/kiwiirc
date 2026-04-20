@@ -188,7 +188,11 @@ function handleMessage(type, event, command, line, context) {
             type: type,
         };
 
-        this.state.addMessage(buffer, newMessage);
+        // When echo-message is active the server will echo our message back,
+        // so skip the local echo to avoid displaying the message twice.
+        if (!network.ircClient.network.cap.isEnabled('echo-message')) {
+            this.state.addMessage(buffer, newMessage);
+        }
     }
 
     let fnNames = {
