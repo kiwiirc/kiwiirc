@@ -6,6 +6,7 @@ import Irc from 'irc-framework';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import typingMiddleware from './TypingMiddleware';
 import chathistoryMiddleware from './ChathistoryMiddleware';
+import ignoreMiddleware from './IgnoreMiddleware';
 import * as ServerConnection from './ServerConnection';
 
 export function create(state, network) {
@@ -19,6 +20,7 @@ export function create(state, network) {
         message_max_length: 350,
     });
     ircClient.requestCap('znc.in/self-message');
+    ircClient.use(ignoreMiddleware(network));
     ircClient.use(chathistoryMiddleware());
     ircClient.use(clientMiddleware(state, network));
     ircClient.use(typingMiddleware());
