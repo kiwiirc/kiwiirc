@@ -1,0 +1,40 @@
+when:
+  - event: [push, pull_request]
+    branch: [master]
+
+steps:
+  - name: validation
+    image: node:18-alpine
+    commands:
+      - corepack yarn install --frozen-lockfile --non-interactive --prefer-offline
+      - corepack yarn test
+      - corepack yarn lint
+
+  - name: test-build
+    image: woodpeckerci/plugin-docker-buildx
+    settings:
+      registry: ghcr.io
+      repo: ghcr.io/relayos/kiwiirc
+      dockerfile: Dockerfile
+      context: .
+      dry_run: true
+      tags:
+        - local-test-${CI_COMMIT_SHA:0:7}
+
+  - name: publish-image
+    image: woodpeckerci/plugin-docker-buildx
+    when:
+      event: [push]
+      branch: [master]
+    settings:
+      registry: ghcr.io
+      repo: ghcr.io/relayos/kiwiirc
+      dockerfile: Dockerfile
+      context: .
+      tags:
+        - latest
+        - sha-${CI_COMMIT_SHA:0:7}
+      username:
+        from_secret: ghcr_username
+      password:
+        from_secret: ghcr_token

@@ -25,6 +25,25 @@ If you just want to embed an IRC client on your website, you can generate a cust
 
 To install Kiwi IRC on your own server, pre-built and ready to use installers can be found at the downloads page, https://kiwiirc.com/downloads/
 
+## RelayOS
+
+This fork is the canonical RelayOS KiwiIRC source and image build.
+
+- default branch: `master`
+- image: `ghcr.io/relayos/kiwiirc`
+- CI validates and publishes from this repo
+- pushes to `master` publish `latest` and `sha-<shortsha>` image tags
+
+### Container runtime
+
+The RelayOS image uses the in-repo [Dockerfile](./Dockerfile) and serves the built static client with nginx.
+
+- the production image contains the compiled `dist/` output only
+- runtime configuration is still provided by `static/config.json`
+- downstream deploy/config layers can replace or mount runtime config and themes without changing the app build pipeline
+
+For developer work, this means most feature changes should stay inside the JavaScript/Vue app while CI and image publishing remain repo-local.
+
 ## Building from source
 #### Dependencies
 Before you can build or start to develop on Kiwi IRC, make sure to have the following installed on your system:
@@ -73,4 +92,3 @@ Kiwi IRC is tested on all modern browsers and IE11. Other browsers are not activ
 * Firefox
 * IE11
 * Safari 9+
-
