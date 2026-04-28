@@ -78,6 +78,10 @@ module.exports = {
         config.plugin('html').tap((args) => {
             args[0].template = path.join(__dirname, 'index.html');
             args[0].minify = false;
+            args[0].templateParameters = (compilation, assets, assetTags, options) => ({
+                ...options,
+                VERSIONSTRING: process.env.VERSIONSTRING || getCommitHash(),
+            });
             return args;
         });
 

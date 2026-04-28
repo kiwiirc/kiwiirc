@@ -22,6 +22,22 @@
             display:none;
         }
     </style>
+
+    <!-- relayOS version display -->
+    <style>
+      .kiwi-welcome-simple-form::after
+    ,.kiwi-aboutbuffer::before {
+      content:"Version <%= VERSIONSTRING %>";
+      display:block;
+      text-align:right;
+      font-size:0.9em;
+      opacity:.5;
+    }
+    .kiwi-aboutbuffer::before {
+      position:absolute;
+      right:9px;
+    }
+    </style>
   </head>
   <body>
     <noscript>
