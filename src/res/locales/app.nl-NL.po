@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2026-03-06 18:08\n"
+"PO-Revision-Date: 2026-05-02 16:50\n"
 
 #: Start
 msgid "start_button"
@@ -613,11 +613,11 @@ msgstr "Serverdetails"
 
 #: Preset Servers
 msgid "preset_servers"
-msgstr "Vooraf Ingestelde Servers"
+msgstr "Vooraf ingestelde servers"
 
 #: Custom Server
 msgid "custom_server"
-msgstr "Aangepaste Server"
+msgstr "Aangepaste server"
 
 #: Port
 msgid "settings_port"
