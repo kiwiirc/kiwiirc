@@ -18,7 +18,7 @@
 <script>
 'kiwi public';
 
-let Vue = require('vue');
+import Vue from 'vue';
 
 Vue.component('tabbed-tab', {
     props: {

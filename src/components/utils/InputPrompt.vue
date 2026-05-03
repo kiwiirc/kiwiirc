@@ -25,7 +25,7 @@
 <script>
 'kiwi public';
 
-let Vue = require('vue');
+import Vue from 'vue';
 
 export default Vue.component('input-prompt', {
     props: ['label', 'hideCancel', 'block'],

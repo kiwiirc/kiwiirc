@@ -17,7 +17,7 @@
 <script>
 'kiwi public';
 
-let Vue = require('vue');
+import Vue from 'vue';
 
 export default Vue.component('input-confirm', {
     props: ['label', 'flipConnotation'],

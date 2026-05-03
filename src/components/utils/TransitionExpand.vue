@@ -12,7 +12,7 @@
 <script>
 'kiwi public';
 
-const Vue = require('vue');
+import Vue from 'vue';
 
 // Code created from https://markus.oberlehner.net/blog/transition-to-height-auto-with-vue/
 
