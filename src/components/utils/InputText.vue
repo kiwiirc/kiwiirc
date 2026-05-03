@@ -71,7 +71,7 @@
 <script>
 'kiwi public';
 
-let Vue = require('vue');
+import Vue from 'vue';
 
 export default Vue.component('input-text', {
     props: ['value', 'label', 'type', 'showPlainText', 'disabled'],

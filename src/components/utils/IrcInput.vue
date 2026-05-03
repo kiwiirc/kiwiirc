@@ -25,12 +25,11 @@
 'kiwi public';
 
 import _ from 'lodash';
+import Vue from 'vue';
 import * as htmlparser from 'htmlparser2';
 import * as Colours from '@/helpers/Colours';
 import * as Misc from '@/helpers/Misc';
 import * as EmojiProvider from '@/libs/EmojiProvider';
-
-let Vue = require('vue');
 
 export default Vue.component('irc-input', {
     props: ['placeholder'],
