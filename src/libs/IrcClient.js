@@ -19,6 +19,7 @@ export function create(state, network) {
         message_max_length: 350,
     });
     ircClient.requestCap('znc.in/self-message');
+    ircClient.requestCap('echo-message');
     ircClient.use(chathistoryMiddleware());
     ircClient.use(clientMiddleware(state, network));
     ircClient.use(typingMiddleware());
