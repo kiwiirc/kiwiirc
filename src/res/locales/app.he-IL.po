@@ -1255,3 +1255,6 @@ msgstr "{{nick}} מוצג/ת כעת בתור {{newnick}}"
 msgid "changed_topic_to"
 msgstr "{{nick}} changed the topic to: {{topic}}"
 
+#: Strip colours from messages
+msgid "settings_strip_colours"
+msgstr "הסר צבעים מהודעות"

@@ -94,7 +94,8 @@ export default class Message {
 
         this.hasUserLink = this.blocks.some((block) => block.type === 'user');
 
-        let content = toHtml(this.blocks, showEmoticons);
+        let stripColours = messageList.buffer.setting('strip_message_colours');
+        let content = toHtml(this.blocks, showEmoticons, stripColours);
         this.html = content;
 
         state.$emit('message.poststyle', { message: this, blocks: this.blocks });

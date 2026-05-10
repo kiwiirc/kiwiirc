@@ -1255,3 +1255,6 @@ msgstr "{{nick}} és ara {{newnick}}"
 msgid "changed_topic_to"
 msgstr "{{nick}} ha canviat el tòpic a: {{topic}}"
 
+#: Strip colours from messages
+msgid "settings_strip_colours"
+msgstr "Elimina els colors dels missatges"

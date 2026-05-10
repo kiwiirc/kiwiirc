@@ -49,6 +49,10 @@
                             <input v-model="settingColouredNicklist" type="checkbox">
                         </label>
                         <label class="u-checkbox-wrapper">
+                            <span>{{ $t('settings_strip_colours') }}</span>
+                            <input v-model="settingStripColours" type="checkbox">
+                        </label>
+                        <label class="u-checkbox-wrapper">
                             <span>{{ $t('settings_share_typing') }}</span>
                             <input v-model="settingShareTyping" type="checkbox">
                         </label>
@@ -145,6 +149,7 @@ export default {
         settingShowModeChanges: generateComputedSetting('show_mode_changes'),
         settingColouredNicklist: generateComputedSetting('coloured_nicklist'),
         settingExtraFormatting: generateComputedSetting('extra_formatting'),
+        settingStripColours: generateComputedSetting('strip_message_colours'),
         settingShareTyping: generateComputedSetting('share_typing'),
         areWeAnOp() {
             return this.buffer.isUserAnOp(this.buffer.getNetwork().nick);
