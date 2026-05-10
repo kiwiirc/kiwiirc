@@ -220,43 +220,43 @@ msgid "preview"
 msgstr "Preview"
 
 #: {{count}} week
-msgid "week"
+msgid "week_one"
 msgstr "{{count}} semana"
 
 #: {{count}} weeks
-msgid "week_plural"
+msgid "week_other"
 msgstr "{{count}} semanas"
 
 #: {{count}} day
-msgid "day"
+msgid "day_one"
 msgstr "{{count}} día"
 
 #: {{count}} days
-msgid "day_plural"
+msgid "day_other"
 msgstr "{{count}} días"
 
 #: {{count}} hour
-msgid "hour"
+msgid "hour_one"
 msgstr "{{count}} hora"
 
 #: {{count}} hours
-msgid "hour_plural"
+msgid "hour_other"
 msgstr "{{count}} horas"
 
 #: {{count}} minute
-msgid "minute"
+msgid "minute_one"
 msgstr "{{count}} minuto"
 
 #: {{count}} minutes
-msgid "minute_plural"
+msgid "minute_other"
 msgstr "{{count}} minutos"
 
 #: {{count}} second
-msgid "second"
+msgid "second_one"
 msgstr "{{count}} segundo"
 
 #: {{count}} seconds
-msgid "second_plural"
+msgid "second_other"
 msgstr "{{count}} segundos"
 
 #: General
@@ -664,11 +664,11 @@ msgid "settings_remove"
 msgstr "Eliminar red"
 
 #: {{count}} person here
-msgid "person"
+msgid "person_one"
 msgstr "{{count}} usuario aquí"
 
 #: {{count}} people here
-msgid "person_plural"
+msgid "person_other"
 msgstr "{{count}} usuarios aquí"
 
 #: Filter users in channel

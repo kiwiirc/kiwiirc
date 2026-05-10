@@ -220,43 +220,43 @@ msgid "preview"
 msgstr "Preview"
 
 #: {{count}} week
-msgid "week"
+msgid "week_one"
 msgstr "{{count}} week"
 
 #: {{count}} weeks
-msgid "week_plural"
+msgid "week_other"
 msgstr "{{count}} weken"
 
 #: {{count}} day
-msgid "day"
+msgid "day_one"
 msgstr "{{count}} dag"
 
 #: {{count}} days
-msgid "day_plural"
+msgid "day_other"
 msgstr "{{count}} dagen"
 
 #: {{count}} hour
-msgid "hour"
+msgid "hour_one"
 msgstr "{{count}} uur"
 
 #: {{count}} hours
-msgid "hour_plural"
+msgid "hour_other"
 msgstr "{{count}} uur"
 
 #: {{count}} minute
-msgid "minute"
+msgid "minute_one"
 msgstr "{{count}} minuut"
 
 #: {{count}} minutes
-msgid "minute_plural"
+msgid "minute_other"
 msgstr "{{count}} minuten"
 
 #: {{count}} second
-msgid "second"
+msgid "second_one"
 msgstr "{{count}} seconde"
 
 #: {{count}} seconds
-msgid "second_plural"
+msgid "second_other"
 msgstr "{{count}} seconden"
 
 #: General
@@ -664,11 +664,11 @@ msgid "settings_remove"
 msgstr "Netwerk verwijderen"
 
 #: {{count}} person here
-msgid "person"
+msgid "person_one"
 msgstr "{{count}} persoon aanwezig"
 
 #: {{count}} people here
-msgid "person_plural"
+msgid "person_other"
 msgstr "{{count}} personen aanwezig"
 
 #: Filter users in channel

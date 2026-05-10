@@ -220,43 +220,43 @@ msgid "preview"
 msgstr "Paraparje"
 
 #: {{count}} week
-msgid "week"
+msgid "week_one"
 msgstr "{{count}} javë"
 
 #: {{count}} weeks
-msgid "week_plural"
+msgid "week_other"
 msgstr "{{count}} javë"
 
 #: {{count}} day
-msgid "day"
+msgid "day_one"
 msgstr "{{count}} ditë"
 
 #: {{count}} days
-msgid "day_plural"
+msgid "day_other"
 msgstr "{{count}} ditë"
 
 #: {{count}} hour
-msgid "hour"
+msgid "hour_one"
 msgstr "{{count}} orë"
 
 #: {{count}} hours
-msgid "hour_plural"
+msgid "hour_other"
 msgstr "{{count}} orë"
 
 #: {{count}} minute
-msgid "minute"
+msgid "minute_one"
 msgstr "{{count}} minutë"
 
 #: {{count}} minutes
-msgid "minute_plural"
+msgid "minute_other"
 msgstr "{{count}} minuta"
 
 #: {{count}} second
-msgid "second"
+msgid "second_one"
 msgstr "{{count}} sekondë"
 
 #: {{count}} seconds
-msgid "second_plural"
+msgid "second_other"
 msgstr "{{count}} sekonda"
 
 #: General
@@ -664,11 +664,11 @@ msgid "settings_remove"
 msgstr "Hiqe rrjetin"
 
 #: {{count}} person here
-msgid "person"
+msgid "person_one"
 msgstr "{{count}} person këtu"
 
 #: {{count}} people here
-msgid "person_plural"
+msgid "person_other"
 msgstr "{{count}} vetë këtu"
 
 #: Filter users in channel

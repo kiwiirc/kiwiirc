@@ -343,11 +343,11 @@ msgid "settings_remove"
 msgstr "Eliminar red"
 
 #: {{count}} person here
-msgid "person"
+msgid "person_one"
 msgstr "{{count}} usuario aquí"
 
 #: {{count}} people here
-msgid "person_plural"
+msgid "person_other"
 msgstr "{{count}} usuarios aquí"
 
 #: Reconnect to join {{channel}}

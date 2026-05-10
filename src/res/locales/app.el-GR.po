@@ -220,43 +220,43 @@ msgid "preview"
 msgstr "Προεπισκόπιση"
 
 #: {{count}} week
-msgid "week"
+msgid "week_one"
 msgstr "{{count}} εβδομάδα"
 
 #: {{count}} weeks
-msgid "week_plural"
+msgid "week_other"
 msgstr "{{count}} εβδομάδες"
 
 #: {{count}} day
-msgid "day"
+msgid "day_one"
 msgstr "{{count}} ημέρα"
 
 #: {{count}} days
-msgid "day_plural"
+msgid "day_other"
 msgstr "{{count}} ημέρες"
 
 #: {{count}} hour
-msgid "hour"
+msgid "hour_one"
 msgstr "{{count}} ώρα"
 
 #: {{count}} hours
-msgid "hour_plural"
+msgid "hour_other"
 msgstr "{{count}} ώρες"
 
 #: {{count}} minute
-msgid "minute"
+msgid "minute_one"
 msgstr "{{count}} λεπτό"
 
 #: {{count}} minutes
-msgid "minute_plural"
+msgid "minute_other"
 msgstr "{{count}} λεπτά"
 
 #: {{count}} second
-msgid "second"
+msgid "second_one"
 msgstr "{{count}} δευτερόλεπτο"
 
 #: {{count}} seconds
-msgid "second_plural"
+msgid "second_other"
 msgstr "{{count}} δευτερόλεπτα"
 
 #: General
@@ -664,11 +664,11 @@ msgid "settings_remove"
 msgstr "Κατάργηση δικτύου"
 
 #: {{count}} person here
-msgid "person"
+msgid "person_one"
 msgstr "{{count}} άτομο εδώ"
 
 #: {{count}} people here
-msgid "person_plural"
+msgid "person_other"
 msgstr "{{count}} άτομα εδώ"
 
 #: Filter users in channel
