@@ -6,11 +6,14 @@ import * as EmojiProvider from '@/libs/EmojiProvider';
 
 export default render;
 
-function render(blocks, renderEmoticons) {
+function render(blocks, renderEmoticons, renderStripColours) {
     const state = getState();
     const showEmoticons = typeof renderEmoticons === 'undefined' ?
         state.setting('buffers.show_emoticons') :
         !!renderEmoticons;
+    const stripColours = typeof renderStripColours === 'undefined' ?
+        state.setting('buffers.strip_message_colours') :
+        !!renderStripColours;
 
     const retHtml = blocks.reduce((html, block, i) => {
         // a
@@ -28,9 +31,9 @@ function render(blocks, renderEmoticons) {
                 classes += 'kiwi-formatting-extras-quote ';
             } else if (s === 'block') {
                 classes += 'kiwi-formatting-extras-block ';
-            } else if (s === 'color') {
+            } else if (s === 'color' && !stripColours) {
                 classes += `irc-fg-colour-${block.styles[s]} `;
-            } else if (s === 'background') {
+            } else if (s === 'background' && !stripColours) {
                 classes += `irc-bg-colour-${block.styles[s]} `;
             }
         });

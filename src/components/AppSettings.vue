@@ -119,6 +119,10 @@
                                 <input v-model="settingBufferColourNicknames" type="checkbox">
                             </label>
                             <label class="u-checkbox-wrapper">
+                                <span>{{ $t('settings_strip_colours') }} </span>
+                                <input v-model="settingBufferStripColours" type="checkbox">
+                            </label>
+                            <label class="u-checkbox-wrapper">
                                 <span>{{ $t('settings_share_typing') }} </span>
                                 <input v-model="settingBufferShareTyping" type="checkbox">
                             </label>
@@ -281,6 +285,7 @@ export default {
         settingUseMonospace: bindSetting('useMonospace'),
         settingHighlights: bindSetting('highlights'),
         settingBufferColourNicknames: bindSetting('buffers.colour_nicknames_in_messages'),
+        settingBufferStripColours: bindSetting('buffers.strip_message_colours'),
         settingBufferShowTimestamps: bindSetting('buffers.show_timestamps'),
         settingBufferShowEmoticons: bindSetting('buffers.show_emoticons'),
         settingBufferBlockPms: bindSetting('buffers.block_pms'),

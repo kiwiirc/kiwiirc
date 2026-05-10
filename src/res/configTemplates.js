@@ -64,6 +64,7 @@ export const configTemplates = {
             server_as_activity: true,
             coloured_nicklist: true,
             colour_nicknames_in_messages: true,
+            strip_message_colours: false,
             block_pms: false,
             show_emoticons: true,
             extra_formatting: true,
