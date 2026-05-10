@@ -1255,6 +1255,3 @@ msgstr "{{nick}} is nu bekend als {{newnick}}"
 msgid "changed_topic_to"
 msgstr "{{nick}} heeft het topic gewijzigd naar {{topic}}"
 
-#: Strip colours from messages
-msgid "settings_strip_colours"
-msgstr "Kleuren uit berichten verwijderen"

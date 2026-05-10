@@ -1255,6 +1255,3 @@ msgstr "{{nick}} takma adını {{newnick}} olarak değiştirdi"
 msgid "changed_topic_to"
 msgstr "{{nick}} konuyu şu şekilde değiştirdi: {{topic}}"
 
-#: Strip colours from messages
-msgid "settings_strip_colours"
-msgstr "Mesajlardan renkleri kaldır"

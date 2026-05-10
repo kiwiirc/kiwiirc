@@ -1255,6 +1255,3 @@ msgstr "{{nick}} sekarang bernama {{newnick}}"
 msgid "changed_topic_to"
 msgstr "{{nick}} mengubah topik ke: {{topic}}"
 
-#: Strip colours from messages
-msgid "settings_strip_colours"
-msgstr "Hapus warna dari pesan"

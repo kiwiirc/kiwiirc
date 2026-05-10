@@ -1255,6 +1255,3 @@ msgstr "{{nick}} orain {{newnick}} da"
 msgid "changed_topic_to"
 msgstr "{{nick}} Gaia aldatu da, gai berria {{topic}} da"
 
-#: Strip colours from messages
-msgid "settings_strip_colours"
-msgstr "Kendu koloreak mezuetatik"

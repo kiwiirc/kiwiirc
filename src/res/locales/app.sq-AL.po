@@ -1255,6 +1255,3 @@ msgstr "{{nick}} tani njihet si {{newnick}}"
 msgid "changed_topic_to"
 msgstr "{{nick}} ndryshoi temën në: {{topic}}"
 
-#: Strip colours from messages
-msgid "settings_strip_colours"
-msgstr "Hiq ngjyrat nga mesazhet"

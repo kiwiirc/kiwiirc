@@ -1255,6 +1255,3 @@ msgstr "{{nick}} is now known as {{newnick}}"
 msgid "changed_topic_to"
 msgstr "{{nick}}이 {{topic}}으로 주제를 변경함"
 
-#: Strip colours from messages
-msgid "settings_strip_colours"
-msgstr "메시지에서 색상 제거"

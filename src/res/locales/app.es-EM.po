@@ -534,6 +534,3 @@ msgstr "(Gracias a Adam @Rizon por el desarrollo del soporte del servidor de web
 msgid "rizon_dev"
 msgstr "¡Prueba la versión en desarrollo del Kiwi IRC!"
 
-#: Strip colours from messages
-msgid "settings_strip_colours"
-msgstr "Eliminar colores de los mensajes"
