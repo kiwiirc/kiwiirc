@@ -220,43 +220,43 @@ msgid "preview"
 msgstr "Preview"
 
 #: {{count}} week
-msgid "week"
+msgid "week_one"
 msgstr "{{count}} pekan"
 
 #: {{count}} weeks
-msgid "week_plural"
+msgid "week_other"
 msgstr "{{count}} pekan"
 
 #: {{count}} day
-msgid "day"
+msgid "day_one"
 msgstr "{{count}} hari"
 
 #: {{count}} days
-msgid "day_plural"
+msgid "day_other"
 msgstr "{{count}} hari"
 
 #: {{count}} hour
-msgid "hour"
+msgid "hour_one"
 msgstr "{{count}} jam"
 
 #: {{count}} hours
-msgid "hour_plural"
+msgid "hour_other"
 msgstr "{{count}} jam"
 
 #: {{count}} minute
-msgid "minute"
+msgid "minute_one"
 msgstr "{{count}} menit"
 
 #: {{count}} minutes
-msgid "minute_plural"
+msgid "minute_other"
 msgstr "{{count}} menit"
 
 #: {{count}} second
-msgid "second"
+msgid "second_one"
 msgstr "{{count}} detik"
 
 #: {{count}} seconds
-msgid "second_plural"
+msgid "second_other"
 msgstr "{{count}} detik"
 
 #: General
@@ -664,11 +664,11 @@ msgid "settings_remove"
 msgstr "Hapus jejaring"
 
 #: {{count}} person here
-msgid "person"
+msgid "person_one"
 msgstr "{{count}} orang di sini"
 
 #: {{count}} people here
-msgid "person_plural"
+msgid "person_other"
 msgstr "{{count}} orang di sini"
 
 #: Filter users in channel

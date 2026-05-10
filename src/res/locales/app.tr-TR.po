@@ -220,43 +220,43 @@ msgid "preview"
 msgstr "Preview"
 
 #: {{count}} week
-msgid "week"
+msgid "week_one"
 msgstr "{{count}} hafta"
 
 #: {{count}} weeks
-msgid "week_plural"
+msgid "week_other"
 msgstr "{{count}} hafta"
 
 #: {{count}} day
-msgid "day"
+msgid "day_one"
 msgstr "{{count}} gün"
 
 #: {{count}} days
-msgid "day_plural"
+msgid "day_other"
 msgstr "{{count}} gün"
 
 #: {{count}} hour
-msgid "hour"
+msgid "hour_one"
 msgstr "{{count}} saat"
 
 #: {{count}} hours
-msgid "hour_plural"
+msgid "hour_other"
 msgstr "{{count}} saat"
 
 #: {{count}} minute
-msgid "minute"
+msgid "minute_one"
 msgstr "{{count}} dakika"
 
 #: {{count}} minutes
-msgid "minute_plural"
+msgid "minute_other"
 msgstr "{{count}} dakika"
 
 #: {{count}} second
-msgid "second"
+msgid "second_one"
 msgstr "{{count}} saniye"
 
 #: {{count}} seconds
-msgid "second_plural"
+msgid "second_other"
 msgstr "{{count}} saniye"
 
 #: General
@@ -664,11 +664,11 @@ msgid "settings_remove"
 msgstr "Ağı kaldır"
 
 #: {{count}} person here
-msgid "person"
+msgid "person_one"
 msgstr "{{count}} kişi burada"
 
 #: {{count}} people here
-msgid "person_plural"
+msgid "person_other"
 msgstr "{{count}} kişi burada"
 
 #: Filter users in channel

@@ -398,7 +398,6 @@ function initLocales() {
     i18next.use(i18nextHTTP);
     i18next.init({
         supportedLngs: AvailableLocales.locales,
-        compatibilityJSON: 'v3',
         fallbackLng: 'en-us',
         lowerCaseLng: true,
         backend: {

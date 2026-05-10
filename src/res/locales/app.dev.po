@@ -217,43 +217,43 @@ msgstr "Preview"
 #: Durations
 
 #: {{count}} week
-msgid "week"
+msgid "week_one"
 msgstr "{{count}} week"
 
 #: {{count}} weeks
-msgid "week_plural"
+msgid "week_other"
 msgstr "{{count}} weeks"
 
 #: {{count}} day
-msgid "day"
+msgid "day_one"
 msgstr "{{count}} day"
 
 #: {{count}} days
-msgid "day_plural"
+msgid "day_other"
 msgstr "{{count}} days"
 
 #: {{count}} hour
-msgid "hour"
+msgid "hour_one"
 msgstr "{{count}} hour"
 
 #: {{count}} hours
-msgid "hour_plural"
+msgid "hour_other"
 msgstr "{{count}} hours"
 
 #: {{count}} minute
-msgid "minute"
+msgid "minute_one"
 msgstr "{{count}} minute"
 
 #: {{count}} minutes
-msgid "minute_plural"
+msgid "minute_other"
 msgstr "{{count}} minutes"
 
 #: {{count}} second
-msgid "second"
+msgid "second_one"
 msgstr "{{count}} second"
 
 #: {{count}} seconds
-msgid "second_plural"
+msgid "second_other"
 msgstr "{{count}} seconds"
 
 
@@ -714,11 +714,11 @@ msgstr "Remove network"
 #: Nicklist
 
 #: {{count}} person here
-msgid "person"
+msgid "person_one"
 msgstr "{{count}} person here"
 
 #: {{count}} people here
-msgid "person_plural"
+msgid "person_other"
 msgstr "{{count}} people here"
 
 #: Filter users in channel

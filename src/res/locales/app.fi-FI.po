@@ -220,43 +220,43 @@ msgid "preview"
 msgstr "Preview"
 
 #: {{count}} week
-msgid "week"
+msgid "week_one"
 msgstr "viikko"
 
 #: {{count}} weeks
-msgid "week_plural"
+msgid "week_other"
 msgstr "week_plural"
 
 #: {{count}} day
-msgid "day"
+msgid "day_one"
 msgstr "päivä"
 
 #: {{count}} days
-msgid "day_plural"
+msgid "day_other"
 msgstr "day_plural"
 
 #: {{count}} hour
-msgid "hour"
+msgid "hour_one"
 msgstr "tunti"
 
 #: {{count}} hours
-msgid "hour_plural"
+msgid "hour_other"
 msgstr "hour_plural"
 
 #: {{count}} minute
-msgid "minute"
+msgid "minute_one"
 msgstr "minuutti"
 
 #: {{count}} minutes
-msgid "minute_plural"
+msgid "minute_other"
 msgstr "minute_plural"
 
 #: {{count}} second
-msgid "second"
+msgid "second_one"
 msgstr "toinen"
 
 #: {{count}} seconds
-msgid "second_plural"
+msgid "second_other"
 msgstr "second_plural"
 
 #: General
@@ -664,11 +664,11 @@ msgid "settings_remove"
 msgstr "settings_remove"
 
 #: {{count}} person here
-msgid "person"
+msgid "person_one"
 msgstr "henkilö"
 
 #: {{count}} people here
-msgid "person_plural"
+msgid "person_other"
 msgstr "person_plural"
 
 #: Filter users in channel
