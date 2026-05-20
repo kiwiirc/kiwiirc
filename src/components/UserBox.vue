@@ -18,6 +18,7 @@
                 >{{ user.nick }}</span>
                 <span v-if="userMode" class="kiwi-userbox-modestring">+{{ userMode }}</span>
                 <span class="kiwi-userbox-usermask">{{ user.username }}@{{ user.host }}</span>
+                <span v-if="userCountry" v-html="userCountry" />
             </div>
         </div>
 
@@ -113,6 +114,9 @@
                 </span>
                 <span class="kiwi-userbox-whois-line">
                     {{ $t('user_realname', { realname: user.realname }) }}
+                </span>
+                <span v-if="user.whois.country_code" class="kiwi-userbox-whois-line">
+                    {{ $t('user_countrycode', { countrycode: user.whois.country_code }) }}
                 </span>
                 <span v-if="user.whois.bot" class="kiwi-userbox-whois-line">
                     {{ $t('user_bot') }}
@@ -213,6 +217,7 @@
 'kiwi public';
 
 import * as TextFormatting from '@/helpers/TextFormatting';
+import * as EmojiProvider from '@/libs/EmojiProvider';
 import * as Misc from '@/helpers/Misc';
 import GlobalApi from '@/libs/GlobalApi';
 import toHtml from '@/libs/renderers/Html';
@@ -327,6 +332,16 @@ export default {
                 client.raw(params);
             },
         },
+        userCountry() {
+            if (!this.user.hasWhois || !this.user?.whois.country_code) {
+                return '';
+            }
+            const blocks = EmojiProvider.matchEmoji(`:flag-${this.user.whois.country_code.toLowerCase()}:`);
+            if (blocks?.length) {
+                return EmojiProvider.blockToHtml(blocks[0], false, true);
+            }
+            return '';
+        },
         userChannels() {
             let channels = this.user.whois.channels.trim().split(' ').sort(Misc.strCompare);
             for (let i = 0; i < channels.length; i++) {
@@ -356,7 +371,20 @@ export default {
             // Reset the whois view since the user is now different
             this.whoisRequested = false;
             this.whoisLoading = false;
+
+            if (this.user && !this.user.hasWhois) {
+                // Update the users whois but do not show more info
+                this.updateWhoisData();
+                this.whoisRequested = false;
+            }
         },
+    },
+    created() {
+        if (this.user && !this.user.hasWhois) {
+            // Update the users whois but do not show more info
+            this.updateWhoisData();
+            this.whoisRequested = false;
+        }
     },
     methods: {
         openQuery() {

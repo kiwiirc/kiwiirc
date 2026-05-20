@@ -964,6 +964,10 @@ msgstr "Account name: {{user}}"
 msgid "user_realname"
 msgstr "Real name: {{realname}}"
 
+#: Country code: {{countrycode}}
+msgid "user_countrycode"
+msgstr "Country code: {{countrycode}}"
+
 #: Is a bot
 msgid "user_bot"
 msgstr "Is a bot"
