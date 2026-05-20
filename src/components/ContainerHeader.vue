@@ -419,6 +419,7 @@ export default {
     padding: 0 25px;
     border-radius: 0;
     transition: all 0.3;
+    order: -1;
 }
 
 .kiwi-header-server-settings {
