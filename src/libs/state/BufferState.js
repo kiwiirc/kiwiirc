@@ -507,6 +507,10 @@ export default class BufferState {
         this.state.$set(this, 'users', {});
     }
 
+    flushUserBatch() {
+        this.addUserBatch && this.addUserBatch.flush();
+    }
+
     addMessage(message) {
         this.addMessageBatch(message);
     }

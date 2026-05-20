@@ -601,7 +601,16 @@ function clientMiddleware(state, network) {
             if (event.kicked === client.user.nick) {
                 buffer.joined = false;
                 buffer.enabled = false;
+
+                buffer.flushUserBatch();
+                let usersInBuffer = Object.keys(buffer.users);
                 buffer.clearUsers();
+                usersInBuffer.forEach((nickKey) => {
+                    let remainingBuffers = state.getBuffersWithUser(networkid, nickKey);
+                    if (remainingBuffers.length === 0) {
+                        state.removeUser(networkid, { nick: nickKey });
+                    }
+                });
             }
 
             let messageBody = '';
@@ -653,7 +662,16 @@ function clientMiddleware(state, network) {
             if (event.nick === client.user.nick) {
                 buffer.joined = false;
                 buffer.enabled = false;
+
+                buffer.flushUserBatch();
+                let usersInBuffer = Object.keys(buffer.users);
                 buffer.clearUsers();
+                usersInBuffer.forEach((nickKey) => {
+                    let remainingBuffers = state.getBuffersWithUser(networkid, nickKey);
+                    if (remainingBuffers.length === 0) {
+                        state.removeUser(networkid, { nick: nickKey });
+                    }
+                });
             }
 
             // Remove the user from network state if no remaining common channels
