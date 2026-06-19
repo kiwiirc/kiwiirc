@@ -13,11 +13,11 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Finnish\n"
 "Language: fi_FI\n"
-"PO-Revision-Date: 2025-03-09 08:50\n"
+"PO-Revision-Date: 2026-03-15 15:23\n"
 
 #: Start
 msgid "start_button"
-msgstr "start_button"
+msgstr "Aloita"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
@@ -241,7 +241,7 @@ msgstr "tunti"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "hour_plural"
+msgstr "tuntia"
 
 #: {{count}} minute
 msgid "minute"

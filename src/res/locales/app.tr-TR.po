@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2025-03-05 14:49\n"
+"PO-Revision-Date: 2026-03-06 18:08\n"
 
 #: Start
 msgid "start_button"
@@ -105,7 +105,7 @@ msgstr "Mesajlar"
 
 #: Protocol
 msgid "protocol"
-msgstr "Protocol"
+msgstr "Protokol"
 
 #: Network
 msgid "network"
@@ -113,7 +113,7 @@ msgstr "Ağ"
 
 #: Networks
 msgid "networks"
-msgstr "Networks"
+msgstr "Ağlar"
 
 #: ZNC
 msgid "znc"
@@ -209,15 +209,15 @@ msgstr "Away Durumunu Değiştir"
 
 #: Kick
 msgid "kick"
-msgstr "Kick"
+msgstr "Dışarıya At"
 
 #: Ban
 msgid "ban"
-msgstr "Ban"
+msgstr "Yasakla"
 
 #: Preview
 msgid "preview"
-msgstr "Preview"
+msgstr "Ön İzleme"
 
 #: {{count}} week
 msgid "week"
@@ -605,7 +605,7 @@ msgstr "Özelde cevapla"
 
 #: Kick reason
 msgid "kick_reason"
-msgstr "Kick reason"
+msgstr "Atma sebebi"
 
 #: Server details
 msgid "settings_server_details"
@@ -613,11 +613,11 @@ msgstr "Sunucu detayları"
 
 #: Preset Servers
 msgid "preset_servers"
-msgstr "Preset Servers"
+msgstr "Önceden Tanımlı Sunucular"
 
 #: Custom Server
 msgid "custom_server"
-msgstr "Custom Server"
+msgstr "Özel Sunucu"
 
 #: Port
 msgid "settings_port"
@@ -705,11 +705,11 @@ msgstr "Ağa Bağlan"
 
 #: Network Connecting...
 msgid "network_connecting"
-msgstr "Network Connecting..."
+msgstr "Ağa Bağlanılıyor..."
 
 #: Disconnect From Network
 msgid "network_disconnect"
-msgstr "Disconnect From Network"
+msgstr "Ağ Bağlantısını Kes"
 
 #: Network Name
 msgid "network_name"
@@ -1153,7 +1153,7 @@ msgstr "{{channel}} kanalında sizden bahsedildi"
 
 #: Where are you connecting today?
 msgid "customserver_where"
-msgstr "Where are you connecting today?"
+msgstr "Bugün hangi sunucuya bağlanıyorsun?"
 
 #: Your IRC client
 msgid "personal_client"
