@@ -26,6 +26,8 @@
             props.ml.message_info_open && props.ml.message_info_open !== props.message
                 ? 'kiwi-messagelist-message--blur'
                 : '',
+            props.message.pending ? 'kiwi-messagelist-message--pending' : '',
+            props.message.send_failed ? 'kiwi-messagelist-message--send-failed' : '',
             (props.message.user && props.m().userMode(props.message.user))
                 ? `kiwi-messagelist-message--user-mode-${props.m().userMode(props.message.user)}`
                 : '',
@@ -85,6 +87,16 @@
             class="kiwi-messagelist-body"
         />
         <div v-else class="kiwi-messagelist-body" v-html="props.ml.formatMessage(props.message)" />
+
+        <div
+            v-if="props.message.send_failed"
+            class="kiwi-messagelist-sendstatus"
+        >
+            {{ props.ml.$t('message_not_sent') }}
+            <a class="u-link" @click.stop="props.m().resendMessage(props.message)">
+                {{ props.ml.$t('message_resend') }}
+            </a>
+        </div>
 
         <component
             :is="injections.components.MessageInfo"
@@ -148,6 +160,10 @@ const methods = {
     userModePrefix(user) {
         let props = this.props;
         return props.ml.buffer.userModePrefix(user);
+    },
+    resendMessage(message) {
+        let props = this.props;
+        props.ml.buffer.getNetwork().pendingMessages.resend(message);
     },
 };
 
@@ -231,6 +247,23 @@ export default {
 
 .kiwi-messagelist-message--compact .kiwi-messageinfo {
     padding-left: 130px;
+}
+
+.kiwi-messagelist-message--compact.kiwi-messagelist-message--pending .kiwi-messagelist-body,
+.kiwi-messagelist-message--compact.kiwi-messagelist-message--send-failed .kiwi-messagelist-body {
+    opacity: 0.55;
+}
+
+.kiwi-messagelist-message--compact .kiwi-messagelist-sendstatus {
+    display: block;
+    margin-left: 120px;
+    font-size: 0.85em;
+    opacity: 0.8;
+}
+
+.kiwi-messagelist-message--compact .kiwi-messagelist-sendstatus .u-link {
+    cursor: pointer;
+    font-weight: 600;
 }
 
 //Channel traffic messages

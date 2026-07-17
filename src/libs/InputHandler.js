@@ -169,26 +169,13 @@ function handleMessage(type, event, command, line, context) {
 
     let buffer = localBuffer.length && this.state.getOrAddBufferByName(network.id, localBuffer);
     if (buffer) {
-        let textFormatType = 'privmsg';
-        if (type === 'action') {
-            textFormatType = 'action';
-        } else if (type === 'notice') {
-            textFormatType = 'notice';
-        }
-
-        let messageBody = TextFormatting.formatText(textFormatType, {
-            nick: network.nick,
-            text: message,
-        });
-
-        let newMessage = {
-            time: Date.now(),
-            nick: network.nick,
-            message: messageBody,
+        // Renders the message optimistically, sends it (with a label when the server
+        // supports labeled-response) and tracks it for echo reconciliation + manual resend
+        network.pendingMessages.sendAndTrack(buffer, message, {
             type: type,
-        };
-
-        this.state.addMessage(buffer, newMessage);
+            targetName: bufferName,
+        });
+        return;
     }
 
     let fnNames = {
@@ -226,12 +213,7 @@ inputCommands.dice = function inputCommandDice(event, command, line, context) {
         sides: TextFormatting.formatNumber(sides),
         number: TextFormatting.formatNumber(rndNumber),
     });
-    network.ircClient.action(buffer.name, msg);
-    this.state.addMessage(buffer, {
-        nick: network.nick,
-        message: msg,
-        type: 'action',
-    });
+    network.pendingMessages.sendAndTrack(buffer, msg, { type: 'action' });
 };
 
 inputCommands.ctcp = function inputCommandCtcp(event, command, line, context) {

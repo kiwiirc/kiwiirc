@@ -53,6 +53,12 @@ export default class Message {
         def(this, 'bodyTemplateProps', message.bodyTemplateProps || {});
         def(this, 'isHighlight', false);
 
+        // Outgoing message states (enumerable so Vue makes them reactive):
+        // pending = sent but not yet acknowledged by the server echo
+        // send_failed = no acknowledgement arrived (connection lost / timeout)
+        this.pending = !!message.pending;
+        this.send_failed = false;
+
         // We don't want the user object to be enumerable
         def(this, 'user', user || null);
 

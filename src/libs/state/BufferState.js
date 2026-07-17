@@ -511,6 +511,23 @@ export default class BufferState {
         this.addMessageBatch(message);
     }
 
+    // Re-key a message that is already part of this buffer under a new id. Used when a server
+    // echo acknowledges an optimistically added message: the local numeric id is replaced by
+    // the server msgid so the history replay dedup (messageIds) recognises it.
+    updateMessageId(message, newId) {
+        let ids = this.messagesObj.messageIds;
+        if (ids[message.id] === message) {
+            delete ids[message.id];
+        }
+        message.id = newId;
+        // The message may still be sitting in the batchedAdd queue, in which case it is not in
+        // messageIds yet - it will be added under its new id when the batch flushes.
+        if (ids[newId] === undefined && this.messagesObj.messages.includes(message)) {
+            ids[newId] = message;
+        }
+        this.message_count++;
+    }
+
     updateLatestMessages(message) {
         if (!['privmsg', 'notice'].includes(message.type)) {
             return;
@@ -535,24 +552,10 @@ export default class BufferState {
 
     say(message, opts = {}) {
         let network = this.getNetwork();
-        let newMessage = {
-            time: Date.now(),
-            nick: network.nick,
-            message: message,
-            tags: opts.tags || {},
+        return network.pendingMessages.sendAndTrack(this, message, {
             type: opts.type || 'privmsg',
-        };
-
-        this.state.addMessage(this, newMessage);
-
-        let fnNames = {
-            privmsg: 'say',
-            action: 'action',
-            notice: 'notice',
-            tagmsg: 'tagmsg',
-        };
-        let fnName = fnNames[opts.type] || 'say';
-        network.ircClient[fnName](this.name, message, opts.tags);
+            tags: opts.tags,
+        });
     }
 
     join() {

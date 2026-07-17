@@ -4,6 +4,7 @@ import _ from 'lodash';
 import strftime from 'strftime';
 import Irc from 'irc-framework';
 import * as TextFormatting from '@/helpers/TextFormatting';
+import PendingMessages from './PendingMessages';
 import typingMiddleware from './TypingMiddleware';
 import chathistoryMiddleware from './ChathistoryMiddleware';
 import * as ServerConnection from './ServerConnection';
@@ -19,9 +20,19 @@ export function create(state, network) {
         message_max_length: 350,
     });
     ircClient.requestCap('znc.in/self-message');
+    // echo-message + labeled-response let us reconcile the server's echo of our own
+    // messages onto the optimistically rendered copy (see PendingMessages)
+    ircClient.requestCap(['echo-message', 'labeled-response']);
     ircClient.use(chathistoryMiddleware());
     ircClient.use(clientMiddleware(state, network));
     ircClient.use(typingMiddleware());
+
+    // Tracks optimistically rendered outgoing messages for echo reconciliation and manual
+    // resend. Non-enumerable so it stays out of Vue reactivity and state persistence.
+    Object.defineProperty(network, 'pendingMessages', {
+        writable: true,
+        value: new PendingMessages(network),
+    });
 
     // Overload the connect() function to make sure we are connecting with the
     // most recent connection details from the network state
@@ -170,6 +181,10 @@ function clientMiddleware(state, network) {
             isRegistered = false;
             network.state = 'disconnected';
 
+            // Any message still waiting for its server echo will never get one on this
+            // connection - flag them as failed so the user can manually resend them.
+            network.pendingMessages.failAll();
+
             if (err) {
                 network.state_error = (typeof err === 'string') ? err : 'err_unknown';
             }
@@ -305,6 +320,15 @@ function clientMiddleware(state, network) {
             }
         }
 
+        // labeled-response ACK: the server completes a labeled command that produces no
+        // other response (eg. kiwibnc when the upstream cannot carry our label, or for
+        // *bnc-handled messages). Resolve the matching pending message and keep the ACK
+        // out of the server tab.
+        if (command === 'unknown command' && event.command === 'ACK') {
+            network.pendingMessages.handleAck(event.tags && event.tags.label);
+            return;
+        }
+
         // Show unhandled data from the server in the servers tab
         if (command === 'unknown command') {
             let buffer = network.serverBuffer();
@@ -426,6 +450,14 @@ function clientMiddleware(state, network) {
                 event.message[0] === '['
             ) {
                 bufferName = event.message.substr(1, event.message.indexOf(']') - 1);
+            }
+
+            // Our own messages coming back to us - either echoed live (echo-message) or
+            // replayed from history after a reconnect - may correspond to a message we
+            // already rendered when sending it. Reconcile those onto the existing message
+            // instead of adding a duplicate.
+            if (network.pendingMessages.reconcile(event, bufferName)) {
+                return;
             }
 
             // Notices from somewhere when we don't have an existing buffer for them should go into

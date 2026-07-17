@@ -643,6 +643,14 @@ msgstr "Loading previous messages..."
 msgid "unread_messages"
 msgstr "Unread Messages"
 
+#: Not sent
+msgid "message_not_sent"
+msgstr "Not sent."
+
+#: Resend
+msgid "message_resend"
+msgstr "Resend"
+
 #: Reply in private
 msgid "reply_in_private"
 msgstr "Reply in private"

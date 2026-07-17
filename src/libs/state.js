@@ -574,7 +574,7 @@ function createNewState() {
                 // Some messages try to be added after a network has been removed, meaning no buffer
                 // will be available
                 if (!buffer || !buffer.getNetwork()) {
-                    return;
+                    return null;
                 }
 
                 let user = this.getUser(buffer.networkid, message.nick);
@@ -717,6 +717,8 @@ function createNewState() {
                 }
 
                 this.$emit('message.new', { message: bufferMessage, buffer });
+
+                return bufferMessage;
             },
 
             addMessageNoRepeat(buffer, message) {
