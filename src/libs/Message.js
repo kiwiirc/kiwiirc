@@ -37,6 +37,7 @@ export default class Message {
         def(this, 'tags', message.tags);
         def(this, 'type', message.type || 'message');
         def(this, 'type_extra', message.type_extra);
+        def(this, 'group', message.group || '');
         def(this, 'ignore', false);
         def(this, 'mentioned_urls', []);
         // If embed.payload is truthy, it will be embedded within the message
@@ -159,6 +160,7 @@ export default class Message {
             tags: this.tags,
             type: this.type,
             type_extra: this.type_extra,
+            group: this.group,
         };
     }
 }
