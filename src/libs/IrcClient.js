@@ -475,6 +475,7 @@ function clientMiddleware(state, network) {
                 nick: event.nick,
                 message: messageBody,
                 type: event.type,
+                group: event.group || '',
                 tags: event.tags || {},
             };
 
