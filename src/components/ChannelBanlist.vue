@@ -21,14 +21,72 @@
             {{ $t('bans_refresh') }}
         </a>
 
+        <div v-if="banList.length > 0" class="kiwi-banlist-filter">
+            <div class="kiwi-banlist-count">
+                {{ $t('bans_count', { count: sortedBanList.length }) }}
+            </div>
+            <div class="kiwi-banlist-filter-input">
+                <input
+                    v-model="banFilter"
+                    type="text"
+                    class="u-input"
+                    :placeholder="$t('filter_bans')"
+                    autocomplete="off"
+                    spellcheck="false"
+                >
+            </div>
+        </div>
+
         <div
             v-if="banList.length > 0"
             :class="{ 'kiwi-sidebar-settings-access-restricted': !areWeAnOp }"
             class="kiwi-sidebar-settings-access-table"
         >
-            <div class="kiwi-sidebar-settings-access-table-header">{{ $t('bans_user') }}</div>
-            <div class="kiwi-sidebar-settings-access-table-header">{{ $t('bans_by') }}</div>
-            <div class="kiwi-sidebar-settings-access-table-header" />
+            <div class="kiwi-sidebar-settings-access-table-header">
+                <button
+                    type="button"
+                    class="kiwi-banlist-sort"
+                    :aria-sort="ariaSort('user')"
+                    @click="setSort('user')"
+                >
+                    {{ $t('bans_user') }}
+                    <i
+                        v-if="sortKey === 'user'"
+                        :class="sortDir === 'asc' ? 'fa fa-caret-up' : 'fa fa-caret-down'"
+                        aria-hidden="true"
+                    />
+                </button>
+            </div>
+            <div class="kiwi-sidebar-settings-access-table-header">
+                <button
+                    type="button"
+                    class="kiwi-banlist-sort"
+                    :aria-sort="ariaSort('by')"
+                    @click="setSort('by')"
+                >
+                    {{ $t('bans_by') }}
+                    <i
+                        v-if="sortKey === 'by'"
+                        :class="sortDir === 'asc' ? 'fa fa-caret-up' : 'fa fa-caret-down'"
+                        aria-hidden="true"
+                    />
+                </button>
+            </div>
+            <div class="kiwi-sidebar-settings-access-table-header">
+                <button
+                    type="button"
+                    class="kiwi-banlist-sort"
+                    :aria-sort="ariaSort('date')"
+                    @click="setSort('date')"
+                >
+                    {{ $t('bans_date') }}
+                    <i
+                        v-if="sortKey === 'date'"
+                        :class="sortDir === 'asc' ? 'fa fa-caret-up' : 'fa fa-caret-down'"
+                        aria-hidden="true"
+                    />
+                </button>
+            </div>
             <div v-if="areWeAnOp" class="kiwi-sidebar-settings-access-table-header" />
 
             <template v-for="ban in sortedBanList">
@@ -81,35 +139,6 @@
 import * as IrcdDiffs from '@/helpers/IrcdDiffs';
 import * as Misc from '@/helpers/Misc';
 
-const basicBanListSorter = (a, b) => {
-    if (a.banned_at === b.banned_at) {
-        return Misc.strCompare(a.banned, b.banned);
-    }
-
-    return b.banned_at - a.banned_at;
-};
-const getBanListSorter = (extban) => {
-    if (!extban) {
-        return basicBanListSorter;
-    }
-
-    const extbanColon = extban + ':';
-    return (a, b) => {
-        const aAccount = a.banned.indexOf(extbanColon) === 0;
-        const bAccount = b.banned.indexOf(extbanColon) === 0;
-
-        if (aAccount && !bAccount) {
-            return -1;
-        }
-
-        if (!aAccount && bAccount) {
-            return 1;
-        }
-
-        return basicBanListSorter(a, b);
-    };
-};
-
 export default {
     props: ['buffer'],
     data() {
@@ -118,6 +147,9 @@ export default {
             banList: [],
             is_refreshing: false,
             clickUpdateTimeout: 0,
+            banFilter: '',
+            sortKey: 'date',
+            sortDir: 'desc',
         };
     },
     computed: {
@@ -127,9 +159,41 @@ export default {
         areWeAnOp() {
             return this.buffer.isUserAnOp(this.buffer.getNetwork().nick);
         },
+        filteredBanList() {
+            const nickFilter = this.banFilter;
+            if (!nickFilter) {
+                return this.banList;
+            }
+
+            return this.banList.filter((ban) => {
+                const displayed = this.displayMask(ban.banned || '');
+                return displayed.indexOf(nickFilter) !== -1;
+            });
+        },
         sortedBanList() {
-            const sorter = getBanListSorter(this.extban);
-            return this.banList.slice().sort(sorter);
+            const direction = this.sortDir === 'asc' ? 1 : -1;
+            const key = this.sortKey;
+
+            return this.filteredBanList.slice().sort((a, b) => {
+                let result = 0;
+
+                if (key === 'date') {
+                    result = (a.banned_at || 0) - (b.banned_at || 0);
+                } else if (key === 'by') {
+                    result = Misc.strCompare(a.banned_by || '', b.banned_by || '');
+                } else {
+                    result = Misc.strCompare(
+                        this.displayMask(a.banned || ''),
+                        this.displayMask(b.banned || ''),
+                    );
+                }
+
+                if (result === 0) {
+                    result = Misc.strCompare(a.banned || '', b.banned || '');
+                }
+
+                return result * direction;
+            });
         },
     },
     watch: {
@@ -137,6 +201,9 @@ export default {
             this.banList = [];
             this.is_refreshing = false;
             this.clickUpdateTimeout = 0;
+            this.banFilter = '';
+            this.sortKey = 'date';
+            this.sortDir = 'desc';
             this.updateBanlist();
         },
     },
@@ -172,6 +239,21 @@ export default {
     methods: {
         displayMask(banMask) {
             return banMask.replace(this.extban + ':', '');
+        },
+        ariaSort(key) {
+            if (this.sortKey !== key) {
+                return 'none';
+            }
+            return this.sortDir === 'asc' ? 'ascending' : 'descending';
+        },
+        setSort(key) {
+            if (this.sortKey === key) {
+                this.sortDir = this.sortDir === 'asc' ? 'desc' : 'asc';
+                return;
+            }
+
+            this.sortKey = key;
+            this.sortDir = key === 'date' ? 'desc' : 'asc';
         },
         clickUpdateBanlist() {
             if (this.clickUpdateTimeout) {
@@ -251,6 +333,55 @@ export default {
     > input {
         flex-grow: 1;
         margin-right: 10px;
+    }
+}
+
+.kiwi-banlist-filter {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.kiwi-banlist-count {
+    flex-shrink: 0;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.kiwi-banlist-filter-input {
+    flex: 1;
+    min-width: 0;
+
+    > input {
+        box-sizing: border-box;
+        width: 100%;
+    }
+}
+
+.kiwi-banlist-sort {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    font-weight: 600;
+    color: inherit;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+
+    > .fa {
+        font-size: 0.85em;
+    }
+
+    &:hover {
+        text-decoration: underline;
     }
 }
 </style>
