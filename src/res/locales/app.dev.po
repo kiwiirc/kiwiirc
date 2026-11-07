@@ -468,6 +468,22 @@ msgstr "Nobody is banned!"
 msgid "bans_add_ban"
 msgstr "Add ban"
 
+#: Date
+msgid "bans_date"
+msgstr "Date"
+
+#: Filter banned users
+msgid "filter_bans"
+msgstr "Filter banned users"
+
+#: {{count}} ban
+msgid "bans_count"
+msgstr "{{count}} ban"
+
+#: {{count}} bans
+msgid "bans_count_plural"
+msgstr "{{count}} bans"
+
 
 
 #: ChannelInvitelist $t('invites_')
