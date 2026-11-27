@@ -31,6 +31,14 @@ module.exports = {
             // This prevents yarn link modules from getting linted
             symlinks: false,
         },
+        ignoreWarnings: [
+            // vue-loader 15 imports each extracted <style> block as `import style0 from ...`
+            // purely for its side effect; the binding is never read, but webpack >= 5.110.2
+            // reports the missing default export of these export-less CSS modules.
+            {
+                message: /export 'default' \(imported as 'style\d+'\) was not found in '[^']+\.vue\?vue&type=style&[^']*'/,
+            },
+        ],
         performance: {
             maxEntrypointSize: 1783539, // 1.7MiB
             maxAssetSize: 1048576, // 1MiB

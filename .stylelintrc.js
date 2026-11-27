@@ -1,5 +1,6 @@
 module.exports = {
     extends: ['stylelint-config-standard', 'stylelint-config-recommended-vue'],
+    plugins: ['@stylistic/stylelint-plugin'],
     overrides: [
         {
             files: ['**/*.html'],
@@ -9,13 +10,16 @@ module.exports = {
     rules: {
         'alpha-value-notation': null,
         'color-function-notation': null,
+        'declaration-block-no-redundant-longhand-properties': [true, {
+            ignoreShorthands: ['inset', 'overflow'],
+        }],
         'declaration-no-important': true,
-        'indentation': 4,
+        'media-feature-range-notation': 'prefix',
         'no-descending-specificity': null,
-        'no-empty-first-line': null,
         'property-no-vendor-prefix': null,
         'selector-class-pattern': null,
         'shorthand-property-no-redundant-values': null,
-        'string-quotes': 'single',
+        '@stylistic/indentation': 4,
+        '@stylistic/string-quotes': 'single',
     },
 };
