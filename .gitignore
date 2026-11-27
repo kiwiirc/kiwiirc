@@ -6,6 +6,14 @@ src/res/locales/available.json
 static/config.local.json
 tests/coverage
 
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
 
 # local env files
 .env.local

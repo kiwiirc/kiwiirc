@@ -9,6 +9,7 @@ module.exports = {
     ],
     rules: {
         'alpha-value-notation': null,
+        'color-function-alias-notation': null,
         'color-function-notation': null,
         'declaration-block-no-redundant-longhand-properties': [true, {
             ignoreShorthands: ['inset', 'overflow'],

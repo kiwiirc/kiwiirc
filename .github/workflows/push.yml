@@ -8,16 +8,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
 
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v7
         with:
-            node-version: '18.x'
-            cache: 'yarn'
+            node-version-file: '.nvmrc'
+
+      # Node.js >= 25 no longer ships Corepack, which provides the Yarn version from package.json
+      - name: Enable Corepack
+        run: npm install --global corepack@latest && corepack enable
 
       - name: Install dependencies
-        run: yarn --frozen-lockfile --non-interactive --prefer-offline
+        run: yarn install --immutable
 
       - name: Test
         run: yarn test

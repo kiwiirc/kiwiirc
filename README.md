@@ -28,8 +28,8 @@ To install Kiwi IRC on your own server, pre-built and ready to use installers ca
 ## Building from source
 #### Dependencies
 Before you can build or start to develop on Kiwi IRC, make sure to have the following installed on your system:
-* [Nodejs](https://nodejs.org/)
-* [yarn](https://yarnpkg.com/)
+* [Nodejs](https://nodejs.org/) 22.13 or later (the version in `.nvmrc` is the one tested)
+* [yarn](https://yarnpkg.com/) 4, provided through [Corepack](https://github.com/nodejs/corepack): `npm install --global corepack && corepack enable`
 
 #### Building for production
 
